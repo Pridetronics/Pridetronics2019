@@ -56,7 +56,7 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
-    SmartDashboard.putString("RobotID", "Pridetronics2019B");
+    SmartDashboard.putString("Pridetronics Robot 2019 ", "HI there");
   }
   
 
