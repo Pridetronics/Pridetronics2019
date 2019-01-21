@@ -31,6 +31,9 @@ public class Robot extends TimedRobot {
   public static Drive drive;
   public static Lift lift;
   public static OI oi;
+  public static Wrist wrist;
+  public static Pnuematics pnuematics;
+  public static Intake intake;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
   /**
@@ -47,6 +50,9 @@ public class Robot extends TimedRobot {
     oi = new OI(); 
     drive = new Drive();
     lift = new Lift();
+    wrist = new Wrist();
+    pnuematics = new Pnuematics();
+    intake = new Intake();
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);

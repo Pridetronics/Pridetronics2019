@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 /**
  * Add your docs here.
  */
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 public class RobotMap {
 
     public static Joystick joystick;
@@ -28,10 +29,15 @@ public class RobotMap {
     public static SpeedController rightDriveMotor;
     public static DigitalInput limitSwitchLift;
     public static Encoder ArmEncoder;
-    
+    public static DoubleSolenoid solenoid1;
+    public static DoubleSolenoid solenoid2;
 
-    public static SpeedController manipulatorMotor;
 
+    public static SpeedController liftMotor;
+    public static SpeedController wristMotor;
+
+    public static SpeedController intakeMotor1;
+    public static SpeedController intakeMotor2;
     public static void init() {
 
         leftDriveMotor = new WPI_TalonSRX(1);
@@ -56,11 +62,22 @@ public class RobotMap {
     ArmEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
     //LeftArmEncoder.setReverseDirection(true);
 
-
-    manipulatorMotor = new WPI_TalonSRX(2);// motor to be determined
-    manipulatorMotor.setInverted(false);
-
+//lift motors
+    liftMotor = new WPI_TalonSRX(2);// motor to be determined
+    liftMotor.setInverted(false);
+//wrist motors
+    wristMotor = new WPI_TalonSRX(3);
+    wristMotor.setInverted(false);
+//limitSwitch
     limitSwitchLift = new DigitalInput(5);
+//Solenoids
+    solenoid1 = new DoubleSolenoid(1, 0);
+    solenoid2 = new DoubleSolenoid(2, 3);
+//intake motors
+    intakeMotor1 = new WPI_TalonSRX(4);
+    intakeMotor1.setInverted(false);
+    intakeMotor2 = new WPI_TalonSRX(5);
+    intakeMotor2.setInverted(false);
     }
     
 }

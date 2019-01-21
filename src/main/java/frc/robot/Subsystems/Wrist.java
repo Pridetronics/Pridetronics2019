@@ -8,22 +8,15 @@
 package frc.robot.Subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.RobotMap;
-import frc.robot.Commands.*;
-import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.DigitalInput;
-
-import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Encoder;
+import frc.robot.RobotMap;
 /**
  * Add your docs here.
  */
-public class Lift extends Subsystem {
+public class Wrist extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private final SpeedController liftMotor = RobotMap.liftMotor;
-  private final DigitalInput limitSwitchLift = RobotMap.limitSwitchLift;
+  private final SpeedController wristMotor = RobotMap.wristMotor;
 
   @Override
   public void initDefaultCommand() {
@@ -35,30 +28,14 @@ public class Lift extends Subsystem {
     // Put code here to be run every loop
 
   }
-
   public void up() {
-    ((SpeedController) liftMotor).set(1);
+    ((SpeedController) wristMotor).set(1);
   }
-
-  public void upSpeed(double speed) {
-    ((SpeedController) liftMotor).set(speed);
+  public void down(){
+    ((SpeedController) wristMotor).set(-1);
   }
-
-  public void stallAtTop() {
-    ((SpeedController) liftMotor).set(0.2);
-  }
-
-  public void down() {
-    ((SpeedController) liftMotor).set(-.55);
-  }
-
   public void stop() {
-    ((SpeedController) liftMotor).set(0);
+    ((SpeedController) wristMotor).set(0);
   }
-  public Encoder getArmEncoder(){
-    return RobotMap.ArmEncoder;
-  }
-  public boolean limitSwitchOpen() {
-    return !limitSwitchLift.get();
-  }
+
 }
