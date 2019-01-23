@@ -14,33 +14,36 @@ import edu.wpi.first.wpilibj.*;
 import frc.robot.Commands.*;
 import frc.robot.OI;
 import edu.wpi.first.wpilibj.command.Subsystem;
+
 /**
  * Add your docs here.
  */
-public class Drive extends Subsystem{
+public class Drive extends Subsystem {
 
-    private final SpeedController leftDriveMotor;
-    private final SpeedController rightDriveMotor;
-    public final DifferentialDrive robotDrive;
-    private Joystick stick;
-    public Drive(){
-        rightDriveMotor = RobotMap.rightDriveMotor;
-        leftDriveMotor = RobotMap.leftDriveMotor;
-        robotDrive = RobotMap.myRobot;
-    }
-    public void initDefaultCommand(){
-        setDefaultCommand(new driveTeleop());
-    }
+  private final SpeedController leftDriveMotor;
+  private final SpeedController rightDriveMotor;
+  public final DifferentialDrive robotDrive;
+  private Joystick stick;
 
-    public void periodic(){
+  public Drive() {
+    rightDriveMotor = RobotMap.rightDriveMotor;
+    leftDriveMotor = RobotMap.leftDriveMotor;
+    robotDrive = RobotMap.myRobot;
+  }
 
-    }
+  public void initDefaultCommand() {
+    setDefaultCommand(new DriveTeleop());
+  }
 
-    public void doTeleop(Joystick stick){
-        double rightValue, leftValue;
-        rightValue = stick.getRawAxis(5);
-        leftValue = stick.getRawAxis(1);        
-        robotDrive.tankDrive(leftValue, rightValue);
-    }
+  public void periodic() {
+
+  }
+
+  public void doTeleop(Joystick stick) {
+    double rightValue, leftValue;
+    rightValue = stick.getRawAxis(5);
+    leftValue = stick.getRawAxis(1);
+    robotDrive.tankDrive(leftValue, rightValue);
+  }
 
 }
