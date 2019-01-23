@@ -28,7 +28,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 public class RobotMap {
 
-  public static Joystick joystick;
+  public static Joystick gamePad0;
   public static DifferentialDrive myRobot;
   public static SpeedController leftDriveMotor;
   public static SpeedController rightDriveMotor;
@@ -79,14 +79,18 @@ public class RobotMap {
     // lift motors
     liftMotor = new CANSparkMax(2, CANSparkMaxLowLevel.MotorType.kBrushless);
     liftController = new CANPIDController(liftMotor);
+
     // wrist motors
     wristMotor = new WPI_TalonSRX(3);
     wristMotor.setInverted(false);
+
     // limitSwitch
     limitSwitchLift = new DigitalInput(5);
+
     // Solenoids
     solenoid1 = new DoubleSolenoid(1, 0);
     solenoid2 = new DoubleSolenoid(2, 3);
+
     // intake motors
     intakeMotor1 = new WPI_TalonSRX(4);
     intakeMotor1.setInverted(false);
