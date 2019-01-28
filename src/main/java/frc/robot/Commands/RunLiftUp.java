@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.DigitalInput;
 
 public class RunLiftUp extends Command {
-  public final DigitalInput limitSwitchLift = RobotMap.limitSwitchLift;
+  public final DigitalInput limitSwitchLift = RobotMap.upperLimitSwitchLift;
   public RunLiftUp() {
     
     // Use requires() here to declare subsystem dependencies
@@ -41,12 +41,17 @@ public class RunLiftUp extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    if(limitSwitchLift.get() == true){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.lift.stop();
   }
 
   // Called when another command which requires one or more of the same

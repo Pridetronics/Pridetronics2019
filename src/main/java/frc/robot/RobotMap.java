@@ -17,6 +17,9 @@ import frc.robot.Subsystems.Sensor;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.DigitalInput;
+import com.revrobotics.*;
+import com.revrobotics.CANSparkMaxLowLevel;
+import com.revrobotics.CANSparkMaxLowLevel.*;
 /**
  * Add your docs here.
  */
@@ -25,9 +28,12 @@ public class RobotMap {
 
     public static Joystick joystick;
     public static DifferentialDrive myRobot;
-    public static SpeedController leftDriveMotor;
-    public static SpeedController rightDriveMotor;
-    public static DigitalInput limitSwitchLift;
+    public static WPI_TalonSRX leftDriveMotor;
+    public static WPI_TalonSRX rightDriveMotor;
+    public static WPI_TalonSRX leftDriveMotor1;
+    public static WPI_TalonSRX rightDriveMotor1;
+    public static DigitalInput lowerLimitSwitchLift;
+    public static DigitalInput upperLimitSwitchLift;
     public static Encoder ArmEncoder;
     public static DoubleSolenoid solenoid1;
     public static DoubleSolenoid solenoid2;
@@ -38,15 +44,20 @@ public class RobotMap {
 
     public static SpeedController intakeMotor1;
     public static SpeedController intakeMotor2;
+    public static final CANSparkMaxLowLevel.MotorType kBrushless = MotorType.kBrushless;
     public static void init() {
 
-        leftDriveMotor = new WPI_TalonSRX(1);
+        leftDriveMotor = new WPI_TalonSRX(2);
         leftDriveMotor.setInverted(false);
         //leftDriveMotor.set(0);
+        leftDriveMotor1 = new WPI_TalonSRX(3);
+        leftDriveMotor1.follow(leftDriveMotor);
 
         rightDriveMotor = new WPI_TalonSRX(0);
         rightDriveMotor.setInverted(false);
         //rightDriveMotor.set(0);
+        rightDriveMotor1 = new WPI_TalonSRX(1);
+        rightDriveMotor1.follow(rightDriveMotor);
 
         myRobot = new DifferentialDrive(leftDriveMotor, rightDriveMotor);
        // LiveWindow.addAcutator("Drive", "robotDrive", myRobot);
@@ -63,14 +74,15 @@ public class RobotMap {
     //LeftArmEncoder.setReverseDirection(true);
 
 //lift motors
-    liftMotor = new WPI_TalonSRX(2);// motor to be determined
+    liftMotor = new CANSparkMax(2 , MotorType.kBrushless);// motor to be determined
     liftMotor.setInverted(false);
 //wrist motors
     wristMotor = new WPI_TalonSRX(3);
     wristMotor.setInverted(false);
 //limitSwitch
-    limitSwitchLift = new DigitalInput(5);
-//Solenoids
+    lowerLimitSwitchLift = new DigitalInput(5);
+    upperLimitSwitchLift = new DigitalInput(9);
+    //Solenoids
     solenoid1 = new DoubleSolenoid(1, 0);
     solenoid2 = new DoubleSolenoid(2, 3);
 //intake motors

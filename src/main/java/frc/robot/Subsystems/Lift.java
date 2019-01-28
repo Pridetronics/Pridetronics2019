@@ -23,7 +23,7 @@ public class Lift extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   private final SpeedController liftMotor = RobotMap.liftMotor;
-  private final DigitalInput limitSwitchLift = RobotMap.limitSwitchLift;
+  //private final DigitalInput limitSwitchLift = RobotMap.limitSwitchLift;
 
   @Override
   public void initDefaultCommand() {
@@ -57,8 +57,5 @@ public class Lift extends Subsystem {
   }
   public Encoder getArmEncoder(){
     return RobotMap.ArmEncoder;
-  }
-  public boolean limitSwitchOpen() {
-    return !limitSwitchLift.get();
   }
 }

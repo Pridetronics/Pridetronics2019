@@ -9,11 +9,14 @@ package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.*;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 public class RunLiftDown extends Command {
+  public final DigitalInput limitSwitchLift = RobotMap.lowerLimitSwitchLift;
+
   public RunLiftDown() {
     // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+     requires(Robot.lift);
   }
 
   // Called just before this Command runs the first time
@@ -30,12 +33,17 @@ public class RunLiftDown extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    if(limitSwitchLift.get() == true ){
+    return true;
+    } else{
+      return false;
+    }
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.lift.stop();
   }
 
   // Called when another command which requires one or more of the same
