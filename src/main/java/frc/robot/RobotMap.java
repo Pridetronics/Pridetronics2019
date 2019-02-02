@@ -46,8 +46,8 @@ public class RobotMap {
     public static CANSparkMax liftMotor;
     public static Spark wristMotor;
 
-    public static SpeedController intakeMotor1;
-    public static SpeedController intakeMotor2;
+    public static Spark intakeMotor1;
+    public static Spark intakeMotor2;
 
     public static void init() {
 
