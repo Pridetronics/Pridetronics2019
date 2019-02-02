@@ -8,34 +8,40 @@
 package frc.robot.Subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import frc.robot.RobotMap;
+
 /**
  * Add your docs here.
  */
 public class Wrist extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private final SpeedController wristMotor = RobotMap.wristMotor;
+  private final Spark wristMotor = RobotMap.wristMotor;
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
+
   @Override
   public void periodic() {
     // Put code here to be run every loop
 
   }
+
   public void up() {
-    ((SpeedController) wristMotor).set(1);
+    wristMotor.set(1);
   }
-  public void down(){
-    ((SpeedController) wristMotor).set(-1);
+
+  public void down() {
+    wristMotor.set(-1);
   }
+
   public void stop() {
-    ((SpeedController) wristMotor).set(0);
+    wristMotor.set(0);
   }
 
 }

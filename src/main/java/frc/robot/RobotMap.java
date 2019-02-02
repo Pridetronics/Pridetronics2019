@@ -11,9 +11,6 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import com.ctre.phoenix.motorcontrol.*;
-import com.ctre.phoenix.motorcontrol.can.*;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -23,6 +20,7 @@ import frc.robot.Subsystems.Sensor;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Spark;
 
 /**
  * Add your docs here.
@@ -45,7 +43,7 @@ public class RobotMap {
     // public static CANSparkMax m_motor;
 
     public static CANSparkMax liftMotor;
-    public static SpeedController wristMotor;
+    public static Spark wristMotor;
 
     public static SpeedController intakeMotor1;
     public static SpeedController intakeMotor2;
@@ -70,22 +68,13 @@ public class RobotMap {
         myRobot.setExpiration(0.1);
         myRobot.setMaxOutput(1.0);
 
-        /*
-         * Encoder Parameters (Digital Source A, Digital Source B, Boolean Reverse
-         * Direction, Encoding Type)
-         */
-        ArmEncoder = new Encoder(7, 6, true, EncodingType.k4X);
-        ArmEncoder.setDistancePerPulse(Sensor.DISTANCE_PER_TICK);
-        ArmEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
-        // LeftArmEncoder.setReverseDirection(true);
-
         // lift motors
         liftMotor = new CANSparkMax(4, MotorType.kBrushless);// motor to be determined
-        //liftMotor.setInverted(false);
+        // liftMotor.setInverted(false);
 
         // wrist motors
-        wristMotor = new WPI_TalonSRX(8);
-       //wristMotor.setInverted(false);
+        wristMotor = new Spark(8);
+        // wristMotor.setInverted(false);
 
         // limitSwitch
         limitSwitchLift = new DigitalInput(5);
@@ -95,10 +84,10 @@ public class RobotMap {
         solenoid2 = new DoubleSolenoid(2, 3);
 
         // intake motors
-        intakeMotor1 = new WPI_TalonSRX(9);
-        //intakeMotor1.setInverted(false);
-        intakeMotor2 = new WPI_TalonSRX(10);
-       //intakeMotor2.setInverted(false);
+        intakeMotor1 = new Spark(9);
+        // intakeMotor1.setInverted(false);
+        intakeMotor2 = new Spark(10);
+        // intakeMotor2.setInverted(false);
     }
 
 }
