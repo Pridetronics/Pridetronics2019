@@ -25,7 +25,8 @@ public class Lift extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   private final CANSparkMax liftMotor = RobotMap.liftMotor;
-  private final DigitalInput limitSwitchLift = RobotMap.limitSwitchLift;
+  private final DigitalInput limitSwitchLiftDown = RobotMap.limitSwitchLiftDown;
+  private final DigitalInput limitSwitchLiftUp = RobotMap.limitSwitchLiftUp;
 
   @Override
   public void initDefaultCommand() {
@@ -64,6 +65,6 @@ public class Lift extends Subsystem {
   }
 
   public boolean limitSwitchOpen() {
-    return !limitSwitchLift.get();
+    return !limitSwitchLiftDown.get();
   }
 }

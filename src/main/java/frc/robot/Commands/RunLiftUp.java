@@ -17,9 +17,12 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.DigitalInput;
 
 public class RunLiftUp extends Command {
-  public final DigitalInput limitSwitchLift = RobotMap.limitSwitchLift;
+
+  public final DigitalInput limitSwitchLiftDown = RobotMap.limitSwitchLiftDown;
+  public final DigitalInput limitSwitchLiftUp = RobotMap.limitSwitchLiftUp;
+
   public RunLiftUp() {
-    
+
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
 

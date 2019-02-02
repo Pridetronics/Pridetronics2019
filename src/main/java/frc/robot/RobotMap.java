@@ -35,7 +35,8 @@ public class RobotMap {
     public static WPI_TalonSRX leftDriveMotorFollow;
     public static WPI_TalonSRX rightDriveMotorLead;
     public static WPI_TalonSRX rightDriveMotorFollow;
-    public static DigitalInput limitSwitchLift;
+    public static DigitalInput limitSwitchLiftDown;
+    public static DigitalInput limitSwitchLiftUp; 
     public static Encoder ArmEncoder;
     public static DoubleSolenoid solenoid1;
     public static DoubleSolenoid solenoid2;
@@ -77,7 +78,8 @@ public class RobotMap {
         // wristMotor.setInverted(false);
 
         // limitSwitch
-        limitSwitchLift = new DigitalInput(5);
+        limitSwitchLiftDown = new DigitalInput(4);
+        limitSwitchLiftUp = new DigitalInput(5);
 
         // Solenoids
         solenoid1 = new DoubleSolenoid(1, 0);
