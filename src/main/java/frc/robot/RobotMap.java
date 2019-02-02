@@ -44,7 +44,7 @@ public class RobotMap {
 
     // public static CANSparkMax m_motor;
 
-    public static SpeedController liftMotor;
+    public static CANSparkMax liftMotor;
     public static SpeedController wristMotor;
 
     public static SpeedController intakeMotor1;
@@ -80,21 +80,25 @@ public class RobotMap {
         // LeftArmEncoder.setReverseDirection(true);
 
         // lift motors
-        liftMotor = new CANSparkMax(0, MotorType.kBrushless);// motor to be determined
-        liftMotor.setInverted(false);
+        liftMotor = new CANSparkMax(4, MotorType.kBrushless);// motor to be determined
+        //liftMotor.setInverted(false);
+
         // wrist motors
-        wristMotor = new WPI_TalonSRX(3);
-        wristMotor.setInverted(false);
+        wristMotor = new WPI_TalonSRX(8);
+       //wristMotor.setInverted(false);
+
         // limitSwitch
         limitSwitchLift = new DigitalInput(5);
+
         // Solenoids
         solenoid1 = new DoubleSolenoid(1, 0);
         solenoid2 = new DoubleSolenoid(2, 3);
+
         // intake motors
-        intakeMotor1 = new WPI_TalonSRX(4);
-        intakeMotor1.setInverted(false);
-        intakeMotor2 = new WPI_TalonSRX(5);
-        intakeMotor2.setInverted(false);
+        intakeMotor1 = new WPI_TalonSRX(9);
+        //intakeMotor1.setInverted(false);
+        intakeMotor2 = new WPI_TalonSRX(10);
+       //intakeMotor2.setInverted(false);
     }
 
 }

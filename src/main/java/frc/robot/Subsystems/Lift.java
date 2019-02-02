@@ -7,7 +7,7 @@
 
 package frc.robot.Subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;   
+import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.Commands.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -17,13 +17,14 @@ import com.revrobotics.CANSparkMax;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Encoder;
+
 /**
  * Add your docs here.
  */
 public class Lift extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private final SpeedController liftMotor = RobotMap.liftMotor;
+  private final CANSparkMax liftMotor = RobotMap.liftMotor;
   private final DigitalInput limitSwitchLift = RobotMap.limitSwitchLift;
 
   @Override
@@ -31,6 +32,7 @@ public class Lift extends Subsystem {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
+
   @Override
   public void periodic() {
     // Put code here to be run every loop
@@ -38,27 +40,29 @@ public class Lift extends Subsystem {
   }
 
   public void up() {
-    ((SpeedController) liftMotor).set(1);
+    liftMotor.set(1);
   }
 
   public void upSpeed(double speed) {
-    ((SpeedController) liftMotor).set(speed);
+    liftMotor.set(speed);
   }
 
   public void stallAtTop() {
-    ((SpeedController) liftMotor).set(0.2);
+    liftMotor.set(0.2);
   }
 
   public void down() {
-    ((SpeedController) liftMotor).set(-.55);
+    liftMotor.set(-.55);
   }
 
   public void stop() {
-    ((SpeedController) liftMotor).set(0);
+    liftMotor.set(0);
   }
-  public Encoder getArmEncoder(){
+
+  public Encoder getArmEncoder() {
     return RobotMap.ArmEncoder;
   }
+
   public boolean limitSwitchOpen() {
     return !limitSwitchLift.get();
   }
