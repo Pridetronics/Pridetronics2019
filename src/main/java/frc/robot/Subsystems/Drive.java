@@ -10,36 +10,50 @@ package frc.robot.Subsystems;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
+
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.*;
 import frc.robot.Commands.*;
 import frc.robot.OI;
 import edu.wpi.first.wpilibj.command.Subsystem;
+
 /**
  * Add your docs here.
  */
-public class Drive extends Subsystem{
+public class Drive extends Subsystem {
 
-    private final SpeedController leftDriveMotor;
-    private final SpeedController rightDriveMotor;
+    private final WPI_TalonSRX leftDriveMotorLead;
+    private final WPI_TalonSRX leftDriveMotorFollow;
+
+    private final WPI_TalonSRX rightDriveMotorLead;
+    private final WPI_TalonSRX rightDriveMotorFollow;
+
     public final DifferentialDrive robotDrive;
     private Joystick stick;
-    public Drive(){
-        rightDriveMotor = RobotMap.rightDriveMotor;
-        leftDriveMotor = RobotMap.leftDriveMotor;
+
+    public Drive() {
+        rightDriveMotorLead = RobotMap.rightDriveMotorLead;
+        rightDriveMotorFollow = RobotMap.rightDriveMotorFollow;
+
+        leftDriveMotorLead = RobotMap.leftDriveMotorLead;
+        leftDriveMotorFollow = RobotMap.leftDriveMotorFollow;
+
         robotDrive = RobotMap.myRobot;
     }
-    public void initDefaultCommand(){
+
+    public void initDefaultCommand() {
         setDefaultCommand(new driveTeleop());
     }
 
-    public void periodic(){
+    public void periodic() {
 
     }
 
-    public void doTeleop(Joystick stick){
+    public void doTeleop(Joystick stick) {
         double rightValue, leftValue;
         rightValue = stick.getRawAxis(5);
-        leftValue = stick.getRawAxis(1);        
+        leftValue = stick.getRawAxis(1);
         robotDrive.tankDrive(leftValue, rightValue);
     }
 
