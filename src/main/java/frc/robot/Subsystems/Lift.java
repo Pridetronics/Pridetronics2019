@@ -7,11 +7,12 @@
 
 package frc.robot.Subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.command.Subsystem;   
 import frc.robot.RobotMap;
 import frc.robot.Commands.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.DigitalInput;
+import com.revrobotics.CANSparkMax;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;

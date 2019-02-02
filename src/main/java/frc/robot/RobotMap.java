@@ -8,6 +8,9 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -17,6 +20,9 @@ import frc.robot.Subsystems.Sensor;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.DigitalInput;
+
+
+
 /**
  * Add your docs here.
  */
@@ -31,6 +37,8 @@ public class RobotMap {
     public static Encoder ArmEncoder;
     public static DoubleSolenoid solenoid1;
     public static DoubleSolenoid solenoid2;
+
+    //public static CANSparkMax m_motor;
 
 
     public static SpeedController liftMotor;
@@ -63,7 +71,7 @@ public class RobotMap {
     //LeftArmEncoder.setReverseDirection(true);
 
 //lift motors
-    liftMotor = new WPI_TalonSRX(2);// motor to be determined
+    liftMotor = new CANSparkMax(0, MotorType.kBrushless);// motor to be determined
     liftMotor.setInverted(false);
 //wrist motors
     wristMotor = new WPI_TalonSRX(3);
