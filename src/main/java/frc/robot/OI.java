@@ -16,6 +16,7 @@ import frc.robot.Commands.*;
 public class OI {
 
     public Joystick joystick;
+    public Joystick gamepad;
     public JoystickButton button1;//OuttakeBall
     public JoystickButton button2;//IntakeBall
     public JoystickButton button3; //CargoBall
@@ -43,11 +44,13 @@ public class OI {
     public OI(){
 
         joystick = new Joystick(0); 
+        gamepad= new Joystick(1);
 //Intake and Outtake
         button1 = new JoystickButton(joystick, 2);
         button1.whileHeld(new intakeBall());
         button2 = new JoystickButton(joystick, 1);
         button2.whileHeld(new outtakeBall());
+/*
 //Cargo ball whenPressed
         button3 = new JoystickButton(joystick, 3);
         button3.whenPressed(new RocketCargo(CargoBall));
@@ -79,8 +82,12 @@ public class OI {
 //Bottom Hatch on Rocket
         button12 = new JoystickButton(joystick, 12);
         button12.whenPressed(new RocketCargo(RocketHatch1));
+*/
     }
     public Joystick getJoystick(){
         return joystick;
+    }
+    public Joystick getGamepad(){
+            return gamepad;
     }
 }

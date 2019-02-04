@@ -45,7 +45,7 @@ public class driveTeleop extends Command {
   
     protected void initialize() {
   
-      stick = Robot.oi.getJoystick();
+      stick = Robot.oi.getGamepad();
       stick.setAxisChannel(AxisType.kX, 0);
       stick.setAxisChannel(AxisType.kY, 1);
   
@@ -60,7 +60,7 @@ public class driveTeleop extends Command {
   
     protected void execute() {
   
-      stick = Robot.oi.getJoystick();
+      stick = Robot.oi.getGamepad();
       Robot.drive.doTeleop(stick);
   
   

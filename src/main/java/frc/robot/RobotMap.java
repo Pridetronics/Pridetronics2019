@@ -10,6 +10,7 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -49,19 +50,22 @@ public class RobotMap {
     public static Spark intakeMotor1;
     public static Spark intakeMotor2;
 
+    public static final int kTimeoutMs = 30;
+
     public static void init() {
 
         leftDriveMotorLead = new WPI_TalonSRX(0);
-        leftDriveMotorFollow = new WPI_TalonSRX(1);
-        leftDriveMotorLead.setInverted(false);
-        leftDriveMotorFollow.follow(leftDriveMotorLead);
+       // leftDriveMotorFollow = new WPI_TalonSRX(1);
+        leftDriveMotorLead.setInverted(true);
+      //  leftDriveMotorFollow.follow(leftDriveMotorLead);
         leftDriveMotorLead.set(0);
 
-        rightDriveMotorLead = new WPI_TalonSRX(2);
-        rightDriveMotorFollow = new WPI_TalonSRX(3);
-        rightDriveMotorLead.setInverted(false);
-        rightDriveMotorFollow.follow(rightDriveMotorLead);
+        leftDriveMotorLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,0,kTimeoutMs);							
+
+       // rightDriveMotorFollow.follow(rightDriveMotorLead);
         rightDriveMotorLead.set(0);
+
+        rightDriveMotorLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,0,kTimeoutMs);								
 
         myRobot = new DifferentialDrive(leftDriveMotorLead, rightDriveMotorLead);
         // LiveWindow.addAcutator("Drive", "robotDrive", myRobot);
