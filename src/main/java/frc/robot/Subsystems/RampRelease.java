@@ -7,46 +7,18 @@
 
 package frc.robot.Subsystems;
 
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.RobotMap;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.*;
 
 /**
  * Add your docs here.
  */
-public class Pnuematics extends Subsystem {
+public class RampRelease extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-
-  private final DoubleSolenoid solenoidHatchRelease = RobotMap.solenoidHatchRelease;
-  private final DoubleSolenoid solenoidRampRelease = RobotMap.solenoidRampRelease;
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-  }
-
-  @Override
-  public void periodic() {
-
-  }
-
-  public void releaseHatch() {
-    solenoidHatchRelease.set(Value.kForward);
-  }
-
-  public void retractHatch() {
-    solenoidHatchRelease.set(Value.kReverse);
-  }
-
-  public void releaseRamp() {
-    solenoidRampRelease.set(Value.kForward);
-  }
-
-  public void retractRamp() {
-    solenoidRampRelease.set(Value.kReverse);
   }
 }

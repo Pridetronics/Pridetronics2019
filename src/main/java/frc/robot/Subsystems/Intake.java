@@ -18,8 +18,8 @@ import edu.wpi.first.wpilibj.Spark;
 public class Intake extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private final Spark intakeMotor1 = RobotMap.intakeMotor1;
-  private final Spark intakeMotor2 = RobotMap.intakeMotor2;
+  private final Spark intakeMotorLeft = RobotMap.intakeMotorLeft;
+  private final Spark intakeMotorRight = RobotMap.intakeMotorRight;
 
   @Override
   public void initDefaultCommand() {
@@ -33,12 +33,12 @@ public class Intake extends Subsystem {
   }
 
   public void intake() {
-    intakeMotor1.set(1);
-    intakeMotor2.set(1);
+    intakeMotorLeft.set(1);
+    intakeMotorRight.set(1);
   }
 
   public void outtake() {
-    intakeMotor1.set(-1);
-    intakeMotor2.set(-1);
+    intakeMotorLeft.set(-1);
+    intakeMotorRight.set(-1);
   }
 }

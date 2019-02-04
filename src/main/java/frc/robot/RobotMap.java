@@ -37,18 +37,18 @@ public class RobotMap {
     public static WPI_TalonSRX rightDriveMotorLead;
     public static WPI_TalonSRX rightDriveMotorFollow;
     public static DigitalInput limitSwitchLiftDown;
-    public static DigitalInput limitSwitchLiftUp; 
+    public static DigitalInput limitSwitchLiftUp;
     public static Encoder ArmEncoder;
-    public static DoubleSolenoid solenoid1;
-    public static DoubleSolenoid solenoid2;
+    public static DoubleSolenoid solenoidHatchRelease;
+    public static DoubleSolenoid solenoidRampRelease;
 
     // public static CANSparkMax m_motor;
 
     public static CANSparkMax liftMotor;
     public static Spark wristMotor;
 
-    public static Spark intakeMotor1;
-    public static Spark intakeMotor2;
+    public static Spark intakeMotorLeft;
+    public static Spark intakeMotorRight;
 
     public static final int kTimeoutMs = 30;
 
@@ -78,7 +78,7 @@ public class RobotMap {
         // liftMotor.setInverted(false);
 
         // wrist motors
-        wristMotor = new Spark(8);
+        wristMotor = new Spark(1);
         // wristMotor.setInverted(false);
 
         // limitSwitch
@@ -86,13 +86,13 @@ public class RobotMap {
         limitSwitchLiftUp = new DigitalInput(5);
 
         // Solenoids
-        solenoid1 = new DoubleSolenoid(1, 0);
-        solenoid2 = new DoubleSolenoid(2, 3);
+        solenoidHatchRelease = new DoubleSolenoid(0, 1);
+        solenoidRampRelease = new DoubleSolenoid(2, 3);
 
         // intake motors
-        intakeMotor1 = new Spark(9);
+        intakeMotorLeft = new Spark(9);
         // intakeMotor1.setInverted(false);
-        intakeMotor2 = new Spark(10);
+        intakeMotorRight = new Spark(10);
         // intakeMotor2.setInverted(false);
     }
 
