@@ -10,6 +10,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.networktables.NetworkTableEntry;
 import frc.robot.Commands.*;
 import frc.robot.Subsystems.*;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -36,6 +39,10 @@ public class Robot extends TimedRobot {
   public static Pnuematics pnuematics;
   public static Intake intake;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
+  public NetworkTableEntry rotationFirst;
+  public NetworkTableEntry forwardDrive;
+  public NetworkTableEntry rotationSecond;
+  NetworkTable table;
   
 
 
@@ -60,6 +67,16 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
     SmartDashboard.putString("Pridetronics Robot 2019 ", "HI there");
+    NetworkTableInstance inst = NetworkTableInstance.getDefault();
+    table = inst.getTable("Shuffleboard");
+    rotationFirst = table.getEntry("rot1");
+	  forwardDrive = table.getEntry("fwd");
+    rotationSecond = table.getEntry("rot2");
+    rotationFirst.getDouble(0.0);
+    forwardDrive.getDouble(0.0);
+    rotationSecond.getDouble(0.0);
+
+	  
   }
   
 
@@ -83,6 +100,9 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic(){
     Scheduler.getInstance().run();
+    rotationFirst.setDouble(0);
+    forwardDrive.setDouble(0);
+    rotationSecond.setDouble(0);
   }
 
   /**
