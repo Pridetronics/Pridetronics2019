@@ -50,12 +50,12 @@ public class Robot extends TimedRobot {
     //UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
     //camera.setResolution(320,240);
     RobotMap.init();
-    oi = new OI(); 
     drive = new Drive();
     lift = new Lift();
     wrist = new Wrist();
     pnuematics = new Pnuematics();
     intake = new Intake();
+    oi = new OI(); 
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);

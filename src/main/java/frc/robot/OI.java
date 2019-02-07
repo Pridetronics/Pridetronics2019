@@ -9,7 +9,9 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Commands.*;
+//import frc.robot.Commands.RocketCargo;
 /**
  * Add your docs here.
  */
@@ -29,6 +31,8 @@ public class OI {
     public JoystickButton button10; //Rocket Hatch 2
     public JoystickButton button11; //Rocket Ball 1
     public JoystickButton button12; //Rocket Hatch 1
+    public JoystickButton liftUpButton;
+    public JoystickButton liftDownButton;
    
     
     //InstanceVariables for Ball
@@ -50,10 +54,16 @@ public class OI {
         button1.whileHeld(new intakeBall());
         button2 = new JoystickButton(joystick, 1);
         button2.whileHeld(new outtakeBall());
+
+        liftUpButton = new JoystickButton(joystick, 3);
+        liftUpButton.whileHeld(new RunLiftUp());
+        liftDownButton = new JoystickButton(joystick, 4);
+        liftDownButton.whileHeld(new RunLiftDown());
+        
 /*
 //Cargo ball whenPressed
         button3 = new JoystickButton(joystick, 3);
-        button3.whenPressed(new RocketCargo(CargoBall));
+        button3.whenPressed(new RocketCargo(RocketBallLv1));
 //Top level on Rocket
         button7 = new JoystickButton(joystick, 7);
         button7.whenPressed(new RocketCargo(RocketBallLv3));//change when rocketlv3 is made
@@ -82,12 +92,14 @@ public class OI {
 //Bottom Hatch on Rocket
         button12 = new JoystickButton(joystick, 12);
         button12.whenPressed(new RocketCargo(RocketHatch1));
-*/
+        */
     }
+    
     public Joystick getJoystick(){
         return joystick;
     }
     public Joystick getGamepad(){
             return gamepad;
     }
+
 }
