@@ -48,9 +48,7 @@ public class driveTeleop extends Command {
       stick = Robot.oi.getJoystick();
       stick.setAxisChannel(AxisType.kX, 0);
       stick.setAxisChannel(AxisType.kY, 1);
-  
-      
-  
+
       //RobotMap.pneuCompressor.start();
     }
   
@@ -62,15 +60,8 @@ public class driveTeleop extends Command {
   
       stick = Robot.oi.getJoystick();
       Robot.drive.doTeleop(stick);
-  
-  
-  
-  
     }
-  
-  
-  
-  
+
     // Make this return true when this Command no longer needs to run execute()
   
     @Override
@@ -81,9 +72,6 @@ public class driveTeleop extends Command {
   
     }
   
-  
-  
-  
     // Called once after isFinished returns true
   
     @Override
@@ -91,10 +79,7 @@ public class driveTeleop extends Command {
     protected void end() {
   
     }
-  
-  
-  
-  
+
     // Called when another command which requires one or more of the same
   
     // subsystems is scheduled to run
@@ -102,14 +87,8 @@ public class driveTeleop extends Command {
     @Override
   
     protected void interrupted() {
-  
-  
-  
-  
+
       end();
-  
-  
-  
-  
+
     }
 }
