@@ -61,7 +61,7 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
-    SmartDashboard.putString("PRobotID", "Master 190208b");
+    SmartDashboard.putString("RobotID", "Master 190208b");
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
 
     /*
