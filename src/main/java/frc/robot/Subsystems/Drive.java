@@ -18,6 +18,10 @@ import frc.robot.Commands.*;
 import frc.robot.OI;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+import frc.robot.Robot;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+
 /**
  * Add your docs here.
  */
@@ -31,6 +35,11 @@ public class Drive extends Subsystem {
 
     public final DifferentialDrive robotDrive;
     private Joystick stick;
+
+    public NetworkTable table;
+    public NetworkTableEntry rotationFirst;
+    public NetworkTableEntry forwardDrive;
+    public NetworkTableEntry rotationSecond;
 
     public Drive() {
         rightDriveMotorLead = RobotMap.rightDriveMotorLead;
@@ -47,7 +56,13 @@ public class Drive extends Subsystem {
     }
 
     public void periodic() {
-
+        rotationFirst = table.getEntry("rot1"); 
+        forwardDrive = table.getEntry("fwd"); 
+        rotationSecond = table.getEntry("rot2"); 
+        
+        rotationFirst.getDouble(0.0);
+        forwardDrive.getDouble(0.0); 
+        rotationSecond.getDouble(0.0);
     }
 
     public void doTeleop(Joystick stick) {

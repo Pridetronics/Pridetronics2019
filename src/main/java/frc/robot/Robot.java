@@ -30,16 +30,15 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
  * project.
  */
 public class Robot extends TimedRobot {
-  private static final String kDefaultAuto = "Default";
-  private static final String kCustomAuto = "My Auto";
-  private String m_autoSelected;
+  
   public static Drive drive;
   public static Lift lift;
   public static OI oi;
   public static Wrist wrist;
   public static Pnuematics pnuematics;
   public static Intake intake;
-  private final SendableChooser<String> m_chooser = new SendableChooser<>();
+  
+  public NetworkTable table;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -58,18 +57,10 @@ public class Robot extends TimedRobot {
     pnuematics = new Pnuematics();
     intake = new Intake();
     oi = new OI();
-    m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
-    m_chooser.addOption("My Auto", kCustomAuto);
-    SmartDashboard.putData("Auto choices", m_chooser);
-    SmartDashboard.putString("RobotID", "Master 190208b");
-    NetworkTableInstance inst = NetworkTableInstance.getDefault();
 
-    /*
-     * table = inst.getTable("Shuffleboard"); rotationFirst =
-     * table.getEntry("rot1"); forwardDrive = table.getEntry("fwd"); rotationSecond
-     * = table.getEntry("rot2"); rotationFirst.getDouble(0.0);
-     * forwardDrive.getDouble(0.0); rotationSecond.getDouble(0.0);
-     */
+    SmartDashboard.putString("RobotID", "Master 190208b");
+ 
+     
   }
 
   /**
@@ -83,6 +74,11 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+
+    NetworkTableInstance inst = NetworkTableInstance.getDefault();
+
+     table = inst.getTable("Shuffleboard"); 
+    
   }
 
   @Override
@@ -113,9 +109,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autoSelected = m_chooser.getSelected();
-    // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
-    System.out.println("Auto selected: " + m_autoSelected);
+
   }
 
   /**
@@ -123,15 +117,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    switch (m_autoSelected) {
-    case kCustomAuto:
-      // Put custom auto code here
-      break;
-    case kDefaultAuto:
-    default:
-      // Put default auto code here
-      break;
-    }
+
   }
 
   /**
