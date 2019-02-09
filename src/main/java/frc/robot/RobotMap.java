@@ -7,18 +7,10 @@
 
 package frc.robot;
 
-<<<<<<< Updated upstream
-
 import com.revrobotics.*;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-=======
-import com.revrobotics.*;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
->>>>>>> Stashed changes
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -54,15 +46,9 @@ public class RobotMap {
 
   // public static CANSparkMax m_motor;
 
-<<<<<<< Updated upstream
-    public static CANSparkMax liftMotor;
-    public static CANEncoder liftEncoder;
-    public static Spark wristMotor;
-=======
   public static CANSparkMax liftMotor;
-  public CANEncoder liftEncoder;
+  public static CANEncoder liftEncoder;
   public static Spark wristMotor;
->>>>>>> Stashed changes
 
   public static Spark intakeMotorLeft;
   public static Spark intakeMotorRight;
@@ -79,14 +65,9 @@ public class RobotMap {
 
     leftDriveMotorLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, kTimeoutMs);
 
-<<<<<<< Updated upstream
-       // rightDriveMotorFollow.follow(rightDriveMotorLead);
-        rightDriveMotorLead = new WPI_TalonSRX(2);
-        rightDriveMotorLead.set(0);
-=======
     // rightDriveMotorFollow.follow(rightDriveMotorLead);
+    rightDriveMotorLead = new WPI_TalonSRX(2);
     rightDriveMotorLead.set(0);
->>>>>>> Stashed changes
 
     rightDriveMotorLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, kTimeoutMs);
 
@@ -96,16 +77,10 @@ public class RobotMap {
     myRobot.setExpiration(0.1);
     myRobot.setMaxOutput(1.0);
 
-<<<<<<< Updated upstream
-        // lift motors
-        liftMotor = new CANSparkMax(4, MotorType.kBrushless);// motor to be determined
-        liftEncoder = liftMotor.getEncoder();
-        // liftMotor.setInverted(false);
-=======
     // lift motors
     liftMotor = new CANSparkMax(4, MotorType.kBrushless);// motor to be determined
+    liftEncoder = liftMotor.getEncoder();
     // liftMotor.setInverted(false);
->>>>>>> Stashed changes
 
     // wrist motors
     wristMotor = new Spark(1);

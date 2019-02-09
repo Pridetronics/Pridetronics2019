@@ -54,12 +54,7 @@ public class Robot extends TimedRobot {
     wrist = new Wrist();
     pnuematics = new Pnuematics();
     intake = new Intake();
-<<<<<<< Updated upstream
-    oi = new OI(); 
-=======
     oi = new OI();
-
->>>>>>> Stashed changes
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
@@ -135,17 +130,11 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-<<<<<<< Updated upstream
-      Scheduler.getInstance().run();
-      SmartDashboard.putNumber("Right Encoder", RobotMap.rightDriveMotorLead.getSelectedSensorPosition());
-      SmartDashboard.putNumber("Left Encoder", RobotMap.leftDriveMotorLead.getSelectedSensorPosition());
-      SmartDashboard.putNumber("Lift Encoder Position", RobotMap.liftEncoder.getPosition());
-      SmartDashboard.putNumber("Lift Encoder Velocity", RobotMap.liftEncoder.getVelocity());
-=======
     Scheduler.getInstance().run();
     SmartDashboard.putNumber("Right Encoder", RobotMap.rightDriveMotorLead.getSelectedSensorPosition());
     SmartDashboard.putNumber("Left Encoder", RobotMap.leftDriveMotorLead.getSelectedSensorPosition());
->>>>>>> Stashed changes
+    SmartDashboard.putNumber("Lift Encoder Position", RobotMap.liftEncoder.getPosition());
+    SmartDashboard.putNumber("Lift Encoder Velocity", RobotMap.liftEncoder.getVelocity());
 
   }
 
