@@ -7,10 +7,13 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.revrobotics.CANSparkMax;
+
+import com.revrobotics.*;
+import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -45,6 +48,7 @@ public class RobotMap {
     // public static CANSparkMax m_motor;
 
     public static CANSparkMax liftMotor;
+    public static CANEncoder liftEncoder;
     public static Spark wristMotor;
 
     public static Spark intakeMotorLeft;
@@ -63,6 +67,7 @@ public class RobotMap {
         leftDriveMotorLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,0,kTimeoutMs);							
 
        // rightDriveMotorFollow.follow(rightDriveMotorLead);
+        rightDriveMotorLead = new WPI_TalonSRX(2);
         rightDriveMotorLead.set(0);
 
         rightDriveMotorLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative,0,kTimeoutMs);								
@@ -75,6 +80,7 @@ public class RobotMap {
 
         // lift motors
         liftMotor = new CANSparkMax(4, MotorType.kBrushless);// motor to be determined
+        liftEncoder = liftMotor.getEncoder();
         // liftMotor.setInverted(false);
 
         // wrist motors

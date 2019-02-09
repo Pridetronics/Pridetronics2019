@@ -14,6 +14,7 @@ import frc.robot.Commands.*;
 import frc.robot.Subsystems.*;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Command;
+import com.revrobotics.*;
 
 import edu.wpi.first.wpilibj.smartdashboard.*;
 
@@ -50,12 +51,12 @@ public class Robot extends TimedRobot {
     //UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
     //camera.setResolution(320,240);
     RobotMap.init();
-    oi = new OI(); 
     drive = new Drive();
     lift = new Lift();
     wrist = new Wrist();
     pnuematics = new Pnuematics();
     intake = new Intake();
+    oi = new OI(); 
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
@@ -133,6 +134,8 @@ public class Robot extends TimedRobot {
       Scheduler.getInstance().run();
       SmartDashboard.putNumber("Right Encoder", RobotMap.rightDriveMotorLead.getSelectedSensorPosition());
       SmartDashboard.putNumber("Left Encoder", RobotMap.leftDriveMotorLead.getSelectedSensorPosition());
+      SmartDashboard.putNumber("Lift Encoder Position", RobotMap.liftEncoder.getPosition());
+      SmartDashboard.putNumber("Lift Encoder Velocity", RobotMap.liftEncoder.getVelocity());
 
   }
 
