@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
+
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.CameraServer;
@@ -17,7 +18,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import com.revrobotics.*;
 
 import edu.wpi.first.wpilibj.smartdashboard.*;
-
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -37,65 +37,68 @@ public class Robot extends TimedRobot {
   public static Pnuematics pnuematics;
   public static Intake intake;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
-  
-
 
   /**
-   * This function is run when the robot is first started up and should be
-   * used for any initialization code.
+   * This function is run when the robot is first started up and should be used
+   * for any initialization code.
    */
   @Override
   public void robotInit() {
 
-    //CameraServer.getInstance().startAutomaticCapture();
-    //UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-    //camera.setResolution(320,240);
+    // CameraServer.getInstance().startAutomaticCapture();
+    // UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+    // camera.setResolution(320,240);
     RobotMap.init();
     drive = new Drive();
     lift = new Lift();
     wrist = new Wrist();
     pnuematics = new Pnuematics();
     intake = new Intake();
+<<<<<<< Updated upstream
     oi = new OI(); 
+=======
+    oi = new OI();
+
+>>>>>>> Stashed changes
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
     SmartDashboard.putString("Pridetronics Robot 2019 ", "HI there");
   }
-  
 
   /**
-   * This function is called every robot packet, no matter the mode. Use
-   * this for items like diagnostics that you want ran during disabled,
-   * autonomous, teleoperated and test.
+   * This function is called every robot packet, no matter the mode. Use this for
+   * items like diagnostics that you want ran during disabled, autonomous,
+   * teleoperated and test.
    *
-   * <p>This runs after the mode specific periodic functions, but before
-   * LiveWindow and SmartDashboard integrated updating.
+   * <p>
+   * This runs after the mode specific periodic functions, but before LiveWindow
+   * and SmartDashboard integrated updating.
    */
   @Override
   public void robotPeriodic() {
   }
 
-  
   @Override
   public void disabledInit() {
   }
 
   @Override
-  public void disabledPeriodic(){
+  public void disabledPeriodic() {
     Scheduler.getInstance().run();
   }
 
   /**
    * This autonomous (along with the chooser code above) shows how to select
-   * between different autonomous modes using the dashboard. The sendable
-   * chooser code works with the Java SmartDashboard. If you prefer the
-   * LabIEW Dashboard, remove all of the chooser code and uncomment the
-   * getString line to get the auto name from the text box below the Gyro
+   * between different autonomous modes using the dashboard. The sendable chooser
+   * code works with the Java SmartDashboard. If you prefer the LabIEW Dashboard,
+   * remove all of the chooser code and uncomment the getString line to get the
+   * auto name from the text box below the Gyro
    *
-   * <p>You can add additional auto modes by adding additional comparisons to
-   * the switch structure below with additional strings. If using the
-   * SendableChooser make sure to add them to the chooser code above as well.
+   * <p>
+   * You can add additional auto modes by adding additional comparisons to the
+   * switch structure below with additional strings. If using the SendableChooser
+   * make sure to add them to the chooser code above as well.
    */
   @Override
   public void autonomousInit() {
@@ -110,13 +113,13 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     switch (m_autoSelected) {
-      case kCustomAuto:
-        // Put custom auto code here
-        break;
-      case kDefaultAuto:
-      default:
-        // Put default auto code here
-        break;
+    case kCustomAuto:
+      // Put custom auto code here
+      break;
+    case kDefaultAuto:
+    default:
+      // Put default auto code here
+      break;
     }
   }
 
@@ -125,22 +128,29 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopInit() {
-    /*if(autonomousCommand != null){
-      autonomousCommand.cancel();
-    }*/
+    /*
+     * if(autonomousCommand != null){ autonomousCommand.cancel(); }
+     */
   }
-   @Override
+
+  @Override
   public void teleopPeriodic() {
+<<<<<<< Updated upstream
       Scheduler.getInstance().run();
       SmartDashboard.putNumber("Right Encoder", RobotMap.rightDriveMotorLead.getSelectedSensorPosition());
       SmartDashboard.putNumber("Left Encoder", RobotMap.leftDriveMotorLead.getSelectedSensorPosition());
       SmartDashboard.putNumber("Lift Encoder Position", RobotMap.liftEncoder.getPosition());
       SmartDashboard.putNumber("Lift Encoder Velocity", RobotMap.liftEncoder.getVelocity());
+=======
+    Scheduler.getInstance().run();
+    SmartDashboard.putNumber("Right Encoder", RobotMap.rightDriveMotorLead.getSelectedSensorPosition());
+    SmartDashboard.putNumber("Left Encoder", RobotMap.leftDriveMotorLead.getSelectedSensorPosition());
+>>>>>>> Stashed changes
 
   }
 
   /**
    * This function is called periodically during test mode.
    */
-  
+
 }

@@ -3,7 +3,11 @@
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
+<<<<<<< Updated upstream
 
+=======
+/*----------------------------------------------------------------------------*/
+>>>>>>> Stashed changes
 
 package frc.robot.Commands;
 
@@ -16,10 +20,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Subsystems.Lift;
 import edu.wpi.first.wpilibj.Encoder;
 
-
 public class RocketCargo extends Command {
   private Encoder ArmEncoder;
   private double distance;
+
   public RocketCargo(double distance) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -38,18 +42,18 @@ public class RocketCargo extends Command {
   @Override
   protected void execute() {
     Robot.lift.up();
-    
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(ArmEncoder.getDistance() == distance){
+    if (ArmEncoder.getDistance() == distance) {
       return true;
-    } else{
+    } else {
       return false;
     }
-    
+
   }
 
   // Called once after isFinished returns true
