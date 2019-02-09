@@ -43,7 +43,7 @@ public class Drive extends Subsystem {
     }
 
     public void initDefaultCommand() {
-        setDefaultCommand(new driveTeleop());
+        setDefaultCommand(new DriveTeleop());
     }
 
     public void periodic() {
