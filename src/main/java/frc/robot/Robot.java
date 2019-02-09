@@ -14,6 +14,7 @@ import frc.robot.Commands.*;
 import frc.robot.Subsystems.*;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Command;
+import com.revrobotics.*;
 
 import edu.wpi.first.wpilibj.smartdashboard.*;
 
@@ -133,6 +134,8 @@ public class Robot extends TimedRobot {
       Scheduler.getInstance().run();
       SmartDashboard.putNumber("Right Encoder", RobotMap.rightDriveMotorLead.getSelectedSensorPosition());
       SmartDashboard.putNumber("Left Encoder", RobotMap.leftDriveMotorLead.getSelectedSensorPosition());
+      SmartDashboard.putNumber("Lift Encoder Position", RobotMap.liftEncoder.getPosition());
+      SmartDashboard.putNumber("Lift Encoder Velocity", RobotMap.liftEncoder.getVelocity());
 
   }
 

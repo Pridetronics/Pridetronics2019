@@ -59,7 +59,8 @@ public class OI {
         liftUpButton.whileHeld(new RunLiftUp());
         liftDownButton = new JoystickButton(joystick, 4);
         liftDownButton.whileHeld(new RunLiftDown());
-        
+        liftUpButton.whenReleased(new RunLiftStop());
+        liftDownButton.whenReleased(new RunLiftStop());
 /*
 //Cargo ball whenPressed
         button3 = new JoystickButton(joystick, 3);
