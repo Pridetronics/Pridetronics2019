@@ -10,11 +10,11 @@ package frc.robot.Commands;
 import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class driveForward extends Command {
+public class DriveForward extends Command {
   private Double m_speed;
   private Double m_distance;
 
-  public driveForward(Double Speed, Double Distance) {
+  public DriveForward(Double Speed, Double Distance) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     m_speed = Speed;
