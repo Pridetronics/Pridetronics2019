@@ -8,9 +8,9 @@
 package frc.robot;
 
 import com.revrobotics.*;
-import com.revrobotics.CANEncoder;
-
+//import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -45,7 +45,7 @@ public class RobotMap {
   public static DoubleSolenoid solenoidHatchRelease;
   public static DoubleSolenoid solenoidRampRelease;
 
-  // public static CANSparkMax m_motor;
+
 
   public static CANSparkMax liftMotor;
   public static CANEncoder liftEncoder;

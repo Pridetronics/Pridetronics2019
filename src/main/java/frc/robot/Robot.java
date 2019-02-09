@@ -8,19 +8,25 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.*;
+
 import edu.wpi.cscore.UsbCamera;
+
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.networktables.NetworkTableEntry;
+
 import frc.robot.Commands.*;
 import frc.robot.Subsystems.*;
-import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.command.Command;
+
 import com.revrobotics.*;
 
-import edu.wpi.first.wpilibj.smartdashboard.*;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
