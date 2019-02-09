@@ -7,16 +7,15 @@
 
 package frc.robot.Subsystems;
 
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.RobotMap;
-
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-import edu.wpi.first.wpilibj.*;
-import frc.robot.Commands.*;
-import frc.robot.OI;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import frc.robot.RobotMap;
+import frc.robot.Commands.DriveTeleop;
 
 /**
  * Add your docs here.
@@ -31,6 +30,11 @@ public class Drive extends Subsystem {
 
     public final DifferentialDrive robotDrive;
     private Joystick stick;
+
+    public NetworkTableEntry rotationFirst;
+    public NetworkTableEntry forwardDrive;
+    public NetworkTableEntry rotationSecond;
+    public NetworkTable table;
 
     public Drive() {
         rightDriveMotorLead = RobotMap.rightDriveMotorLead;
@@ -47,6 +51,10 @@ public class Drive extends Subsystem {
     }
 
     public void periodic() {
+
+        rotationFirst = table.getEntry("rot1");
+        forwardDrive = table.getEntry("fwd");
+        rotationSecond = table.getEntry("rot2");
 
     }
 
