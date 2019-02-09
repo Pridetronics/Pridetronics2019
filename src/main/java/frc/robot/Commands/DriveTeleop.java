@@ -7,12 +7,9 @@
 
 package frc.robot.Commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.*;
-import frc.robot.Subsystems.*;
-import frc.robot.Commands.*;
-import frc.robot.*;
-import edu.wpi.first.wpilibj.Joystick.AxisType;
+import frc.robot.Robot;
 
 /**
  * Add your docs here.

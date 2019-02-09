@@ -7,10 +7,16 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Commands.*;
+import frc.robot.Commands.EjectBall;
+import frc.robot.Commands.IntakeBall;
+import frc.robot.Commands.PanelPull;
+import frc.robot.Commands.PanelPush;
+import frc.robot.Commands.RocketCargo;
+import frc.robot.Commands.VisionAuto;
+import frc.robot.Commands.WristDown;
+import frc.robot.Commands.WristUp;
 
 /**
  * Add your docs here.
@@ -19,7 +25,7 @@ public class OI {
 
         public Joystick joystick;
         public Joystick gamepad;
-        public JoystickButton button1;// EjectBall
+        public JoystickButton button1; // EjectBall
         public JoystickButton button2;// IntakeBall
         public JoystickButton button3; // CargoBall
         public JoystickButton button4; // WristUp
@@ -46,6 +52,7 @@ public class OI {
 
         public OI() {
 
+                // Assigns Joyssicks to Ports
                 joystick = new Joystick(0);
                 gamepad = new Joystick(1);
 

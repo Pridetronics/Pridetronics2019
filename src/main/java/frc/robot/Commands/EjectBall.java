@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.*;
 
 public class EjectBall extends Command {
+  
   public EjectBall() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);

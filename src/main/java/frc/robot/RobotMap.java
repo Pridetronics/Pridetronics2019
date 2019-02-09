@@ -7,73 +7,68 @@
 
 package frc.robot;
 
-import com.revrobotics.*;
-import com.revrobotics.CANEncoder;
-
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.revrobotics.CANEncoder;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.Encoder;
-import frc.robot.Subsystems.Sensor;
-import edu.wpi.first.wpilibj.CounterBase.EncodingType;
-import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Spark;
-
-/**
- * Add your docs here.
- */
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class RobotMap {
 
-  public static Joystick joystick;
-  public static DifferentialDrive myRobot;
-  public static WPI_TalonSRX leftDriveMotorLead;
-  public static WPI_TalonSRX leftDriveMotorFollow;
-  public static WPI_TalonSRX rightDriveMotorLead;
-  public static WPI_TalonSRX rightDriveMotorFollow;
+  public static Joystick joystick; // Creates New Joystick
+  public static DifferentialDrive myRobot; // Creates New DriffentialDrive
+  public static WPI_TalonSRX leftDriveMotorLead; // Creates New Talon
+  public static WPI_TalonSRX leftDriveMotorFollow; // Creates New Talon
+  public static WPI_TalonSRX rightDriveMotorLead; // Creates New Talon
+  public static WPI_TalonSRX rightDriveMotorFollow; // Creates New Talon
   public static DigitalInput limitSwitchLiftDown;
   public static DigitalInput limitSwitchLiftUp;
   public static Encoder ArmEncoder;
-  public static DoubleSolenoid solenoidHatchRelease;
-  public static DoubleSolenoid solenoidRampRelease;
+  public static DoubleSolenoid solenoidHatchRelease; // Creates New Solenoid
+  public static DoubleSolenoid solenoidRampRelease; // Creates New Solenoid
 
   // public static CANSparkMax m_motor;
 
-  public static CANSparkMax liftMotor;
-  public static CANEncoder liftEncoder;
-  public static Spark wristMotor;
+  public static CANSparkMax liftMotor; // Creates New SparkMax Motor for lift
+  public static CANEncoder liftEncoder; // Creates New Encoder for lift
+  public static Spark wristMotor; // Creates New Spark for wrist
 
-  public static Spark intakeMotorLeft;
-  public static Spark intakeMotorRight;
+  public static Spark intakeMotorLeft; // Creates New Spark for intake
+  public static Spark intakeMotorRight; // Creates New Spark for intake
 
   public static final int kTimeoutMs = 30;
 
   public static void init() {
 
-    leftDriveMotorLead = new WPI_TalonSRX(1);
-    // leftDriveMotorFollow = new WPI_TalonSRX(1);
+    leftDriveMotorLead = new WPI_TalonSRX(0); // Assigns Leading Left Drive Motor to a Talon
+    leftDriveMotorFollow = new WPI_TalonSRX(1); // Assigns Following Left Motor to a Talon
     leftDriveMotorLead.setInverted(false);
-    // leftDriveMotorFollow.follow(leftDriveMotorLead);
+
+    // Tells the Following Left Motor to follow the Leading Left Motor
+    leftDriveMotorFollow.follow(leftDriveMotorLead); 
     leftDriveMotorLead.set(0);
 
+    // Turns the Leading Left Motor to an Encoder
     leftDriveMotorLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, kTimeoutMs);
 
-    rightDriveMotorLead = new WPI_TalonSRX(0);
-    // rightDriveMotorFollow = new WPI_TalonSRX(3);
+    rightDriveMotorLead = new WPI_TalonSRX(2); // Assigns Leading Right Drive Motor to a Talon
+    rightDriveMotorFollow = new WPI_TalonSRX(3); // Assigns Following Right Drive Motor to a Talon
     rightDriveMotorLead.setInverted(false);
-    // rightDriveMotorFollow.follow(rightDriveMotorLead);
+    // Tells the Following Right Motor to follow the Leading Right Motor
+    rightDriveMotorFollow.follow(rightDriveMotorLead); 
     rightDriveMotorLead.set(0);
 
+    // Turns the Leading Left Motor to an Encoder
     rightDriveMotorLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, kTimeoutMs);
 
+    // Creates a Differential Drive Object named myRobot
     myRobot = new DifferentialDrive(leftDriveMotorLead, rightDriveMotorLead);
     // LiveWindow.addAcutator("Drive", "robotDrive", myRobot);
     myRobot.setSafetyEnabled(false);
@@ -81,12 +76,12 @@ public class RobotMap {
     myRobot.setMaxOutput(1.0);
 
     // lift motors
-    liftMotor = new CANSparkMax(4, MotorType.kBrushless);// motor to be determined
+    liftMotor = new CANSparkMax(4, MotorType.kBrushless); // Assigns Lift Motor to a Spark Max
     liftEncoder = liftMotor.getEncoder();
     // liftMotor.setInverted(false);
 
     // wrist motors
-    wristMotor = new Spark(1);
+    wristMotor = new Spark(1); // Assigns Wrist Motor to Spark
     // wristMotor.setInverted(false);
 
     // limitSwitch

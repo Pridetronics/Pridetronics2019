@@ -7,11 +7,11 @@
 
 package frc.robot.Commands;
 
-import frc.robot.*;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import com.ctre.phoenix.motorcontrol.can.*;
+import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class TurnEncoder extends Command {
   private boolean left;

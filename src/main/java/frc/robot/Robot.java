@@ -7,20 +7,16 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.networktables.NetworkTableEntry;
-import frc.robot.Commands.*;
-import frc.robot.Subsystems.*;
+import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.command.Command;
-import com.revrobotics.*;
-
-import edu.wpi.first.wpilibj.smartdashboard.*;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Subsystems.Drive;
+import frc.robot.Subsystems.Intake;
+import frc.robot.Subsystems.Lift;
+import frc.robot.Subsystems.Pnuematics;
+import frc.robot.Subsystems.Wrist;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -30,15 +26,15 @@ import edu.wpi.first.wpilibj.smartdashboard.*;
  * project.
  */
 public class Robot extends TimedRobot {
-  
-  public static Drive drive;
-  public static Lift lift;
-  public static OI oi;
-  public static Wrist wrist;
-  public static Pnuematics pnuematics;
-  public static Intake intake;
-  
-  public NetworkTable table;
+
+  public static Drive drive; // Creates New Drive
+  public static Lift lift; // Creates New Lift
+  public static OI oi; // Creates New OI
+  public static Wrist wrist; // Creates New Wrist
+  public static Pnuematics pnuematics; // Creates New Pnuematics
+  public static Intake intake; // Creates New Intake
+
+  public NetworkTable table; // Creates New Network Table
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -58,9 +54,8 @@ public class Robot extends TimedRobot {
     intake = new Intake();
     oi = new OI();
 
-    SmartDashboard.putString("RobotID", "Master 190208b");
- 
-     
+    SmartDashboard.putString("RobotID", "Master 190208b"); // Pushes an ID of the code to SmartDashboard
+
   }
 
   /**
@@ -75,10 +70,10 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
 
-    NetworkTableInstance inst = NetworkTableInstance.getDefault();
+    NetworkTableInstance inst = NetworkTableInstance.getDefault(); // Creates new NetworkTableInstance Object
 
-     table = inst.getTable("Shuffleboard"); 
-    
+    table = inst.getTable("Shuffleboard");
+
   }
 
   @Override
@@ -133,6 +128,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+
+    // Pushes Values of Encoders into SmartDashboard
     SmartDashboard.putNumber("Right Encoder", RobotMap.rightDriveMotorLead.getSelectedSensorPosition());
     SmartDashboard.putNumber("Left Encoder", RobotMap.leftDriveMotorLead.getSelectedSensorPosition());
     SmartDashboard.putNumber("Lift Encoder Position", RobotMap.liftEncoder.getPosition());
