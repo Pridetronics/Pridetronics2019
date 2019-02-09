@@ -47,8 +47,8 @@ public class DriveTeleop extends Command {
   protected void initialize() {
 
     stick = Robot.oi.getGamepad();
-    stick.setAxisChannel(AxisType.kX, 0);
-    stick.setAxisChannel(AxisType.kY, 1);
+    stick.setXChannel(0);
+    stick.setYChannel(1);
 
     // RobotMap.pneuCompressor.start();
   }
