@@ -7,14 +7,14 @@
 
 package frc.robot.Subsystems;
 
-import edu.wpi.first.wpilibj.Solenoid;
+//import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.*;
 
 /**
- * Add your docs here.
+ * TODO add class description here
  */
 public class Pnuematics extends Subsystem {
   // Put methods for controlling this subsystem
@@ -25,8 +25,6 @@ public class Pnuematics extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
   }
 
   @Override
@@ -49,4 +47,4 @@ public class Pnuematics extends Subsystem {
   public void retractRamp() {
     solenoidRampRelease.set(Value.kReverse);
   }
-}
+} // end class Pneumatics
