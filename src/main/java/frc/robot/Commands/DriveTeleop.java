@@ -7,14 +7,13 @@
 
 package frc.robot.Commands;
 
-import frc.robot.*;
-
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.Joystick.AxisType;
+
+import frc.robot.Robot;
 
 /**
- * TODO add class description here
+ * * TODO add class description here
  */
 public class DriveTeleop extends Command {
 
@@ -34,8 +33,8 @@ public class DriveTeleop extends Command {
   protected void initialize() {
 
     stick = Robot.oi.getGamepad(); // TODO change control style here
-    stick.setAxisChannel(AxisType.kX, 0);
-    stick.setAxisChannel(AxisType.kY, 1);
+    // stick.setAxisChannel(AxisType.kX, 0);
+    // stick.setAxisChannel(AxisType.kY, 1);
 
   }
 

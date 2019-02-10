@@ -39,18 +39,16 @@ import frc.robot.Subsystems.Wrist;
  * project.
  */
 public class Robot extends TimedRobot {
-  private static final String kDefaultAuto = "Default";
-  private static final String kCustomAuto = "My Auto";
-  private String m_autoSelected;
-  public static Drive drive;
-  public static Lift lift;
-  public static OI oi;
-  public static Wrist wrist;
-  public static Pnuematics pnuematics;
-  public static Intake intake;
-  private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
-  NetworkTable table;
+  public static Drive drive; // Creates New Drive
+  public static Lift lift; // Creates New Lift
+  public static OI oi; // Creates New OI
+  public static Wrist wrist; // Creates New Wrist
+  public static Pnuematics pnuematics; // Creates New Pnuematics
+  public static Intake intake; // Creates New Intake
+
+  public NetworkTable table; // Creates New Network Table
+
   public static DriveForward driveForward;
 
   /**
@@ -69,10 +67,12 @@ public class Robot extends TimedRobot {
     oi = new OI();
 
     // TODO is chooser needed
-    m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
-    m_chooser.addOption("My Auto", kCustomAuto);
-    SmartDashboard.putData("Auto choices", m_chooser);
-    SmartDashboard.putString("RobotID", "Master 190208b");
+    /*
+     * m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
+     * m_chooser.addOption("My Auto", kCustomAuto);
+     * SmartDashboard.putData("Auto choices", m_chooser);
+     * SmartDashboard.putString("RobotID", "Master 190208b");
+     */
   }
 
   /**
@@ -87,7 +87,8 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
 
-    NetworkTableInstance inst = NetworkTableInstance.getDefault();
+    NetworkTableInstance inst = NetworkTableInstance.getDefault(); // Creates new NetworkTableInstance Object
+
     table = inst.getTable("Shuffleboard");
 
   }
@@ -120,9 +121,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autoSelected = m_chooser.getSelected();
-    // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
-    System.out.println("Auto selected: " + m_autoSelected);
+
   }
 
   /**
@@ -131,15 +130,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    switch (m_autoSelected) {
-    case kCustomAuto:
-      // Put custom auto code here
-      break;
-    case kDefaultAuto:
-    default:
-      // Put default auto code here
-      break;
-    }
+
   }
 
   /**
@@ -155,6 +146,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+
+    // Pushes Values of Encoders into SmartDashboard
     SmartDashboard.putNumber("Right Encoder", RobotMap.rightDriveMotorLead.getSelectedSensorPosition());
     SmartDashboard.putNumber("Left Encoder", RobotMap.leftDriveMotorLead.getSelectedSensorPosition());
     SmartDashboard.putNumber("Lift Encoder Position", RobotMap.liftEncoder.getPosition());

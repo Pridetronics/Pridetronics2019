@@ -7,8 +7,8 @@
 
 package frc.robot.Subsystems;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 import frc.robot.RobotMap;
 
@@ -17,7 +17,7 @@ import frc.robot.RobotMap;
  */
 public class Wrist extends Subsystem {
 
-  private final Spark wristMotor = RobotMap.wristMotor;
+  private final Spark wristMotor = RobotMap.wristMotor; // Ties wristMotor to RobotMap
 
   @Override
   public void initDefaultCommand() {
@@ -32,15 +32,15 @@ public class Wrist extends Subsystem {
   }
 
   public void up() {
-    wristMotor.set(1);
+    wristMotor.set(1); // Sets wristMotor to up
   }
 
   public void down() {
-    wristMotor.set(-1);
+    wristMotor.set(-1); // Sets wristMotor to down
   }
 
   public void stop() {
-    wristMotor.set(0);
+    wristMotor.set(0); // Sets wristMotor to neutral
   }
 
 } // end Wrist

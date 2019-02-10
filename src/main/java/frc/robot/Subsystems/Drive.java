@@ -22,35 +22,44 @@ import frc.robot.Commands.DriveTeleop;
  */
 public class Drive extends Subsystem {
 
-    private final WPI_TalonSRX leftDriveMotorLead;
-    private final WPI_TalonSRX leftDriveMotorFollow;
+    private final WPI_TalonSRX leftDriveMotorLead; // Creates Leading Left Drive Talon
+    private final WPI_TalonSRX leftDriveMotorFollow; // Creates Following Left Drive Talon
 
-    private final WPI_TalonSRX rightDriveMotorLead;
-    private final WPI_TalonSRX rightDriveMotorFollow;
+    private final WPI_TalonSRX rightDriveMotorLead; // Creates Leading Right Drive Talon
+    private final WPI_TalonSRX rightDriveMotorFollow; // Creates Following Right Drive Talon
 
-    public final DifferentialDrive robotDrive;
-    private Joystick stick;
+    public final DifferentialDrive robotDrive; // Creates New Differential Drive
+    private Joystick stick; // Creates New Joystick
 
-    public NetworkTableEntry rotationFirst;
-    public NetworkTableEntry forwardDrive;
-    public NetworkTableEntry rotationSecond;
-    public NetworkTable table;
+    public NetworkTable table; // Creates New NetworkTable
+    public NetworkTableEntry rotationFirst; // Creates New NetworkTableEntry
+    public NetworkTableEntry forwardDrive; // Creates New NetworkTableEntry
+    public NetworkTableEntry rotationSecond; // Creates New NetworkTableEntry
 
+    /**
+     * TODO add class description
+     */
     public Drive() {
+
+        // Ties Talons To RobotMap
         rightDriveMotorLead = RobotMap.rightDriveMotorLead;
         rightDriveMotorFollow = RobotMap.rightDriveMotorFollow;
 
         leftDriveMotorLead = RobotMap.leftDriveMotorLead;
         leftDriveMotorFollow = RobotMap.leftDriveMotorFollow;
 
+        // Ties DifferentialDrive to RobotMap
         robotDrive = RobotMap.myRobot;
     }
 
     public void initDefaultCommand() {
-        setDefaultCommand(new DriveTeleop());
+        setDefaultCommand(new DriveTeleop()); // Sets Drive Teleop as Default Command
     }
 
     public void periodic() {
+        rotationFirst = table.getEntry("rot1");
+        forwardDrive = table.getEntry("fwd");
+        rotationSecond = table.getEntry("rot2");
 
         rotationFirst = table.getEntry("rot1");
         forwardDrive = table.getEntry("fwd");
@@ -60,9 +69,9 @@ public class Drive extends Subsystem {
 
     public void doTeleop(Joystick stick) {
         double rightValue, leftValue;
-        rightValue = stick.getRawAxis(5);
-        leftValue = stick.getRawAxis(1);
-        robotDrive.tankDrive(leftValue, rightValue);
+        rightValue = stick.getRawAxis(5); // Assigns Right Value to an Axis
+        leftValue = stick.getRawAxis(1); // Assigns Left Value to an Axis
+        robotDrive.tankDrive(leftValue, rightValue); // Gives DifferentialDrive Values
     }
 
 }

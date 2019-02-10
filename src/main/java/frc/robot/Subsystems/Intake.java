@@ -17,6 +17,7 @@ import frc.robot.RobotMap;
  */
 public class Intake extends Subsystem {
 
+  // Ties Intake Motors to RobotMap
   private final Spark intakeMotorLeft = RobotMap.intakeMotorLeft;
   private final Spark intakeMotorRight = RobotMap.intakeMotorRight;
 
@@ -30,12 +31,12 @@ public class Intake extends Subsystem {
   }
 
   public void intake() {
-    intakeMotorLeft.set(1);
-    intakeMotorRight.set(1);
+    intakeMotorLeft.set(1); // Tells Left Intake Motor to intake
+    intakeMotorRight.set(1); // Tells Right Intake Motor to intake
   }
 
   public void outtake() {
-    intakeMotorLeft.set(-1);
-    intakeMotorRight.set(-1);
+    intakeMotorLeft.set(-1); // Tells Left Intake Motor to shoot
+    intakeMotorRight.set(-1); // Tells Right Intake Motor to shoot
   }
 } // end Intake

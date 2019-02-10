@@ -22,6 +22,8 @@ import edu.wpi.first.wpilibj.DigitalInput;
 //import edu.wpi.first.wpilibj.Spark;
 //import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.RobotMap;
 
 import com.revrobotics.CANSparkMax;
 
@@ -30,6 +32,7 @@ import com.revrobotics.CANSparkMax;
  */
 public class Lift extends Subsystem {
 
+  // Ties Motors to RobotMap
   private final CANSparkMax liftMotor = RobotMap.liftMotor;
   private final DigitalInput limitSwitchLiftDown = RobotMap.limitSwitchLiftDown;
   private final DigitalInput limitSwitchLiftUp = RobotMap.limitSwitchLiftUp;
@@ -43,23 +46,23 @@ public class Lift extends Subsystem {
   }
 
   public void up() {
-    liftMotor.set(1);
+    liftMotor.set(1); // Sets liftMotor to up
   }
 
   public void upSpeed(double speed) {
-    liftMotor.set(speed);
+    liftMotor.set(speed); // Sets liftMotor Speed
   }
 
   public void stallAtTop() {
-    liftMotor.set(0.2);
+    liftMotor.set(0.2); // Sets liftMotor to slow down at the top
   }
 
   public void down() {
-    liftMotor.set(-.55);
+    liftMotor.set(-.55); // Sets liftMotor to down
   }
 
   public void stop() {
-    liftMotor.set(0);
+    liftMotor.set(0); // Sets liftMotor to stop
   }
 
   public Encoder getArmEncoder() {
@@ -69,5 +72,9 @@ public class Lift extends Subsystem {
   // TODO there are two limit switches
   public boolean limitSwitchOpen() {
     return !limitSwitchLiftDown.get();
+  }
+
+  public boolean limitSwitchClose() {
+    return !limitSwitchLiftUp.get();
   }
 }

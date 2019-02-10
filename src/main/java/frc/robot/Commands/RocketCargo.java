@@ -6,14 +6,9 @@
 
 package frc.robot.Commands;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Subsystems.Lift;
-import edu.wpi.first.wpilibj.Encoder;
 
 public class RocketCargo extends Command {
   private Encoder ArmEncoder;
