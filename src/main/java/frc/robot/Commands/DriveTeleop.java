@@ -7,17 +7,14 @@
 
 package frc.robot.Commands;
 
-import frc.robot.Subsystems.*;
 import frc.robot.*;
 
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.Joystick.AxisType;
 
 /**
- * TODO add class descriprion
- * 
- * here.
+ * TODO add class description here
  */
 public class DriveTeleop extends Command {
 
@@ -31,8 +28,8 @@ public class DriveTeleop extends Command {
     this.setRunWhenDisabled(false);
 
   }
-  // Called just before this Command runs the first time
 
+  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
 
