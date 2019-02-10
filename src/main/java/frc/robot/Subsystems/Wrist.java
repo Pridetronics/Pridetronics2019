@@ -9,15 +9,14 @@ package frc.robot.Subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.SpeedController;
+
 import frc.robot.RobotMap;
 
 /**
- * Add your docs here.
+ * TODO add class description here
  */
 public class Wrist extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+
   private final Spark wristMotor = RobotMap.wristMotor;
 
   @Override
@@ -44,4 +43,4 @@ public class Wrist extends Subsystem {
     wristMotor.set(0);
   }
 
-}
+} // end Wrist
