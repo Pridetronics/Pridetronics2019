@@ -8,16 +8,21 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.RobotMap;
-import frc.robot.Robot;
-import frc.robot.Subsystems.Lift;
-import edu.wpi.first.wpilibj.Encoder;
+//import edu.wpi.first.wpilibj.command.Subsystem;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.DigitalInput;
 
+import frc.robot.RobotMap;
+import frc.robot.Robot;
+//  TODO  needed? import frc.robot.Subsystems.Lift;
+
+/**
+ * TODO add class description here
+ */
 public class RunLiftUp extends Command {
 
+  // TODO is bottom limit switch needed
   public final DigitalInput limitSwitchLiftDown = RobotMap.limitSwitchLiftDown;
   public final DigitalInput limitSwitchLiftUp = RobotMap.limitSwitchLiftUp;
 
@@ -25,14 +30,12 @@ public class RunLiftUp extends Command {
 
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-
     requires(Robot.lift);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -44,17 +47,17 @@ public class RunLiftUp extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return false; // TODO when does this stop?
   }
 
   // Called once after isFinished returns true
   @Override
-  protected void end() {
+  protected void end() { // TODO Needs to stop
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
-  protected void interrupted() {
+  protected void interrupted() { // TODO Needs to stop
   }
-}
+} // end class RunLiftUp
