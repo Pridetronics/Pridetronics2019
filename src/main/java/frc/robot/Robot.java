@@ -7,20 +7,19 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.networktables.NetworkTableEntry;
-import frc.robot.Commands.*;
-import frc.robot.Subsystems.*;
+import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.command.Command;
-import com.revrobotics.*;
-
-import edu.wpi.first.wpilibj.smartdashboard.*;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Commands.DriveForward;
+import frc.robot.Subsystems.Drive;
+import frc.robot.Subsystems.Intake;
+import frc.robot.Subsystems.Lift;
+import frc.robot.Subsystems.Pnuematics;
+import frc.robot.Subsystems.Wrist;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -40,7 +39,9 @@ public class Robot extends TimedRobot {
   public static Pnuematics pnuematics;
   public static Intake intake;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
-
+ 
+   NetworkTable table;
+public static DriveForward driveForward;
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
@@ -48,9 +49,6 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
 
-    // CameraServer.getInstance().startAutomaticCapture();
-    // UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-    // camera.setResolution(320,240);
     RobotMap.init();
     drive = new Drive();
     lift = new Lift();
@@ -62,14 +60,6 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
     SmartDashboard.putString("RobotID", "Master 190208b");
-    NetworkTableInstance inst = NetworkTableInstance.getDefault();
-
-    /*
-     * table = inst.getTable("Shuffleboard"); rotationFirst =
-     * table.getEntry("rot1"); forwardDrive = table.getEntry("fwd"); rotationSecond
-     * = table.getEntry("rot2"); rotationFirst.getDouble(0.0);
-     * forwardDrive.getDouble(0.0); rotationSecond.getDouble(0.0);
-     */
   }
 
   /**
@@ -83,6 +73,11 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+  
+    NetworkTableInstance inst = NetworkTableInstance.getDefault();
+    table = inst.getTable("Shuffleboard"); 
+
+  
   }
 
   @Override
@@ -139,9 +134,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopInit() {
-    /*
-     * if(autonomousCommand != null){ autonomousCommand.cancel(); }
-     */
   }
 
   @Override
@@ -151,11 +143,5 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Left Encoder", RobotMap.leftDriveMotorLead.getSelectedSensorPosition());
     SmartDashboard.putNumber("Lift Encoder Position", RobotMap.liftEncoder.getPosition());
     SmartDashboard.putNumber("Lift Encoder Velocity", RobotMap.liftEncoder.getVelocity());
-
   }
-
-  /**
-   * This function is called periodically during test mode.
-   */
-
 }

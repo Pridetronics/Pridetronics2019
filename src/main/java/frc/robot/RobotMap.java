@@ -12,7 +12,6 @@ import com.revrobotics.CANEncoder;
 
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -59,14 +58,13 @@ public class RobotMap {
 
     leftDriveMotorLead = new WPI_TalonSRX(0);
     // leftDriveMotorFollow = new WPI_TalonSRX(1);
-    leftDriveMotorLead.setInverted(true);
     // leftDriveMotorFollow.follow(leftDriveMotorLead);
     leftDriveMotorLead.set(0);
 
     leftDriveMotorLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, kTimeoutMs);
 
     // rightDriveMotorFollow.follow(rightDriveMotorLead);
-    rightDriveMotorLead = new WPI_TalonSRX(2);
+    rightDriveMotorLead = new WPI_TalonSRX(1);
     rightDriveMotorLead.set(0);
 
     rightDriveMotorLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, kTimeoutMs);

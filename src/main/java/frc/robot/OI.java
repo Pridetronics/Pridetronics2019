@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Commands.*;
+import frc.robot.Commands.DriveForward;
 
 /**
  * Add your docs here.
@@ -31,6 +32,7 @@ public class OI {
         public JoystickButton button10; // Rocket Hatch 2
         public JoystickButton button11; // Rocket Ball 1
         public JoystickButton button12; // Rocket Hatch 1
+        public JoystickButton button13; //drivefoward on gamepad
 
         // InstanceVariables for Ball
         public static final double RocketBallLv1 = 27.5;
@@ -85,7 +87,9 @@ public class OI {
                 // Bottom Hatch on Rocket
                 button12 = new JoystickButton(joystick, 12);
                 button12.whenPressed(new RocketCargo(RocketHatch1));
-
+                // Drive Forward Safetey
+                button13 = new JoystickButton(gamepad, 1);
+                button13.whenPressed(new DriveForward(0.0, 0.0));
         }
 
         public Joystick getJoystick() {
