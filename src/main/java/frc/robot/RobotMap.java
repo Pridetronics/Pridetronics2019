@@ -8,9 +8,9 @@
 package frc.robot;
 
 import com.revrobotics.*;
-import com.revrobotics.CANEncoder;
-
+//import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -21,12 +21,11 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Spark;
-
-/**
- * Add your docs here.
- */
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
+/**
+ * TODO add class description
+ */
 public class RobotMap {
 
   public static Joystick joystick;
@@ -40,8 +39,6 @@ public class RobotMap {
   public static Encoder ArmEncoder;
   public static DoubleSolenoid solenoidHatchRelease;
   public static DoubleSolenoid solenoidRampRelease;
-
-  // public static CANSparkMax m_motor;
 
   public static CANSparkMax liftMotor;
   public static CANEncoder liftEncoder;

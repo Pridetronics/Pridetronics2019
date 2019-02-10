@@ -7,13 +7,23 @@
 
 package frc.robot;
 
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.networktables.NetworkTableInstance;
+//import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+
+//  TODO review imports
 import edu.wpi.first.wpilibj.TimedRobot;
+//import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Scheduler;
+//import edu.wpi.first.wpilibj.command.Command;
+//import edu.wpi.first.wpilibj.smartdashboard.*;
+//import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.networktables.NetworkTable;
+//import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
+//import edu.wpi.first.wpilibj.TimedRobot;
+//import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import frc.robot.Commands.DriveForward;
 import frc.robot.Subsystems.Drive;
 import frc.robot.Subsystems.Intake;
@@ -39,9 +49,10 @@ public class Robot extends TimedRobot {
   public static Pnuematics pnuematics;
   public static Intake intake;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
- 
-   NetworkTable table;
-public static DriveForward driveForward;
+
+  NetworkTable table;
+  public static DriveForward driveForward;
+
   /**
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
@@ -56,6 +67,8 @@ public static DriveForward driveForward;
     pnuematics = new Pnuematics();
     intake = new Intake();
     oi = new OI();
+
+    // TODO is chooser needed
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
@@ -73,11 +86,10 @@ public static DriveForward driveForward;
    */
   @Override
   public void robotPeriodic() {
-  
-    NetworkTableInstance inst = NetworkTableInstance.getDefault();
-    table = inst.getTable("Shuffleboard"); 
 
-  
+    NetworkTableInstance inst = NetworkTableInstance.getDefault();
+    table = inst.getTable("Shuffleboard");
+
   }
 
   @Override
@@ -95,11 +107,11 @@ public static DriveForward driveForward;
   }
 
   /**
-   * This autonomous (along with the chooser code above) shows how to select
-   * between different autonomous modes using the dashboard. The sendable chooser
-   * code works with the Java SmartDashboard. If you prefer the LabIEW Dashboard,
-   * remove all of the chooser code and uncomment the getString line to get the
-   * auto name from the text box below the Gyro
+   * TODO autonomous needed? This autonomous (along with the chooser code above)
+   * shows how to select between different autonomous modes using the dashboard.
+   * The sendable chooser code works with the Java SmartDashboard. If you prefer
+   * the LabIEW Dashboard, remove all of the chooser code and uncomment the
+   * getString line to get the auto name from the text box below the Gyro
    *
    * <p>
    * You can add additional auto modes by adding additional comparisons to the
@@ -114,7 +126,8 @@ public static DriveForward driveForward;
   }
 
   /**
-   * This function is called periodically during autonomous.
+   * TODO autonomous needed This function is called periodically during
+   * autonomous.
    */
   @Override
   public void autonomousPeriodic() {
@@ -136,6 +149,9 @@ public static DriveForward driveForward;
   public void teleopInit() {
   }
 
+  /**
+   * TODO need Vyom's logger
+   */
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
