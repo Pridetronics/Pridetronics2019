@@ -25,7 +25,7 @@ import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Spark;
-
+import edu.wpi.first.wpilibj.Victor;
 /**
  * Add your docs here.
  */
@@ -51,8 +51,8 @@ public class RobotMap {
   public static CANEncoder liftEncoder;
   public static Spark wristMotor;
 
-  public static Spark intakeMotorLeft;
-  public static Spark intakeMotorRight;
+  public static Victor intakeMotorLeft;
+  public static Victor intakeMotorRight;
 
   public static final int kTimeoutMs = 30;
 
@@ -96,9 +96,9 @@ public class RobotMap {
     solenoidRampRelease = new DoubleSolenoid(2, 3);
 
     // intake motors
-    intakeMotorLeft = new Spark(9);
+    intakeMotorLeft = new Victor(9);
     // intakeMotor1.setInverted(false);
-    intakeMotorRight = new Spark(10);
+    intakeMotorRight = new Victor(10);
     // intakeMotor2.setInverted(false);
   }
 
