@@ -59,16 +59,26 @@ public class RobotMap {
   public static void init() {
 
     leftDriveMotorLead = new WPI_TalonSRX(0);
-    // leftDriveMotorFollow = new WPI_TalonSRX(1);
+    
     leftDriveMotorLead.setInverted(true);
-    // leftDriveMotorFollow.follow(leftDriveMotorLead);
     leftDriveMotorLead.set(0);
-
+    
+    leftDriveMotorFollow = new WPI_TalonSRX(1);
+    if(leftDriveMotorFollow != null)
+    {
+    leftDriveMotorFollow.follow(leftDriveMotorLead);
+    }  
+    
     leftDriveMotorLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, kTimeoutMs);
 
-    // rightDriveMotorFollow.follow(rightDriveMotorLead);
     rightDriveMotorLead = new WPI_TalonSRX(2);
     rightDriveMotorLead.set(0);
+
+    rightDriveMotorFollow = new WPI_TalonSRX(3);
+    if(rightDriveMotorFollow!=null)
+    {
+    rightDriveMotorFollow.follow(rightDriveMotorLead);
+    }
 
     rightDriveMotorLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, kTimeoutMs);
 
@@ -101,5 +111,4 @@ public class RobotMap {
     intakeMotorRight = new Victor(10);
     // intakeMotor2.setInverted(false);
   }
-
 }

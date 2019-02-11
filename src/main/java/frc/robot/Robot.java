@@ -153,9 +153,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Lift Encoder Velocity", RobotMap.liftEncoder.getVelocity());
 
   }
-
   /**
    * This function is called periodically during test mode.
    */
-
 }
