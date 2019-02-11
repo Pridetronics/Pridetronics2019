@@ -16,6 +16,9 @@ import frc.robot.Subsystems.Lift;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.DigitalInput;
 
+/**
+ * This class creates a command to run lift up.
+ */
 public class RunLiftUp extends Command {
 
   public final DigitalInput limitSwitchLiftDown = RobotMap.limitSwitchLiftDown;
@@ -38,23 +41,30 @@ public class RunLiftUp extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.lift.up();
+    if (Robot.lift.limitSwitchUpOpen()) {
+      Robot.lift.up();
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    if (Robot.lift.limitSwitchUpOpen()) {
+      return false;
+    }
+    return true;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.lift.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

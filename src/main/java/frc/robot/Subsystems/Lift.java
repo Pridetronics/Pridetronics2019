@@ -65,7 +65,11 @@ public class Lift extends Subsystem {
     return RobotMap.ArmEncoder;
   }
 
-  public boolean limitSwitchOpen() {
+  public boolean limitSwitchUpOpen() {
+    return !limitSwitchLiftUp.get();
+  }
+  public boolean limitSwitchDownOpen() {
     return !limitSwitchLiftDown.get();
   }
+    
 }
