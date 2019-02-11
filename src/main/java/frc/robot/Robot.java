@@ -64,6 +64,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putString("RobotID", "Master 190208b");
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
 
+    CameraServer.getInstance().startAutomaticCapture();
     /*
      * table = inst.getTable("Shuffleboard"); rotationFirst =
      * table.getEntry("rot1"); forwardDrive = table.getEntry("fwd"); rotationSecond
