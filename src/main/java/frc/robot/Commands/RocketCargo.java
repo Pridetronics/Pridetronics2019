@@ -29,8 +29,9 @@ public class RocketCargo extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    ArmEncoder = Robot.lift.getArmEncoder();
-    ArmEncoder.reset();
+    /*
+     * ArmEncoder = Robot.lift.getArmEncoder(); ArmEncoder.reset();
+     */
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -43,12 +44,11 @@ public class RocketCargo extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if (ArmEncoder.getDistance() == distance) {
-      return true;
-    } else {
-      return false;
-    }
-
+    /*
+     * if (ArmEncoder.getDistance() == distance) { return true; } else { return
+     * false; }
+     */
+    return true;
   }
 
   // Called once after isFinished returns true

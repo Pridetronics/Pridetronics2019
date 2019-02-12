@@ -77,14 +77,18 @@ public class OI {
                 button5.whenPressed(new PanelPush());
                 button5.whenReleased(new PanelPull());
                 // Top Hatch on Rocket
+
+                /*
+                 * Needs to be changed to Rocket Cargo
+                 */
                 button8 = new JoystickButton(joystick, 8);
-                button8.whenPressed(new RocketCargo(RocketHatch3));
+                button8.whenPressed(new RunLiftUp());
                 // Middle Hatch on Rocket
                 button10 = new JoystickButton(joystick, 10);
-                button10.whenPressed(new RocketCargo(RocketHatch2));
+                button10.whenPressed(new RunLiftUp());
                 // Bottom Hatch on Rocket
                 button12 = new JoystickButton(joystick, 12);
-                button12.whenPressed(new RocketCargo(RocketHatch1));
+                button12.whenPressed(new RunLiftDown());
 
         }
 

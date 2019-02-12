@@ -26,8 +26,6 @@ import frc.robot.Subsystems.*;
 
 import com.revrobotics.*;
 
-
-
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -90,6 +88,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    boolean out = RobotMap.limitSwitchLiftDown.get();
+    SmartDashboard.putBoolean("LimitSwitch", out);
   }
 
   @Override
