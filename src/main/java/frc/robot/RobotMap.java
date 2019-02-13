@@ -49,6 +49,7 @@ public class RobotMap {
   public static CANSparkMax liftMotor;
   public static CANEncoder liftEncoder;
   public static Spark wristMotor;
+  public static Encoder wristPosition;
 
   public static Spark intakeMotorLeft;
   public static Spark intakeMotorRight;
@@ -84,6 +85,7 @@ public class RobotMap {
 
     // wrist motors
     wristMotor = new Spark(1);
+    wristPosition = new Encoder(2, 3);
     // wristMotor.setInverted(false);
 
     // limitSwitch
