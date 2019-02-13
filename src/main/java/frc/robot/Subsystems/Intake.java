@@ -20,6 +20,9 @@ import edu.wpi.first.wpilibj.VictorSP;
 public class Intake extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
+  private static Victor intakeMotorLeft = RobotMap.intakeMotorLead;
+  private static Victor intakeMotorRight = RobotMap.intakeMotorFollow;
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
@@ -32,12 +35,12 @@ public class Intake extends Subsystem {
   }
 
   public void intake() {
-    RobotMap.intakeMotorLeft.set(1);
-    RobotMap.intakeMotorRight.set(1);
+    RobotMap.intakeMotorLead.set(1);
+    RobotMap.intakeMotorFollow.set(1);
   }
 
   public void outtake() {
-    RobotMap.intakeMotorLeft.set(-1);
-    RobotMap.intakeMotorRight.set(-1);
+    RobotMap.intakeMotorLead.set(-1);
+    RobotMap.intakeMotorFollow.set(-1);
   }
 }

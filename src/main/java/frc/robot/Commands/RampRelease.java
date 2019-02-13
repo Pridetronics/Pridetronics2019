@@ -5,20 +5,28 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.Subsystems;
+package frc.robot.Commands;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.command.InstantCommand;
+import frc.robot.Robot;
 
 /**
  * Add your docs here.
  */
-public class RampRelease extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
-
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+public class RampRelease extends InstantCommand {
+  /**
+   * Add your docs here.
+   */
+  public RampRelease() {
+    super();
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
   }
+
+  // Called once when the command executes
+  @Override
+  protected void initialize() {
+    Robot.pnuematics.releaseRamp();
+  }
+
 }

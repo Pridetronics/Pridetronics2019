@@ -43,6 +43,7 @@ public class RobotMap {
   public static DigitalInput limitSwitchLiftUp;
   public static Encoder ArmEncoder;
   public static DoubleSolenoid solenoidHatchRelease;
+  public static DoubleSolenoid solenoidHatchRelease2;
   public static DoubleSolenoid solenoidRampRelease;
 
   // public static CANSparkMax m_motor;
@@ -51,33 +52,31 @@ public class RobotMap {
   public static CANEncoder liftEncoder;
   public static Spark wristMotor;
 
-  public static Victor intakeMotorLeft;
-  public static Victor intakeMotorRight;
+  public static Victor intakeMotorLead;
+  public static Victor intakeMotorFollow;
 
   public static final int kTimeoutMs = 30;
 
   public static void init() {
 
     leftDriveMotorLead = new WPI_TalonSRX(0);
-    
+
     leftDriveMotorLead.setInverted(true);
     leftDriveMotorLead.set(0);
-    
+
     leftDriveMotorFollow = new WPI_TalonSRX(1);
-    if(leftDriveMotorFollow != null)
-    {
-    leftDriveMotorFollow.follow(leftDriveMotorLead);
-    }  
-    
+    if (leftDriveMotorFollow != null) {
+      leftDriveMotorFollow.follow(leftDriveMotorLead);
+    }
+
     leftDriveMotorLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, kTimeoutMs);
 
     rightDriveMotorLead = new WPI_TalonSRX(2);
     rightDriveMotorLead.set(0);
 
     rightDriveMotorFollow = new WPI_TalonSRX(3);
-    if(rightDriveMotorFollow!=null)
-    {
-    rightDriveMotorFollow.follow(rightDriveMotorLead);
+    if (rightDriveMotorFollow != null) {
+      rightDriveMotorFollow.follow(rightDriveMotorLead);
     }
 
     rightDriveMotorLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, kTimeoutMs);
@@ -103,12 +102,14 @@ public class RobotMap {
 
     // Solenoids
     solenoidHatchRelease = new DoubleSolenoid(0, 1);
-    solenoidRampRelease = new DoubleSolenoid(2, 3);
+    solenoidHatchRelease2 = new DoubleSolenoid(2, 3);
+    solenoidRampRelease = new DoubleSolenoid(4, 5);
 
     // intake motors
-    intakeMotorLeft = new Victor(9);
+    intakeMotorLead = new Victor(9);
     // intakeMotor1.setInverted(false);
-    intakeMotorRight = new Victor(10);
+    intakeMotorFollow = new Victor(10);
+    intakeMotorLead = intakeMotorFollow;
     // intakeMotor2.setInverted(false);
   }
 }
