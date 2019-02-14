@@ -23,14 +23,24 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Drive extends Subsystem {
 
-    // public final DifferentialDrive robotDrive;
+    private final WPI_TalonSRX leftDriveMotorLead;
+    private final WPI_TalonSRX leftDriveMotorFollow;
+
+    private final WPI_TalonSRX rightDriveMotorLead;
+    private final WPI_TalonSRX rightDriveMotorFollow;
+
+    public final DifferentialDrive robotDrive;
     private Joystick stick;
 
-    DifferentialDrive robotDrive = RobotMap.myRobot;
+    public Drive() {
+        rightDriveMotorLead = RobotMap.rightDriveMotorLead;
+        rightDriveMotorFollow = RobotMap.rightDriveMotorFollow;
 
-    // public Drive() {
-    // robotDrive = RobotMap.myRobot;
-    // }
+        leftDriveMotorLead = RobotMap.leftDriveMotorLead;
+        leftDriveMotorFollow = RobotMap.leftDriveMotorFollow;
+
+        robotDrive = RobotMap.myRobot;
+    }
 
     public void initDefaultCommand() {
         setDefaultCommand(new DriveTeleop());

@@ -69,6 +69,7 @@ public class OI {
                 // Wrist up whileheld
                 button4 = new JoystickButton(joystick, 4);
                 button4.whileHeld(new WristUp());
+                // button4.whenReleased(new );
                 // Wrist down whileheld
                 button6 = new JoystickButton(joystick, 6);
                 button6.whileHeld(new WristDown());
