@@ -44,8 +44,6 @@ public class RobotMap {
   public static DoubleSolenoid solenoidHatchRelease;
   public static DoubleSolenoid solenoidRampRelease;
 
-
-
   public static CANSparkMax liftMotor;
   public static CANEncoder liftEncoder;
   public static Spark wristMotor;
@@ -80,6 +78,7 @@ public class RobotMap {
     // lift motors
     liftMotor = new CANSparkMax(4, MotorType.kBrushless);// motor to be determined
     liftEncoder = liftMotor.getEncoder();
+
     // liftMotor.setInverted(false);
 
     // wrist motors

@@ -14,41 +14,56 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Subsystems.Lift;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Spark;
+import frc.robot.Subsystems.*;
 
 public class RocketCargo extends Command {
-  private Encoder ArmEncoder;
+
   private double distance;
 
-  public RocketCargo(double distance) {
+  public double scale = 1.0;
+
+  public RocketCargo(double d) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    this.distance = distance;
+    this.distance = d * scale;
+
+    // SmartDashboard.putNumber("d", d);
+
     requires(Robot.lift);
+
   }
+
+  // Make a method to make the lift go up and down
+  // How to figure out the distance traveled in the speed
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    /*
-     * ArmEncoder = Robot.lift.getArmEncoder(); ArmEncoder.reset();
-     */
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.lift.up();
+    SmartDashboard.putNumber("distance", this.distance);
 
+    if (this.distance - Robot.liftEncoder.readEncoder() > 0) {
+
+    } else {
+
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    /*
-     * if (ArmEncoder.getDistance() == distance) { return true; } else { return
-     * false; }
-     */
-    return true;
+    SmartDashboard.putNumber("current ticks", Robot.liftEncoder.readEncoder());
+    if (Robot.liftEncoder.readEncoder() > this.distance) {
+      Robot.lift.stop();
+      return true;
+    }
+    return false;
   }
 
   // Called once after isFinished returns true

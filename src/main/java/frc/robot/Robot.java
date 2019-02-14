@@ -44,6 +44,8 @@ public class Robot extends TimedRobot {
   public static Pnuematics pnuematics;
   public static Intake intake;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
+  public static SparkMaxEnhanced liftEncoder = new SparkMaxEnhanced();
+  Command autonomousCommand;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -62,10 +64,8 @@ public class Robot extends TimedRobot {
     pnuematics = new Pnuematics();
     intake = new Intake();
     oi = new OI();
-    m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
-    m_chooser.addOption("My Auto", kCustomAuto);
-    SmartDashboard.putData("Auto choices", m_chooser);
-    SmartDashboard.putString("RobotID", "Master 190208b");
+    liftEncoder = new SparkMaxEnhanced();
+
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
 
     CameraServer.getInstance().startAutomaticCapture();
@@ -123,6 +123,14 @@ public class Robot extends TimedRobot {
     m_autoSelected = m_chooser.getSelected();
     // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
     System.out.println("Auto selected: " + m_autoSelected);
+
+    autonomousCommand = new InitializeLift();
+
+    if (autonomousCommand != null) {
+      autonomousCommand.start();
+    }
+
+    SmartDashboard.putString("Autonomous", "Running");
   }
 
   /**
@@ -130,15 +138,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    switch (m_autoSelected) {
-    case kCustomAuto:
-      // Put custom auto code here
-      break;
-    case kDefaultAuto:
-    default:
-      // Put default auto code here
-      break;
-    }
+    Scheduler.getInstance().run();
   }
 
   /**
