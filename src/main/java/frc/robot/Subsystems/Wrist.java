@@ -8,10 +8,10 @@
 package frc.robot.Subsystems;
 
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.Encoder;
-
 
 /**
  * Add your docs here.
@@ -19,8 +19,8 @@ import edu.wpi.first.wpilibj.Encoder;
 public class Wrist extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private final Spark wristMotor = RobotMap.wristMotor;
-  private final Encoder wristPosition = RobotMap.wristPosition;
+  private final Victor wristMotor = RobotMap.wristMotor;
+  // private final Encoder wristPosition = RobotMap.wristPosition;
 
   @Override
   public void initDefaultCommand() {
@@ -46,7 +46,7 @@ public class Wrist extends Subsystem {
     wristMotor.set(0);
   }
 
-  public Encoder getWristPosition(){
-    return wristPosition;
-  }
+  /*
+   * public Encoder getWristPosition(){ return wristPosition; }
+   */
 }

@@ -8,9 +8,9 @@
 package frc.robot;
 
 import com.revrobotics.*;
-//import com.revrobotics.CANEncoder;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.CANEncoder;
 
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -24,7 +24,7 @@ import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Spark;
-
+import edu.wpi.first.wpilibj.Victor;
 /**
  * Add your docs here.
  */
@@ -42,34 +42,36 @@ public class RobotMap {
   public static DigitalInput limitSwitchLiftUp;
   public static Encoder ArmEncoder;
   public static DoubleSolenoid solenoidHatchRelease;
+  public static DoubleSolenoid solenoidHatchRelease2;
   public static DoubleSolenoid solenoidRampRelease;
 
-
+  // public static CANSparkMax m_motor;
 
   public static CANSparkMax liftMotor;
   public static CANEncoder liftEncoder;
-  public static Spark wristMotor;
-  public static Encoder wristPosition;
+  public static Victor wristMotor;
 
-  public static Spark intakeMotorLeft;
-  public static Spark intakeMotorRight;
+  public static Victor intakeMotorLead;
+  public static Victor intakeMotorFollow;
 
   public static final int kTimeoutMs = 30;
 
   public static void init() {
 
     leftDriveMotorLead = new WPI_TalonSRX(0);
-    // leftDriveMotorFollow = new WPI_TalonSRX(1);
     leftDriveMotorLead.setInverted(true);
-    // leftDriveMotorFollow.follow(leftDriveMotorLead);
     leftDriveMotorLead.set(0);
-
+    leftDriveMotorFollow = new WPI_TalonSRX(1);
+    leftDriveMotorFollow.setInverted(true);
+    leftDriveMotorFollow.follow(leftDriveMotorLead);
     leftDriveMotorLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, kTimeoutMs);
 
-    // rightDriveMotorFollow.follow(rightDriveMotorLead);
     rightDriveMotorLead = new WPI_TalonSRX(2);
+    rightDriveMotorLead.setInverted(true);
     rightDriveMotorLead.set(0);
-
+    rightDriveMotorFollow = new WPI_TalonSRX(3);
+    rightDriveMotorFollow.setInverted(true);
+    rightDriveMotorFollow.follow(rightDriveMotorLead);
     rightDriveMotorLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, kTimeoutMs);
 
     myRobot = new DifferentialDrive(leftDriveMotorLead, rightDriveMotorLead);
@@ -79,28 +81,28 @@ public class RobotMap {
     myRobot.setMaxOutput(1.0);
 
     // lift motors
-    liftMotor = new CANSparkMax(4, MotorType.kBrushless);// motor to be determined
-    liftEncoder = liftMotor.getEncoder();
+    // liftMotor = new CANSparkMax(4, MotorType.kBrushless);// motor to be
+    // determined
+    // liftEncoder = liftMotor.getEncoder();
     // liftMotor.setInverted(false);
 
     // wrist motors
-    wristMotor = new Spark(1);
-    wristPosition = new Encoder(2, 3);
+    wristMotor = new Victor(0);
     // wristMotor.setInverted(false);
 
     // limitSwitch
-    limitSwitchLiftDown = new DigitalInput(4);
-    limitSwitchLiftUp = new DigitalInput(5);
+    // limitSwitchLiftDown = new DigitalInput(4);
+    // limitSwitchLiftUp = new DigitalInput(5);
 
     // Solenoids
-    solenoidHatchRelease = new DoubleSolenoid(0, 1);
-    solenoidRampRelease = new DoubleSolenoid(2, 3);
+    // solenoidHatchRelease = new DoubleSolenoid(0, 1);
+    // solenoidHatchRelease2 = new DoubleSolenoid(2, 3);
+    // solenoidRampRelease = new DoubleSolenoid(4, 5);
 
     // intake motors
-    intakeMotorLeft = new Spark(9);
+    intakeMotorLead = new Victor(1);
     // intakeMotor1.setInverted(false);
-    intakeMotorRight = new Spark(10);
+    // intakeMotorFollow = new Victor(1);
     // intakeMotor2.setInverted(false);
   }
-
 }
