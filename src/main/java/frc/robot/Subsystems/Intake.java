@@ -7,12 +7,9 @@
 
 package frc.robot.Subsystems;
 
-import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.Victor;
-import edu.wpi.first.wpilibj.VictorSP;
 
 /**
  * Add your docs here.
@@ -35,12 +32,16 @@ public class Intake extends Subsystem {
   }
 
   public void intake() {
-    RobotMap.intakeMotorLead.set(1);
-    RobotMap.intakeMotorFollow.set(1);
+    intakeMotorLeft.set(1);
+    // intakeMotorRight.set(1);
   }
 
   public void outtake() {
-    RobotMap.intakeMotorLead.set(-1);
-    RobotMap.intakeMotorFollow.set(-1);
+    intakeMotorLeft.set(-1);
+    // intakeMotorRight.set(-1);
+  }
+
+  public void stop() {
+    intakeMotorLeft.set(0);
   }
 }

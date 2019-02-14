@@ -49,10 +49,10 @@ public class OI {
                 gamepad = new Joystick(1);
 
                 // Intake and Outtake
-                button1 = new JoystickButton(joystick, 2);
-                button1.whileHeld(new IntakeBall());
-                button2 = new JoystickButton(joystick, 1);
-                button2.whileHeld(new EjectBall());
+                button1 = new JoystickButton(gamepad, 2);
+                button1.whenPressed(new IntakeBall());
+                button2 = new JoystickButton(gamepad, 1);
+                button2.whenPressed(new EjectBall());
 
                 // Cargo ball whenPressed
                 button3 = new JoystickButton(joystick, 3);

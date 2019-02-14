@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.Victor;
 
 /**
  * Add your docs here.
@@ -18,7 +19,7 @@ import frc.robot.RobotMap;
 public class Wrist extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private final Spark wristMotor = RobotMap.wristMotor;
+  private final Victor wristMotor = RobotMap.wristMotor;
 
   @Override
   public void initDefaultCommand() {

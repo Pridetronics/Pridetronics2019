@@ -149,8 +149,10 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     SmartDashboard.putNumber("Right Encoder", RobotMap.rightDriveMotorLead.getSelectedSensorPosition());
     SmartDashboard.putNumber("Left Encoder", RobotMap.leftDriveMotorLead.getSelectedSensorPosition());
-    SmartDashboard.putNumber("Lift Encoder Position", RobotMap.liftEncoder.getPosition());
-    SmartDashboard.putNumber("Lift Encoder Velocity", RobotMap.liftEncoder.getVelocity());
+    // SmartDashboard.putNumber("Lift Encoder Position",
+    // RobotMap.liftEncoder.getPosition());
+    // SmartDashboard.putNumber("Lift Encoder Velocity",
+    // RobotMap.liftEncoder.getVelocity());
 
   }
   /**
