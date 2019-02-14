@@ -34,16 +34,12 @@ import com.revrobotics.*;
  * project.
  */
 public class Robot extends TimedRobot {
-  private static final String kDefaultAuto = "Default";
-  private static final String kCustomAuto = "My Auto";
-  private String m_autoSelected;
   public static Drive drive;
   public static Lift lift;
   public static OI oi;
   public static Wrist wrist;
   public static Pnuematics pnuematics;
   public static Intake intake;
-  private final SendableChooser<String> m_chooser = new SendableChooser<>();
   public static SparkMaxEnhanced liftEncoder = new SparkMaxEnhanced();
   Command autonomousCommand;
 
@@ -120,17 +116,13 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autoSelected = m_chooser.getSelected();
-    // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
-    System.out.println("Auto selected: " + m_autoSelected);
-
     autonomousCommand = new InitializeLift();
-
+  
+    SmartDashboard.putString("Autonomous", "Running");
     if (autonomousCommand != null) {
       autonomousCommand.start();
     }
 
-    SmartDashboard.putString("Autonomous", "Running");
   }
 
   /**

@@ -80,12 +80,6 @@ public class OI {
     button5.whenReleased(new PanelPull());
     // Top Hatch on Rocket
 
-    /*
-     * Needs to be changed to Rocket Cargo
-     */
-
-    // Middle Hatch on Rocket
-
   }
 
   public Joystick getJoystick() {

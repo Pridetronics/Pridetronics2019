@@ -18,16 +18,10 @@ public class InitializeLift extends CommandGroup {
    * Add your docs here.
    */
   public InitializeLift() {
-    SmartDashboard.putString("Autonomous", "1");
     addSequential(new RunLiftDown());
-    SmartDashboard.putString("Autonomous", "2");
     addSequential(new TimedCommand(0.5));
-    SmartDashboard.putString("Autonomous", "3");
     addSequential(new ZeroEncoder());
-    SmartDashboard.putString("Autonomous", "4");
     addSequential(new RocketCargo(OI.RocketHatch1));
-    SmartDashboard.putString("Autonomous", "5");
     addSequential(new DriveTeleop());
-    SmartDashboard.putString("Autonomous", "6");
   }
 }

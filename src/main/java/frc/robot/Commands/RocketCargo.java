@@ -41,6 +41,7 @@ public class RocketCargo extends Command {
   @Override
   protected void initialize() {
 
+    SmartDashboard.putString("Autonomous", "Rocket Cargo");
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -49,9 +50,9 @@ public class RocketCargo extends Command {
     SmartDashboard.putNumber("distance", this.distance);
 
     if (this.distance - Robot.liftEncoder.readEncoder() > 0) {
-
+      Robot.lift.up();
     } else {
-
+      Robot.lift.down();
     }
   }
 

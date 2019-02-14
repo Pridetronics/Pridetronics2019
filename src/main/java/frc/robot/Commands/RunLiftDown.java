@@ -9,6 +9,7 @@ package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.*;
+import edu.wpi.first.wpilibj.smartdashboard.*;
 
 public class RunLiftDown extends Command {
   public RunLiftDown() {
@@ -19,6 +20,8 @@ public class RunLiftDown extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    
+    SmartDashboard.putString("Autonomous", "Run lift down");
   }
 
   // Called repeatedly when this Command is scheduled to run
