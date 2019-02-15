@@ -36,6 +36,7 @@ import com.revrobotics.*;
 public class Robot extends TimedRobot {
   public static Drive drive;
   public static Lift lift;
+  public static LiftPID liftPID;
   public static OI oi;
   public static Wrist wrist;
   public static Pnuematics pnuematics;
@@ -56,6 +57,8 @@ public class Robot extends TimedRobot {
     RobotMap.init();
     drive = new Drive();
     lift = new Lift();
+    liftPID = new LiftPID();
+    
     wrist = new Wrist();
     pnuematics = new Pnuematics();
     intake = new Intake();

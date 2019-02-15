@@ -17,17 +17,25 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
 import frc.robot.Subsystems.*;
 
+/*
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDSource;
+import edu.wpi.first.wpilibj.PIDSourceType;
+*/
+
+
 public class RocketCargo extends Command {
 
-  private double distance;
-
+    private double distance;
+    
+    
   public double scale = 1.0;
 
   public RocketCargo(double d) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     this.distance = d * scale;
-
+    
     // SmartDashboard.putNumber("d", d);
 
     requires(Robot.lift);
@@ -48,12 +56,8 @@ public class RocketCargo extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putNumber("distance", this.distance);
-
-    if (this.distance - Robot.liftEncoder.readEncoder() > 0) {
-      Robot.lift.up();
-    } else {
-      Robot.lift.down();
-    }
+    Robot.liftPID.enable();
+    Robot.liftPID.setPoint(distance);
   }
 
   // Make this return true when this Command no longer needs to run execute()
