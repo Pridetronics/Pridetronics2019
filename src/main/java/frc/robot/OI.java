@@ -49,10 +49,10 @@ public class OI {
                 gamepad = new Joystick(1);
 
                 // Intake and Outtake
-                button1 = new JoystickButton(joystick, 2);
-                button1.whileHeld(new IntakeBall());
-                button2 = new JoystickButton(joystick, 1);
-                button2.whileHeld(new EjectBall());
+                button1 = new JoystickButton(gamepad, 2);
+                button1.whenPressed(new IntakeBall());
+                button2 = new JoystickButton(gamepad, 1);
+                button2.whenPressed(new EjectBall());
 
                 // Cargo ball whenPressed
                 button3 = new JoystickButton(joystick, 3);
@@ -69,13 +69,14 @@ public class OI {
                 // Wrist up whileheld
                 button4 = new JoystickButton(joystick, 4);
                 button4.whileHeld(new WristUp());
+                // button4.whenReleased(new );
                 // Wrist down whileheld
                 button6 = new JoystickButton(joystick, 6);
                 button6.whileHeld(new WristDown());
                 // Hatch Panel in/out
                 button5 = new JoystickButton(joystick, 5);
-                button5.whenPressed(new PanelPush());
-                button5.whenReleased(new PanelPull());
+                button5.whenPressed(new PushPanel());
+                button5.whenReleased(new PullPanel());
                 // Top Hatch on Rocket
                 button8 = new JoystickButton(joystick, 8);
                 button8.whenPressed(new RocketCargo(RocketHatch3));

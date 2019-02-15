@@ -11,10 +11,9 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Victor;
 
 /**
- * Add your docs here.
  */
 public class Wrist extends Subsystem {
   // Put methods for controlling this subsystem
