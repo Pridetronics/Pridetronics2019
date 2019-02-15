@@ -76,8 +76,8 @@ public class OI {
     button6.whileHeld(new WristDown());
     // Hatch Panel in/out
     button5 = new JoystickButton(joystick, 5);
-    button5.whenPressed(new PanelPush());
-    button5.whenReleased(new PanelPull());
+    button5.whenPressed(new PushPanel());
+    button5.whenReleased(new PullPanel());
     // Top Hatch on Rocket
 
   }
