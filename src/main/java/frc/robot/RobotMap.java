@@ -45,8 +45,6 @@ public class RobotMap {
   public static DoubleSolenoid solenoidHatchRelease2;
   public static DoubleSolenoid solenoidRampRelease;
 
-  // public static CANSparkMax m_motor;
-
   public static CANSparkMax liftMotor;
   public static CANEncoder liftEncoder;
   public static Victor wristMotor;
@@ -81,9 +79,9 @@ public class RobotMap {
     myRobot.setMaxOutput(1.0);
 
     // lift motors
-    // liftMotor = new CANSparkMax(4, MotorType.kBrushless);// motor to be
-    // determined
-    // liftEncoder = liftMotor.getEncoder();
+    liftMotor = new CANSparkMax(4, MotorType.kBrushless);// motor to be determined
+    liftEncoder = liftMotor.getEncoder();
+
     // liftMotor.setInverted(false);
 
     // wrist motors

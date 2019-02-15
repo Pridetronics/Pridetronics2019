@@ -34,16 +34,15 @@ import com.revrobotics.*;
  * project.
  */
 public class Robot extends TimedRobot {
-  private static final String kDefaultAuto = "Default";
-  private static final String kCustomAuto = "My Auto";
-  private String m_autoSelected;
   public static Drive drive;
   public static Lift lift;
+  public static LiftPID liftPID;
   public static OI oi;
   public static Wrist wrist;
   public static Pnuematics pnuematics;
   public static Intake intake;
-  private final SendableChooser<String> m_chooser = new SendableChooser<>();
+  public static SparkMaxEnhanced liftEncoder = new SparkMaxEnhanced();
+  Command autonomousCommand;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -58,14 +57,14 @@ public class Robot extends TimedRobot {
     RobotMap.init();
     drive = new Drive();
     lift = new Lift();
+    liftPID = new LiftPID();
+    
     wrist = new Wrist();
     pnuematics = new Pnuematics();
     intake = new Intake();
     oi = new OI();
-    m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
-    m_chooser.addOption("My Auto", kCustomAuto);
-    SmartDashboard.putData("Auto choices", m_chooser);
-    SmartDashboard.putString("RobotID", "Master 190214");
+    liftEncoder = new SparkMaxEnhanced();
+
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
 
     CameraServer.getInstance().startAutomaticCapture();
@@ -88,6 +87,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    boolean out = RobotMap.limitSwitchLiftDown.get();
+    SmartDashboard.putBoolean("LimitSwitch", out);
   }
 
   @Override
@@ -118,9 +119,13 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autoSelected = m_chooser.getSelected();
-    // m_autoSelected = SmartDashboard.getString("Auto Selector", kDefaultAuto);
-    System.out.println("Auto selected: " + m_autoSelected);
+    autonomousCommand = new InitializeLift();
+  
+    SmartDashboard.putString("Autonomous", "Running");
+    if (autonomousCommand != null) {
+      autonomousCommand.start();
+    }
+
   }
 
   /**
@@ -128,15 +133,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
-    switch (m_autoSelected) {
-    case kCustomAuto:
-      // Put custom auto code here
-      break;
-    case kDefaultAuto:
-    default:
-      // Put default auto code here
-      break;
-    }
+    Scheduler.getInstance().run();
   }
 
   /**

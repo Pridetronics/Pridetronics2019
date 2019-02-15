@@ -22,26 +22,30 @@ public class SparkMaxEnhanced extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
   private final CANEncoder liftEncoder = RobotMap.liftEncoder;
-  public double initialTicks;
+  private double initialTicks;
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
 
-    initialTicks = liftEncoder.getPosition();
-    
-  }
-  public double readEncoder(){
-  
-    return liftEncoder.getPosition()-initialTicks;
   }
 
-  //Create a reset for the Ticks
-  //Create lift encoder  
-  //Something that reads the encoder (needs a bit of math)
-  //Two methods
+  public void setOffset() {
+
+    initialTicks = liftEncoder.getPosition();
+
+  }
+
+  public double readEncoder() {
+    return liftEncoder.getPosition() - initialTicks;
+  }
+
+  // Create a reset for the Ticks
+  // Create lift encoder
+  // Something that reads the encoder (needs a bit of math)
+  // Two methods
   // One to initialize liftTicks
   // Get ticks to read the current encoder and subtract from liftTicks
 
-  
 }

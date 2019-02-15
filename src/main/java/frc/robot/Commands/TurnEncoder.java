@@ -56,8 +56,8 @@ public class TurnEncoder extends Command {
     // true is left and false is right
     leftDistance = RobotMap.rightDriveMotorLead.get();
     rightDistance = RobotMap.leftDriveMotorLead.get();
-    SmartDashboard.putNumber("leftDistance", leftDistance);
-    SmartDashboard.putNumber("rightDistance", rightDistance);
+    // SmartDashboard.putNumber("leftDistance", leftDistance);
+    // SmartDashboard.putNumber("rightDistance", rightDistance);
     /*
      * if (Math.abs(leftDistance) >= leftdist && Math.abs(rightDistance) >=
      * rightdist) { return true; }

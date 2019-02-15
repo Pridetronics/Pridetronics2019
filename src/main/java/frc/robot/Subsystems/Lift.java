@@ -42,7 +42,7 @@ public class Lift extends Subsystem {
   }
 
   public void up() {
-    liftMotor.set(1);
+    liftMotor.set(.55);
   }
 
   public void upSpeed(double speed) {
@@ -68,8 +68,9 @@ public class Lift extends Subsystem {
   public boolean limitSwitchUpOpen() {
     return !limitSwitchLiftUp.get();
   }
+
   public boolean limitSwitchDownOpen() {
     return !limitSwitchLiftDown.get();
   }
-    
+
 }
