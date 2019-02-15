@@ -26,8 +26,6 @@ import frc.robot.Subsystems.*;
 
 import com.revrobotics.*;
 
-
-
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -67,7 +65,7 @@ public class Robot extends TimedRobot {
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
-    SmartDashboard.putString("RobotID", "Master 190208b");
+    SmartDashboard.putString("RobotID", "Master 190214");
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
 
     CameraServer.getInstance().startAutomaticCapture();
