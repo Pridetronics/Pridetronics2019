@@ -24,7 +24,7 @@ public class LiftPID extends PIDSubsystem {
     // Intert a subsystem name and PID values here
     super("Lift", .25, 0.0, 0.0);
     setAbsoluteTolerance(0.2);
-    // getPIDController().setContinuous(true);
+    
     // Use these to get going:
     // setSetpoint() - Sets where the PID controller should move the system
     // to

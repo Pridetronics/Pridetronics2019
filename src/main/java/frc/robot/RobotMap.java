@@ -89,11 +89,12 @@ public class RobotMap {
     // wristMotor.setInverted(false);
 
     // limitSwitch
-    // limitSwitchLiftDown = new DigitalInput(4);
-    // limitSwitchLiftUp = new DigitalInput(5);
+    limitSwitchLiftDown = new DigitalInput(4);
+    limitSwitchLiftUp = new DigitalInput(5);
 
     // Solenoids
-    // solenoidHatchRelease = new DoubleSolenoid(0, 1);
+    solenoidHatchRelease = new DoubleSolenoid(0, 1);
+    //solenoidHatchRelease2 = new DoubleSolenoid(2, 3);
     solenoidRampRelease = new DoubleSolenoid(4, 5);
 
     // intake motors

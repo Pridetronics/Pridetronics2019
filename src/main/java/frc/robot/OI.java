@@ -59,12 +59,13 @@ public class OI {
     gamepad = new Joystick(1);
 
     // Intake and Outtake
-    button1 = new JoystickButton(joystick, 2);
-    button1.whileHeld(new IntakeBall());
-    button2 = new JoystickButton(joystick, 1);
-    button2.whileHeld(new EjectBall());
-
-    // Lift
+    
+    RightTrigger right = new RightTrigger();
+    right.whileActive(new IntakeBall());
+    right.close();
+    LeftTrigger left = new LeftTrigger();
+    left.whileActive(new EjectBall());
+    left.close();
     button13 = new JoystickButton(joystick, 1);
     button13.whileHeld(new RunLiftUp());
     button14 = new JoystickButton(joystick, 2);
