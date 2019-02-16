@@ -9,6 +9,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.GamepadBase;
+import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -34,6 +36,8 @@ public class OI {
   public JoystickButton button11; // Rocket Ball 1
   public JoystickButton button12; // Rocket Hatch 1
   public JoystickButton gamepadButton8;
+  public JoystickButton button13; // Lift up
+  public JoystickButton button14; // Lift down
 
   // InstanceVariables for Ball
   public static final double RocketBallLv1 = 27.5;
@@ -46,6 +50,9 @@ public class OI {
   // InstanceVariable for CargoBall
   public static final double CargoBall = 48;
 
+  private double value;
+  private Joystick Stick;
+
   public OI() {
 
     joystick = new Joystick(0);
@@ -57,6 +64,11 @@ public class OI {
     button2 = new JoystickButton(joystick, 1);
     button2.whileHeld(new EjectBall());
 
+    // Lift
+    button13 = new JoystickButton(joystick, 1);
+    button13.whileHeld(new RunLiftUp());
+    button14 = new JoystickButton(joystick, 2);
+    button14.whileHeld(new RunLiftDown());
     // Cargo ball whenPressed
     button3 = new JoystickButton(joystick, 3);
     button3.whenPressed(new RocketCargo(CargoBall));
@@ -70,10 +82,10 @@ public class OI {
     button11 = new JoystickButton(joystick, 11);
     button11.whenPressed(new RocketCargo(RocketBallLv1));// keep its gud
     // Wrist up whileheld
-    button4 = new JoystickButton(joystick, 4);
+    button4 = new JoystickButton(gamepad, 2);
     button4.whileHeld(new WristUp());
     // Wrist down whileheld
-    button6 = new JoystickButton(joystick, 6);
+    button6 = new JoystickButton(gamepad, 1);
     button6.whileHeld(new WristDown());
     // Hatch Panel in/out
     button5 = new JoystickButton(joystick, 5);
@@ -83,6 +95,8 @@ public class OI {
     gamepadButton8 = new JoystickButton(gamepad, 8);
     gamepadButton8.whenPressed(new SwitchDriveMode());
 
+    button5 = new JoystickButton(gamepad, 5);
+    button5.whenPressed(new RampRelease());
   }
 
   public Joystick getJoystick() {

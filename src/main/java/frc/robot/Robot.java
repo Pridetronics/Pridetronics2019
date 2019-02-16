@@ -41,16 +41,17 @@ public class Robot extends TimedRobot {
   public static Wrist wrist;
   public static Pnuematics pnuematics;
   public static Intake intake;
-  public static SparkMaxEnhanced liftEncoder = new SparkMaxEnhanced();
+  public static SparkMaxEnhanced liftEncoder;
   Command autonomousCommand;
+  public static boolean dir;
 
-  /**
+  /*
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
    */
   @Override
   public void robotInit() {
-
+    dir = true;
     // CameraServer.getInstance().startAutomaticCapture();
     // UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
     // camera.setResolution(320,240);
@@ -58,7 +59,7 @@ public class Robot extends TimedRobot {
     drive = new Drive();
     lift = new Lift();
     liftPID = new LiftPID();
-    
+
     wrist = new Wrist();
     pnuematics = new Pnuematics();
     intake = new Intake();
@@ -87,8 +88,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    boolean out = RobotMap.limitSwitchLiftDown.get();
-    SmartDashboard.putBoolean("LimitSwitch", out);
+    // boolean out = RobotMap.limitSwitchLiftDown.get();
+    // SmartDashboard.putBoolean("LimitSwitch", out);
   }
 
   @Override
@@ -120,7 +121,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     autonomousCommand = new InitializeLift();
-  
+
     SmartDashboard.putString("Autonomous", "Running");
     if (autonomousCommand != null) {
       autonomousCommand.start();

@@ -21,7 +21,6 @@ public class Pnuematics extends Subsystem {
   // here. Call these from Commands.
 
   private final DoubleSolenoid solenoidHatchRelease = RobotMap.solenoidHatchRelease;
-  private final DoubleSolenoid solenoidHatchRelease2 = RobotMap.solenoidHatchRelease2;
   private final DoubleSolenoid solenoidRampRelease = RobotMap.solenoidRampRelease;
 
   @Override
@@ -37,12 +36,10 @@ public class Pnuematics extends Subsystem {
 
   public void releaseHatch() {
     solenoidHatchRelease.set(Value.kForward);
-    solenoidHatchRelease2.set(Value.kForward);
   }
 
   public void retractHatch() {
     solenoidHatchRelease.set(Value.kReverse);
-    solenoidHatchRelease2.set(Value.kForward);
   }
 
   public void retractRamp() {
