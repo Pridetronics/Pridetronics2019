@@ -12,6 +12,7 @@ import frc.robot.Subsystems.*;
 import frc.robot.Commands.*;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+
 /**
  * Add your docs here.
  */
@@ -46,7 +47,7 @@ public class WristPID extends PIDSubsystem {
 
   public void setPoint(double set) {
     this.setSetpoint(set);
-  } 
+  }
 
   @Override
   protected void usePIDOutput(double output) {

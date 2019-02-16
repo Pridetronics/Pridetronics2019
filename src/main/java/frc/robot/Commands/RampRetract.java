@@ -7,17 +7,17 @@
 
 package frc.robot.Commands;
 
-import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.InstantCommand;
+import frc.robot.Robot;
 
 /**
  * Add your docs here.
  */
-public class PushPanel extends InstantCommand {
+public class RampRetract extends InstantCommand {
   /**
    * Add your docs here.
    */
-  public PushPanel() {
+  public RampRetract() {
     super();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -26,13 +26,7 @@ public class PushPanel extends InstantCommand {
   // Called once when the command executes
   @Override
   protected void initialize() {
-    Robot.panelDir = !Robot.panelDir;
-    
-    if (Robot.dir) {
-      Robot.pnuematics.releaseRamp();
-    } else {
-      Robot.pnuematics.retractRamp();
-    }
+    Robot.pnuematics.retractRamp();
   }
 
 }

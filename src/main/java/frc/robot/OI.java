@@ -9,16 +9,12 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-
-import frc.robot.Commands.EjectBall;
-import frc.robot.Commands.IntakeBall;
-import frc.robot.Commands.LeftTrigger;
-import frc.robot.Commands.PullPanel;
-import frc.robot.Commands.PushPanel;
-import frc.robot.Commands.RightTrigger;
-import frc.robot.Commands.RocketCargo;
-import frc.robot.Commands.WristDown;
-import frc.robot.Commands.WristUp;
+import edu.wpi.first.wpilibj.GamepadBase;
+import edu.wpi.first.wpilibj.Joystick.AxisType;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Commands.*;
 
 /**
  * Add your docs here.
@@ -39,6 +35,9 @@ public class OI {
   public JoystickButton button10; // Rocket Hatch 2
   public JoystickButton button11; // Rocket Ball 1
   public JoystickButton button12; // Rocket Hatch 1
+  public JoystickButton gamepadButton8;
+  public JoystickButton button13; // Lift up
+  public JoystickButton button14; // Lift down
 
   // InstanceVariables for Ball
   public static final double RocketBallLv1 = 27.5;
@@ -50,6 +49,9 @@ public class OI {
   public static final double RocketHatch3 = 75;
   // InstanceVariable for CargoBall
   public static final double CargoBall = 48;
+
+  private double value;
+  private Joystick Stick;
 
   public OI() {
 
@@ -64,30 +66,39 @@ public class OI {
     LeftTrigger left = new LeftTrigger();
     left.whileActive(new EjectBall());
     left.close();
+
+    button13 = new JoystickButton(joystick, 1);
+    button13.whileHeld(new RunLiftUp());
+    button14 = new JoystickButton(joystick, 2);
+    button14.whileHeld(new RunLiftDown());
     // Cargo ball whenPressed
     button3 = new JoystickButton(joystick, 3);
-    button3.whenPressed(new RocketCargo(CargoBall));
+    //button3.whenPressed(new RocketCargo(CargoBall));
     // Top level on Rocket
     button7 = new JoystickButton(joystick, 7);
-    button7.whenPressed(new RocketCargo(RocketBallLv3));// change when rocketlv3 is made
+    //button7.whenPressed(new RocketCargo(RocketBallLv3));// change when rocketlv3 is made
     // Middle level on Rocket
     button9 = new JoystickButton(joystick, 9);
-    button9.whenPressed(new RocketCargo(RocketBallLv2));// change when rocketlv2 is made
+    //button9.whenPressed(new RocketCargo(RocketBallLv2));// change when rocketlv2 is made
     // Bottom level on Rocket
     button11 = new JoystickButton(joystick, 11);
-    button11.whenPressed(new RocketCargo(RocketBallLv1));// keep its gud
+    //button11.whenPressed(new RocketCargo(RocketBallLv1));// keep its gud
     // Wrist up whileheld
-    button4 = new JoystickButton(joystick, 4);
+    button4 = new JoystickButton(gamepad, 2);
     button4.whileHeld(new WristUp());
     // Wrist down whileheld
-    button6 = new JoystickButton(joystick, 6);
+    button6 = new JoystickButton(gamepad, 1);
     button6.whileHeld(new WristDown());
     // Hatch Panel in/out
     button5 = new JoystickButton(joystick, 5);
     button5.whenPressed(new PushPanel());
-    button5.whenReleased(new PullPanel());
+    
     // Top Hatch on Rocket
+    gamepadButton8 = new JoystickButton(gamepad, 8);
+    //gamepadButton8.whenPressed(new SwitchDriveMode());
 
+    button5 = new JoystickButton(gamepad, 5);
+    button5.whenPressed(new RampRelease());
   }
 
   public Joystick getJoystick() {
