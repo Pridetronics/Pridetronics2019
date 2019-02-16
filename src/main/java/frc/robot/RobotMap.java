@@ -78,9 +78,9 @@ public class RobotMap {
     myRobot.setMaxOutput(1.0);
 
     // lift motors
-    // liftMotor = new CANSparkMax(4, MotorType.kBrushless);// motor to be
+    liftMotor = new CANSparkMax(4, MotorType.kBrushless);// motor to be
     // determined
-    // liftEncoder = liftMotor.getEncoder();
+    liftEncoder = liftMotor.getEncoder();
 
     // liftMotor.setInverted(false);
 

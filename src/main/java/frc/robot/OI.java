@@ -66,22 +66,23 @@ public class OI {
     LeftTrigger left = new LeftTrigger();
     left.whileActive(new EjectBall());
     left.close();
+
     button13 = new JoystickButton(joystick, 1);
     button13.whileHeld(new RunLiftUp());
     button14 = new JoystickButton(joystick, 2);
     button14.whileHeld(new RunLiftDown());
     // Cargo ball whenPressed
     button3 = new JoystickButton(joystick, 3);
-    button3.whenPressed(new RocketCargo(CargoBall));
+    //button3.whenPressed(new RocketCargo(CargoBall));
     // Top level on Rocket
     button7 = new JoystickButton(joystick, 7);
-    button7.whenPressed(new RocketCargo(RocketBallLv3));// change when rocketlv3 is made
+    //button7.whenPressed(new RocketCargo(RocketBallLv3));// change when rocketlv3 is made
     // Middle level on Rocket
     button9 = new JoystickButton(joystick, 9);
-    button9.whenPressed(new RocketCargo(RocketBallLv2));// change when rocketlv2 is made
+    //button9.whenPressed(new RocketCargo(RocketBallLv2));// change when rocketlv2 is made
     // Bottom level on Rocket
     button11 = new JoystickButton(joystick, 11);
-    button11.whenPressed(new RocketCargo(RocketBallLv1));// keep its gud
+    //button11.whenPressed(new RocketCargo(RocketBallLv1));// keep its gud
     // Wrist up whileheld
     button4 = new JoystickButton(gamepad, 2);
     button4.whileHeld(new WristUp());
@@ -91,10 +92,10 @@ public class OI {
     // Hatch Panel in/out
     button5 = new JoystickButton(joystick, 5);
     button5.whenPressed(new PushPanel());
-    button5.whenReleased(new PullPanel());
+    
     // Top Hatch on Rocket
     gamepadButton8 = new JoystickButton(gamepad, 8);
-    gamepadButton8.whenPressed(new SwitchDriveMode());
+    //gamepadButton8.whenPressed(new SwitchDriveMode());
 
     button5 = new JoystickButton(gamepad, 5);
     button5.whenPressed(new RampRelease());
