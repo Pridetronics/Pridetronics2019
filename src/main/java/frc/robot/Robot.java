@@ -41,9 +41,9 @@ public class Robot extends TimedRobot {
   public static Wrist wrist;
   public static Pnuematics pnuematics;
   public static Intake intake;
-  public static SparkMaxEnhanced liftEncoder = new SparkMaxEnhanced();
+  public static SparkMaxEnhanced liftEncoder;
   Command autonomousCommand;
-  public static boolean dir = true;
+  public static boolean dir;
 
   /*
    * This function is run when the robot is first started up and should be used
@@ -51,7 +51,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-
+    dir = true;
     // CameraServer.getInstance().startAutomaticCapture();
     // UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
     // camera.setResolution(320,240);

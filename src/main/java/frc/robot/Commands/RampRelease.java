@@ -18,7 +18,6 @@ public class RampRelease extends InstantCommand {
   /**
    * Add your docs here.
    */
-  private boolean direction;
 
   public RampRelease() {
     super();
