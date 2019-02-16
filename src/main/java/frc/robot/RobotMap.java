@@ -58,8 +58,10 @@ public class RobotMap {
     leftDriveMotorLead = new WPI_TalonSRX(0); // Assigns Leading Left Drive Motor to Talon #0
     leftDriveMotorLead.setInverted(true); // Inverts Leading Left Drive Motor
     leftDriveMotorLead.set(0); // Sets speed to 0 (anywhere between -1 and 1)
+
     leftDriveMotorFollow = new WPI_TalonSRX(1); // Assigns Following Left Drive Motor to Talon #1
     leftDriveMotorFollow.setInverted(true); // Inverts Following Left Drive Motor
+    
     // Makes the Following Left Drive Motor to follow the Leading left Drive Motor
     leftDriveMotorFollow.follow(leftDriveMotorLead);
     // Converts Leading left Drive Motor to an Encoder
@@ -68,8 +70,10 @@ public class RobotMap {
     rightDriveMotorLead = new WPI_TalonSRX(2); // Assigns Leading Right Drive Motor to Talon #2
     rightDriveMotorLead.setInverted(true); // Inverts Leading Right Drive Motor
     rightDriveMotorLead.set(0); // Sets speed to 0 (anywhere between -1 and 1)
+
     rightDriveMotorFollow = new WPI_TalonSRX(3); // Assigns Following Right Drive Motor to Talon #3
     rightDriveMotorFollow.setInverted(true); // Inverts Following Left Drive Motor
+
     // Makes the Following Right Drive Motor to follow the Leading Right Drive Motor
     rightDriveMotorFollow.follow(rightDriveMotorLead);
     // Converts Leading Right Drive Motor to an Encoder
