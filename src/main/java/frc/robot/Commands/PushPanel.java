@@ -26,7 +26,13 @@ public class PushPanel extends InstantCommand {
   // Called once when the command executes
   @Override
   protected void initialize() {
-    Robot.pnuematics.releaseHatch();
+    Robot.panelDir = !Robot.panelDir;
+    
+    if (Robot.dir) {
+      Robot.pnuematics.releaseRamp();
+    } else {
+      Robot.pnuematics.retractRamp();
+    }
   }
 
 }

@@ -44,6 +44,7 @@ public class Robot extends TimedRobot {
   public static SparkMaxEnhanced liftEncoder;
   Command autonomousCommand;
   public static boolean dir;
+  public static boolean panelDir;
 
   /*
    * This function is run when the robot is first started up and should be used
@@ -52,9 +53,10 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     dir = true;
+    panelDir = true;
     // CameraServer.getInstance().startAutomaticCapture();
-    // UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-    // camera.setResolution(320,240);
+    UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+    camera.setResolution(320,240);
     RobotMap.init();
     drive = new Drive();
     lift = new Lift();
@@ -66,9 +68,9 @@ public class Robot extends TimedRobot {
     oi = new OI();
     liftEncoder = new SparkMaxEnhanced();
 
+    //CameraServer.getInstance().startAutomaticCapture();
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
 
-    CameraServer.getInstance().startAutomaticCapture();
     /*
      * table = inst.getTable("Shuffleboard"); rotationFirst =
      * table.getEntry("rot1"); forwardDrive = table.getEntry("fwd"); rotationSecond
