@@ -51,11 +51,13 @@ public class OI {
     gamepad = new Joystick(1);
 
     // Intake and Outtake
-    button1 = new JoystickButton(joystick, 2);
-    button1.whileHeld(new IntakeBall());
-    button2 = new JoystickButton(joystick, 1);
-    button2.whileHeld(new EjectBall());
-
+    
+    RightTrigger right = new RightTrigger();
+    right.whileActive(new IntakeBall());
+    right.close();
+    LeftTrigger left = new LeftTrigger();
+    left.whileActive(new EjectBall());
+    left.close();
     // Cargo ball whenPressed
     button3 = new JoystickButton(joystick, 3);
     button3.whenPressed(new RocketCargo(CargoBall));

@@ -9,6 +9,7 @@ package frc.robot.Subsystems;
 
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
 /**
@@ -32,12 +33,13 @@ public class Intake extends Subsystem {
   }
 
   public void intake() {
-    intakeMotorLeft.set(1);
+    SmartDashboard.putBoolean("Intake", true);
+    intakeMotorLeft.set(.55);
     // intakeMotorRight.set(1);
   }
 
   public void outtake() {
-    intakeMotorLeft.set(-1);
+    intakeMotorLeft.set(-.55);
     // intakeMotorRight.set(-1);
   }
 
