@@ -33,6 +33,7 @@ public class OI {
   public JoystickButton button10; // Rocket Hatch 2
   public JoystickButton button11; // Rocket Ball 1
   public JoystickButton button12; // Rocket Hatch 1
+  public JoystickButton gamepadButton8;
 
   // InstanceVariables for Ball
   public static final double RocketBallLv1 = 27.5;
@@ -76,9 +77,11 @@ public class OI {
     button6.whileHeld(new WristDown());
     // Hatch Panel in/out
     button5 = new JoystickButton(joystick, 5);
-    button5.whenPressed(new PanelPush());
-    button5.whenReleased(new PanelPull());
+    button5.whenPressed(new PushPanel());
+    button5.whenReleased(new PullPanel());
     // Top Hatch on Rocket
+    gamepadButton8 = new JoystickButton(gamepad, 8);
+    gamepadButton8.whenPressed(new SwitchDriveMode());
 
   }
 
