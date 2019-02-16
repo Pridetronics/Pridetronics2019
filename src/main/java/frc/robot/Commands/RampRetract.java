@@ -8,19 +8,16 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 /**
  * Add your docs here.
  */
-public class RampRelease extends InstantCommand {
+public class RampRetract extends InstantCommand {
   /**
    * Add your docs here.
    */
-  private boolean direction;
-
-  public RampRelease() {
+  public RampRetract() {
     super();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -29,14 +26,7 @@ public class RampRelease extends InstantCommand {
   // Called once when the command executes
   @Override
   protected void initialize() {
-
-    Robot.dir = !Robot.dir;
-    SmartDashboard.putBoolean("direction", Robot.dir);
-    if (Robot.dir) {
-      Robot.pnuematics.releaseRamp();
-    } else {
-      Robot.pnuematics.retractRamp();
-    }
+    Robot.pnuematics.retractRamp();
   }
 
 }

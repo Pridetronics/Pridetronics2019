@@ -42,7 +42,6 @@ public class RobotMap {
   public static DigitalInput limitSwitchLiftUp;
   public static Encoder ArmEncoder;
   public static DoubleSolenoid solenoidHatchRelease;
-  public static DoubleSolenoid solenoidHatchRelease2;
   public static DoubleSolenoid solenoidRampRelease;
 
   public static CANSparkMax liftMotor;
@@ -79,8 +78,9 @@ public class RobotMap {
     myRobot.setMaxOutput(1.0);
 
     // lift motors
-    liftMotor = new CANSparkMax(4, MotorType.kBrushless);// motor to be determined
-    liftEncoder = liftMotor.getEncoder();
+    // liftMotor = new CANSparkMax(4, MotorType.kBrushless);// motor to be
+    // determined
+    // liftEncoder = liftMotor.getEncoder();
 
     // liftMotor.setInverted(false);
 
@@ -94,8 +94,7 @@ public class RobotMap {
 
     // Solenoids
     // solenoidHatchRelease = new DoubleSolenoid(0, 1);
-    // solenoidHatchRelease2 = new DoubleSolenoid(2, 3);
-    // solenoidRampRelease = new DoubleSolenoid(4, 5);
+    solenoidRampRelease = new DoubleSolenoid(4, 5);
 
     // intake motors
     intakeMotorLead = new Victor(1);
