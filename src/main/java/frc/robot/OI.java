@@ -7,12 +7,18 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Commands.*;
+
+import frc.robot.Commands.EjectBall;
+import frc.robot.Commands.IntakeBall;
+import frc.robot.Commands.LeftTrigger;
+import frc.robot.Commands.PullPanel;
+import frc.robot.Commands.PushPanel;
+import frc.robot.Commands.RightTrigger;
+import frc.robot.Commands.RocketCargo;
+import frc.robot.Commands.WristDown;
+import frc.robot.Commands.WristUp;
 
 /**
  * Add your docs here.
