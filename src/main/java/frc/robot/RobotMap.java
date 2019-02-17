@@ -86,10 +86,6 @@ public class RobotMap {
     liftMotor = new CANSparkMax(4, MotorType.kBrushless);// motor to be
     // determined
     liftEncoder = liftMotor.getEncoder();
-
-    // Lift Motor to a new CANSparkMAX object
-    liftMotor = new CANSparkMax(4, MotorType.kBrushless);
-    liftEncoder = liftMotor.getEncoder();
     // liftMotor.setInverted(false);
 
     // wrist motors

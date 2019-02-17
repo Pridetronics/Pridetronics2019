@@ -67,12 +67,12 @@ public class OI {
     left.whileActive(new EjectBall());
     left.close();
 
-    button13 = new JoystickButton(joystick, 1);
+    button13 = new JoystickButton(joystick, 3);
     button13.whileHeld(new RunLiftUp());
     button14 = new JoystickButton(joystick, 2);
     button14.whileHeld(new RunLiftDown());
     // Cargo ball whenPressed
-    button3 = new JoystickButton(joystick, 3);
+    button3 = new JoystickButton(joystick, 1);
     //button3.whenPressed(new RocketCargo(CargoBall));
     // Top level on Rocket
     button7 = new JoystickButton(joystick, 7);
