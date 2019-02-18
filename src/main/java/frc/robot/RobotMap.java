@@ -25,18 +25,21 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  */
 public class RobotMap {
 
-  public static Joystick joystick;
-  public static DifferentialDrive myRobot;
-  public static WPI_TalonSRX leftDriveMotorLead;
-  public static WPI_TalonSRX leftDriveMotorFollow;
-  public static WPI_TalonSRX rightDriveMotorLead;
-  public static WPI_TalonSRX rightDriveMotorFollow;
-  public static DigitalInput limitSwitchLiftDown;
-  public static DigitalInput limitSwitchLiftUp;
-  public static Encoder ArmEncoder;
-  public static DoubleSolenoid solenoidHatchRelease;
-  public static DoubleSolenoid solenoidRampRelease;
+  public static DifferentialDrive myRobot; // Creates new differential drive
 
+  public static WPI_TalonSRX leftDriveMotorLead; // Creates new talon motor for leading left drive
+  public static WPI_TalonSRX leftDriveMotorFollow; // Creates new talon motor for following left drive
+  public static WPI_TalonSRX rightDriveMotorLead; // Creates new talon motor for leading right drive
+  public static WPI_TalonSRX rightDriveMotorFollow; // Creates new talon motor for following right drive
+
+  public static DigitalInput limitSwitchLiftDown; // Creates new limit switch for lift going down
+  public static DigitalInput limitSwitchLiftUp; // Creates new limit switch for lift going up
+
+  public static DoubleSolenoid solenoidHatchRelease; // Creates piston for Hatch Retract and Release
+  public static DoubleSolenoid solenoidHatchRelease2;
+  public static DoubleSolenoid solenoidRampRelease; // Creates piston for Ramp Retract and Release
+
+  public static Encoder ArmEncoder; // Creates new Encoder for Arm
 
   public static Victor wristMotor; // Creates new Victor motor for Wrist
   public static Victor intakeMotorLead; // Creates new Victor for Intake
@@ -83,8 +86,9 @@ public class RobotMap {
     myRobot.setMaxOutput(1.0);
 
     // lift motors
-    liftMotor = new CANSparkMax(4, MotorType.kBrushless);// motor to be
-    // determined
+
+    // Lift Motor to a new CANSparkMAX object
+    liftMotor = new CANSparkMax(4, MotorType.kBrushless);
     liftEncoder = liftMotor.getEncoder();
     // liftMotor.setInverted(false);
 

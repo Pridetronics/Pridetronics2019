@@ -60,10 +60,10 @@ public class OI {
 
     // Intake and Outtake
     
-    RightTrigger right = new RightTrigger();
+    Triggers right = new Triggers(gamepad, 2);
     right.whileActive(new IntakeBall());
     right.close();
-    LeftTrigger left = new LeftTrigger();
+    Triggers left = new Triggers(gamepad, 3);
     left.whileActive(new EjectBall());
     left.close();
 

@@ -14,13 +14,16 @@ import frc.robot.*;
 /**
  * Add your docs here.
  */
-public class LeftTrigger extends Trigger {
-  
-  private Joystick stick = new Joystick(1);
+public class Triggers extends Trigger {
+  private Joystick stick;
+  private int axis;
+  public Triggers(Joystick j, int a) {
+    stick = j;
+    axis = a;
+  }
   @Override
   public boolean get() {
-    if(stick.getRawAxis(3)>0){
-      SmartDashboard.putBoolean("Left Trigger Pressed", true);
+    if(stick.getRawAxis(axis)>0){
       return true;
     } else {
       return false;
