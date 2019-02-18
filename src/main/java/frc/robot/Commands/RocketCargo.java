@@ -56,18 +56,21 @@ public class RocketCargo extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putNumber("distance", this.distance);
-    Robot.liftPID.enable();
-    Robot.liftPID.setPoint(distance);
+
+    
+
+    //Robot.liftPID.enable();
+    //Robot.liftPID.setPoint(distance);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    SmartDashboard.putNumber("current ticks", Robot.liftEncoder.readEncoder());
+    /*SmartDashboard.putNumber("current ticks", Robot.liftEncoder.readEncoder());
     if (Robot.liftEncoder.readEncoder() > this.distance) {
       Robot.lift.stop();
       return true;
-    }
+    }*/
     return false;
   }
 

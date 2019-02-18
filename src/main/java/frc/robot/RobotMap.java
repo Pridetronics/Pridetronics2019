@@ -7,70 +7,79 @@
 
 package frc.robot;
 
-import com.revrobotics.*;
-import com.revrobotics.CANEncoder;
-
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.revrobotics.CANEncoder;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.CounterBase.EncodingType;
-import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.Victor;
-/**
- * Add your docs here.
- */
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
+/**
+ * Main class that ties robot to the code
+ */
 public class RobotMap {
 
-  public static Joystick joystick;
-  public static DifferentialDrive myRobot;
-  public static WPI_TalonSRX leftDriveMotorLead;
-  public static WPI_TalonSRX leftDriveMotorFollow;
-  public static WPI_TalonSRX rightDriveMotorLead;
-  public static WPI_TalonSRX rightDriveMotorFollow;
-  public static DigitalInput limitSwitchLiftDown;
-  public static DigitalInput limitSwitchLiftUp;
-  public static Encoder ArmEncoder;
-  public static DoubleSolenoid solenoidHatchRelease;
-  public static DoubleSolenoid solenoidRampRelease;
+  public static DifferentialDrive myRobot; // Creates new differential drive
 
-  public static CANSparkMax liftMotor;
-  public static CANEncoder liftEncoder;
-  public static Victor wristMotor;
+  public static WPI_TalonSRX leftDriveMotorLead; // Creates new talon motor for leading left drive
+  public static WPI_TalonSRX leftDriveMotorFollow; // Creates new talon motor for following left drive
+  public static WPI_TalonSRX rightDriveMotorLead; // Creates new talon motor for leading right drive
+  public static WPI_TalonSRX rightDriveMotorFollow; // Creates new talon motor for following right drive
 
-  public static Victor intakeMotorLead;
-  public static Victor intakeMotorFollow;
+  public static DigitalInput limitSwitchLiftDown; // Creates new limit switch for lift going down
+  public static DigitalInput limitSwitchLiftUp; // Creates new limit switch for lift going up
+
+  public static DoubleSolenoid solenoidHatchRelease; // Creates piston for Hatch Retract and Release
+  public static DoubleSolenoid solenoidHatchRelease2;
+  public static DoubleSolenoid solenoidRampRelease; // Creates piston for Ramp Retract and Release
+
+  public static Encoder ArmEncoder; // Creates new Encoder for Arm
+
+  public static Victor wristMotor; // Creates new Victor motor for Wrist
+  public static Victor intakeMotorLead; // Creates new Victor for Intake
+  // public static Victor intakeMotorFollow;
+
+  public static CANSparkMax liftMotor; // Creates new CanSparkMAX motor for Lift
+  
+  public static CANEncoder liftEncoder; // Creates new CANEncoder for Lift
 
   public static final int kTimeoutMs = 30;
 
   public static void init() {
 
-    leftDriveMotorLead = new WPI_TalonSRX(0);
-    leftDriveMotorLead.setInverted(true);
-    leftDriveMotorLead.set(0);
-    leftDriveMotorFollow = new WPI_TalonSRX(1);
-    leftDriveMotorFollow.setInverted(true);
+    leftDriveMotorLead = new WPI_TalonSRX(0); // Assigns Leading Left Drive Motor to Talon #0
+    leftDriveMotorLead.setInverted(true); // Inverts Leading Left Drive Motor
+    leftDriveMotorLead.set(0); // Sets speed to 0 (anywhere between -1 and 1)
+
+    leftDriveMotorFollow = new WPI_TalonSRX(1); // Assigns Following Left Drive Motor to Talon #1
+    leftDriveMotorFollow.setInverted(true); // Inverts Following Left Drive Motor
+    
+    // Makes the Following Left Drive Motor to follow the Leading left Drive Motor
     leftDriveMotorFollow.follow(leftDriveMotorLead);
+    // Converts Leading left Drive Motor to an Encoder
     leftDriveMotorLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, kTimeoutMs);
 
-    rightDriveMotorLead = new WPI_TalonSRX(2);
-    rightDriveMotorLead.setInverted(true);
-    rightDriveMotorLead.set(0);
-    rightDriveMotorFollow = new WPI_TalonSRX(3);
-    rightDriveMotorFollow.setInverted(true);
+    rightDriveMotorLead = new WPI_TalonSRX(2); // Assigns Leading Right Drive Motor to Talon #2
+    rightDriveMotorLead.setInverted(true); // Inverts Leading Right Drive Motor
+    rightDriveMotorLead.set(0); // Sets speed to 0 (anywhere between -1 and 1)
+
+    rightDriveMotorFollow = new WPI_TalonSRX(3); // Assigns Following Right Drive Motor to Talon #3
+    rightDriveMotorFollow.setInverted(true); // Inverts Following Left Drive Motor
+
+    // Makes the Following Right Drive Motor to follow the Leading Right Drive Motor
     rightDriveMotorFollow.follow(rightDriveMotorLead);
+    // Converts Leading Right Drive Motor to an Encoder
     rightDriveMotorLead.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, kTimeoutMs);
 
+    // Assigns myRobot To a new Differential Drive Object that uses The Leading
+    // Motors
     myRobot = new DifferentialDrive(leftDriveMotorLead, rightDriveMotorLead);
     // LiveWindow.addAcutator("Drive", "robotDrive", myRobot);
     myRobot.setSafetyEnabled(false);
@@ -78,26 +87,35 @@ public class RobotMap {
     myRobot.setMaxOutput(1.0);
 
     // lift motors
-    liftMotor = new CANSparkMax(4, MotorType.kBrushless);// motor to be
-    // determined
-    liftEncoder = liftMotor.getEncoder();
 
+    // Lift Motor to a new CANSparkMAX object
+    liftMotor = new CANSparkMax(4, MotorType.kBrushless);
+    liftMotor.setIdleMode(IdleMode.kBrake);
+    liftEncoder = liftMotor.getEncoder();
     // liftMotor.setInverted(false);
 
     // wrist motors
+
+    // Wrist Motor to a new Victor Object
     wristMotor = new Victor(0);
     // wristMotor.setInverted(false);
 
     // limitSwitch
+
+    // Limit Switch to new Digital input objects
     limitSwitchLiftDown = new DigitalInput(4);
     limitSwitchLiftUp = new DigitalInput(5);
 
     // Solenoids
+
+    // Solenoids Hatch and Ramp to new Double Solenoid objects
     solenoidHatchRelease = new DoubleSolenoid(0, 1);
-    //solenoidHatchRelease2 = new DoubleSolenoid(2, 3);
+    // solenoidHatchRelease2 = new DoubleSolenoid(2, 3);
     solenoidRampRelease = new DoubleSolenoid(4, 5);
 
     // intake motors
+
+    // Intake Motor to a new Victor Object
     intakeMotorLead = new Victor(1);
     // intakeMotor1.setInverted(false);
     // intakeMotorFollow = new Victor(1);

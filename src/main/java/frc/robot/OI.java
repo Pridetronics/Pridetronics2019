@@ -7,7 +7,7 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.GamepadBase;
 import edu.wpi.first.wpilibj.Joystick.AxisType;
@@ -60,10 +60,10 @@ public class OI {
 
     // Intake and Outtake
     
-    RightTrigger right = new RightTrigger();
+    Triggers right = new Triggers(gamepad, 2);
     right.whileActive(new IntakeBall());
     right.close();
-    LeftTrigger left = new LeftTrigger();
+    Triggers left = new Triggers(gamepad, 3);
     left.whileActive(new EjectBall());
     left.close();
 
@@ -72,7 +72,7 @@ public class OI {
     button14 = new JoystickButton(joystick, 2);
     button14.whileHeld(new RunLiftDown());
     // Cargo ball whenPressed
-    button3 = new JoystickButton(joystick, 3);
+    button3 = new JoystickButton(joystick, 1);
     //button3.whenPressed(new RocketCargo(CargoBall));
     // Top level on Rocket
     button7 = new JoystickButton(joystick, 7);

@@ -66,11 +66,11 @@ public class Lift extends Subsystem {
   }
 
   public boolean limitSwitchUpOpen() {
-    return !limitSwitchLiftUp.get();
+    return limitSwitchLiftUp.get();
   }
 
   public boolean limitSwitchDownOpen() {
-    return !limitSwitchLiftDown.get();
+    return limitSwitchLiftDown.get();
   }
 
 }
