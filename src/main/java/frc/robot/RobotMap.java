@@ -11,6 +11,7 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -46,7 +47,7 @@ public class RobotMap {
   // public static Victor intakeMotorFollow;
 
   public static CANSparkMax liftMotor; // Creates new CanSparkMAX motor for Lift
-
+  
   public static CANEncoder liftEncoder; // Creates new CANEncoder for Lift
 
   public static final int kTimeoutMs = 30;
@@ -89,6 +90,7 @@ public class RobotMap {
 
     // Lift Motor to a new CANSparkMAX object
     liftMotor = new CANSparkMax(4, MotorType.kBrushless);
+    liftMotor.setIdleMode(IdleMode.kBrake);
     liftEncoder = liftMotor.getEncoder();
     // liftMotor.setInverted(false);
 
