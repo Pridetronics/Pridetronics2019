@@ -38,7 +38,7 @@ public class Robot extends TimedRobot {
   public static Wrist wrist;
   public static Pnuematics pnuematics;
   public static Intake intake;
-  public static SparkMaxEnhanced liftEncoder;
+  public static SparkMaxEnhanced smEnhanced;
   Command autonomousCommand;
   public static boolean dir;
   public static boolean panelDir;
@@ -63,7 +63,7 @@ public class Robot extends TimedRobot {
     pnuematics = new Pnuematics();
     intake = new Intake();
     oi = new OI();
-    liftEncoder = new SparkMaxEnhanced();
+    smEnhanced = new SparkMaxEnhanced();
 
     //CameraServer.getInstance().startAutomaticCapture();
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
