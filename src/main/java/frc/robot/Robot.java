@@ -42,6 +42,7 @@ public class Robot extends TimedRobot {
   Command autonomousCommand;
   public static boolean dir;
   public static boolean panelDir;
+  
 
   /*
    * This function is run when the robot is first started up and should be used
@@ -74,6 +75,8 @@ public class Robot extends TimedRobot {
      * = table.getEntry("rot2"); rotationFirst.getDouble(0.0);
      * forwardDrive.getDouble(0.0); rotationSecond.getDouble(0.0);
      */
+
+    
   }
 
   /**
