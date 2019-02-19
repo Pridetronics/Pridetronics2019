@@ -76,13 +76,13 @@ public class OI {
     //button3.whenPressed(new RocketCargo(CargoBall));
     // Top level on Rocket
     button7 = new JoystickButton(joystick, 7);
-    //button7.whenPressed(new RocketCargo(RocketBallLv3));// change when rocketlv3 is made
+    button7.whenPressed(new RunLiftPID(RocketBallLv3));// change when rocketlv3 is made
     // Middle level on Rocket
     button9 = new JoystickButton(joystick, 9);
-    //button9.whenPressed(new RocketCargo(RocketBallLv2));// change when rocketlv2 is made
+    button9.whenPressed(new RunLiftPID(RocketBallLv2));// change when rocketlv2 is made
     // Bottom level on Rocket
     button11 = new JoystickButton(joystick, 11);
-    //button11.whenPressed(new RocketCargo(RocketBallLv1));// keep its gud
+    button11.whenPressed(new RunLiftPID(RocketBallLv1));// keep its gud
     // Wrist up whileheld
     button4 = new JoystickButton(gamepad, 2);
     button4.whileHeld(new WristUp());
