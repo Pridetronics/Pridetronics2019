@@ -20,7 +20,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-
+import com.revrobotics.CANPIDController;
 /**
  * Main class that ties robot to the code
  */
@@ -51,6 +51,9 @@ public class RobotMap {
   public static CANEncoder liftEncoder; // Creates new CANEncoder for Lift
 
   public static final int kTimeoutMs = 30;
+
+  public static CANPIDController m_pidController;
+  public static double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
 
   public static void init() {
 
@@ -93,6 +96,25 @@ public class RobotMap {
     liftMotor.setIdleMode(IdleMode.kBrake);
     liftEncoder = liftMotor.getEncoder();
     // liftMotor.setInverted(false);
+
+    m_pidController = liftMotor.getPIDController();
+
+    kP = 0.1; 
+    kI = 1e-4;
+    kD = 1; 
+    kIz = 0; 
+    kFF = 0; 
+    kMaxOutput = 1; 
+    kMinOutput = -1;
+
+    // set PID coefficients
+    m_pidController.setP(kP);
+    m_pidController.setI(kI);
+    m_pidController.setD(kD);
+    m_pidController.setIZone(kIz);
+    m_pidController.setFF(kFF);
+    m_pidController.setOutputRange(kMinOutput, kMaxOutput);
+
 
     // wrist motors
 

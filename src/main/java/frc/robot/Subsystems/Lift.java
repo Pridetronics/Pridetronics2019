@@ -8,6 +8,7 @@
 package frc.robot.Subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.Commands.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -42,6 +43,7 @@ public class Lift extends Subsystem {
   }
 
   public void up() {
+    SmartDashboard.putBoolean("lift", true);
     liftMotor.set(.55);
   }
 
@@ -54,6 +56,7 @@ public class Lift extends Subsystem {
   }
 
   public void down() {
+    SmartDashboard.putBoolean("lift", false);
     liftMotor.set(-.55);
   }
 
