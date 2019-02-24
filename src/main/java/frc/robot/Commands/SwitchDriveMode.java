@@ -11,22 +11,22 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.*;
 
 /**
- * Add your docs here.
+ * Instant command to toggle between tank (default) and arcade drive modes
  */
 public class SwitchDriveMode extends InstantCommand {
-  /**
-   * Add your docs here.
-   */
+
   public SwitchDriveMode() {
     super();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
 
-  // Called once when the command executes
+  /**
+   * SwitchDriveMode - toggle drive mode
+   */
   @Override
   protected void initialize() {
-    Robot.drive.setDrive();
+    Robot.drive.switchDrive();
   }
 
 }

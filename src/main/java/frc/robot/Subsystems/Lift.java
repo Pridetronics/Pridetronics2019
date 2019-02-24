@@ -20,14 +20,15 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Encoder;
 
 /**
- * Add your docs here.
+ * Lift subsystem
  */
 public class Lift extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
-  private final CANSparkMax liftMotor = RobotMap.liftMotor;
+
+  private final SparkMaxEnhanced liftMotor = RobotMap.liftMotor;
   private final DigitalInput limitSwitchLiftDown = RobotMap.limitSwitchLiftDown;
   private final DigitalInput limitSwitchLiftUp = RobotMap.limitSwitchLiftUp;
+
+  private double zeroOffset;
 
   @Override
   public void initDefaultCommand() {
@@ -39,6 +40,14 @@ public class Lift extends Subsystem {
   public void periodic() {
     // Put code here to be run every loop
 
+  }
+
+  public void setOffset() {
+    liftMotor.setOffset();
+  }
+
+  public void setPosition(double position) {
+    liftMotor.runPID(position);
   }
 
   public void up() {

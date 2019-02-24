@@ -7,15 +7,15 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
-import frc.robot.RobotMap;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Subsystems.Lift;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
+
+import frc.robot.Robot;
+import frc.robot.RobotMap;
 import frc.robot.Subsystems.*;
+import frc.robot.Subsystems.Lift;
 
 /*
 import edu.wpi.first.wpilibj.PIDController;
@@ -23,21 +23,17 @@ import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.PIDSourceType;
 */
 
-
 public class RocketCargo extends Command {
 
-    private double distance;
-    
-    
+  private double distance;
+
+  private final Lift lift = Robot.lift;
+
   public double scale = 1.0;
 
   public RocketCargo(double d) {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     this.distance = d * scale;
-    
     // SmartDashboard.putNumber("d", d);
-
     requires(Robot.lift);
 
   }
@@ -56,18 +52,18 @@ public class RocketCargo extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putNumber("distance", this.distance);
-    Robot.liftPID.enable();
-    Robot.liftPID.setPoint(distance);
+    // Robot.liftPID.enable();
+    // Robot.liftPID.setPoint(distance);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    SmartDashboard.putNumber("current ticks", Robot.liftEncoder.readEncoder());
-    if (Robot.liftEncoder.readEncoder() > this.distance) {
-      Robot.lift.stop();
-      return true;
-    }
+    // SmartDashboard.putNumber("current ticks", Robot.liftEncoder.readEncoder());
+    // if (Robot.liftEncoder.readEncoder() > this.distance) {
+    // Robot.lift.stop();
+    // return true;
+    // }
     return false;
   }
 
@@ -81,5 +77,6 @@ public class RocketCargo extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

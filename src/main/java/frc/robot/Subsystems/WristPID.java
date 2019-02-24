@@ -14,17 +14,18 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 /**
- * Add your docs here.
+ * Wrist PID cpntroller
  */
-public class LiftPID extends PIDSubsystem {
-  /**
-   * Add your docs here.
-   */
-  public LiftPID() {
+public class WristPID extends PIDSubsystem {
+
+  private double setPoint;
+
+  public WristPID(double sp) {
     // Intert a subsystem name and PID values here
-    super("Lift", .25, 0.0, 0.0);
-    setAbsoluteTolerance(0.2);
-    
+    super("Wrist", .25, 0.0, 0.0);
+    // setAbsoluteTolerance(0.2);
+    setPoint = sp;
+
     // Use these to get going:
     // setSetpoint() - Sets where the PID controller should move the system
     // to
@@ -42,7 +43,8 @@ public class LiftPID extends PIDSubsystem {
     // Return your input value for the PID loop
     // e.g. a sensor, like a potentiometer:
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    return Robot.liftEncoder.readEncoder();
+    // return Robot.liftEncoder.readEncoder();
+    return 0.0;
   }
 
   public void setPoint(double set) {
@@ -51,6 +53,6 @@ public class LiftPID extends PIDSubsystem {
 
   @Override
   protected void usePIDOutput(double output) {
-    RobotMap.liftMotor.set(output);
+    RobotMap.wristMotor.set(output);
   }
 }

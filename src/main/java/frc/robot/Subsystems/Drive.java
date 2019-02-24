@@ -47,7 +47,7 @@ public class Drive extends Subsystem {
     SmartDashboard.putString("Drive Mode", "Tank");
   }
 
-  public void setDrive() {
+  public void switchDrive() {
 
     if (currentMode == 0) {
       currentMode = 1;

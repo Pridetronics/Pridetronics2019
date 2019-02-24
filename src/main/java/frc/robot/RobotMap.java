@@ -8,9 +8,8 @@
 package frc.robot;
 
 import com.revrobotics.*;
-import com.revrobotics.CANEncoder;
-
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -25,10 +24,9 @@ import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Victor;
-/**
- * Add your docs here.
- */
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+
+import frc.robot.Subsystems.SparkMaxEnhanced;
 
 public class RobotMap {
 
@@ -44,8 +42,8 @@ public class RobotMap {
   public static DoubleSolenoid solenoidHatchRelease;
   public static DoubleSolenoid solenoidRampRelease;
 
-  public static CANSparkMax liftMotor;
-  public static CANEncoder liftEncoder;
+  public static SparkMaxEnhanced liftMotor;
+
   public static Victor wristMotor;
 
   public static Victor intakeMotorLead;
@@ -78,9 +76,7 @@ public class RobotMap {
     myRobot.setMaxOutput(1.0);
 
     // lift motors
-    liftMotor = new CANSparkMax(4, MotorType.kBrushless);// motor to be
-    // determined
-    liftEncoder = liftMotor.getEncoder();
+    liftMotor = new SparkMaxEnhanced(4, MotorType.kBrushless);
 
     // liftMotor.setInverted(false);
 
@@ -94,7 +90,7 @@ public class RobotMap {
 
     // Solenoids
     solenoidHatchRelease = new DoubleSolenoid(0, 1);
-    //solenoidHatchRelease2 = new DoubleSolenoid(2, 3);
+    // solenoidHatchRelease2 = new DoubleSolenoid(2, 3);
     solenoidRampRelease = new DoubleSolenoid(4, 5);
 
     // intake motors

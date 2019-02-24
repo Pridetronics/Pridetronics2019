@@ -34,14 +34,15 @@ import com.revrobotics.*;
  * project.
  */
 public class Robot extends TimedRobot {
+
   public static Drive drive;
+
   public static Lift lift;
-  public static LiftPID liftPID;
   public static OI oi;
   public static Wrist wrist;
   public static Pnuematics pnuematics;
   public static Intake intake;
-  public static SparkMaxEnhanced liftEncoder;
+
   Command autonomousCommand;
   public static boolean dir;
   public static boolean panelDir;
@@ -56,19 +57,17 @@ public class Robot extends TimedRobot {
     panelDir = true;
     // CameraServer.getInstance().startAutomaticCapture();
     UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-    camera.setResolution(320,240);
+    camera.setResolution(320, 240);
     RobotMap.init();
     drive = new Drive();
     lift = new Lift();
-    liftPID = new LiftPID();
 
     wrist = new Wrist();
     pnuematics = new Pnuematics();
     intake = new Intake();
     oi = new OI();
-    liftEncoder = new SparkMaxEnhanced();
 
-    //CameraServer.getInstance().startAutomaticCapture();
+    // CameraServer.getInstance().startAutomaticCapture();
     NetworkTableInstance inst = NetworkTableInstance.getDefault();
 
     /*

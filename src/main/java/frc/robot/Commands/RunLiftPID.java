@@ -8,63 +8,40 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.DigitalInput;
 
 import frc.robot.RobotMap;
-import frc.robot.Robot;
-import frc.robot.Subsystems.*;
 
-/**
- * This class creates a command to run lift up.
- */
-public class RunLiftUp extends Command {
+public class RunLiftPID extends Command {
 
-  public final SparkMaxEnhanced lift = RobotMap.liftMotor;
-  public final DigitalInput limitSwitchLiftDown = RobotMap.limitSwitchLiftDown;
-  public final DigitalInput limitSwitchLiftUp = RobotMap.limitSwitchLiftUp;
-
-  public RunLiftUp() {
-
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
-
-    requires(Robot.lift);
+  public RunLiftPID(double position) {
+    requires(RobotMap.liftMotor);
+    RobotMap.liftMotor.runPID(position);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (Robot.lift.limitSwitchUpOpen()) {
-      Robot.lift.up();
-    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if (Robot.lift.limitSwitchUpOpen()) {
-      return false;
-    }
-    return true;
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.lift.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end();
   }
 }

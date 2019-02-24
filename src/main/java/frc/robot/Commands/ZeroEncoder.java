@@ -8,25 +8,24 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
-import frc.robot.Robot;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 
+import frc.robot.Robot;
+import frc.robot.Robot.*;
+
 /**
- * Add your docs here.
+ * Zero the lift encoder by reading encoder and saving as the offset
  */
 public class ZeroEncoder extends InstantCommand {
-  /**
-   * Add your docs here.
-   */
+
   public ZeroEncoder() {
     super();
   }
 
   @Override
   protected void initialize() {
-    
     SmartDashboard.putString("Autonomous", "Zeroing Encoder");
-    Robot.liftEncoder.setOffset();
+    Robot.lift.setOffset();
   }
 
 }
