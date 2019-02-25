@@ -7,24 +7,20 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
-
-import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.*;
-
-import edu.wpi.cscore.UsbCamera;
-
-import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import frc.robot.Commands.*;
-import frc.robot.Subsystems.*;
-
-import com.revrobotics.*;
+import frc.robot.Commands.InitializeLift;
+import frc.robot.Subsystems.Drive;
+import frc.robot.Subsystems.Intake;
+import frc.robot.Subsystems.Lift;
+import frc.robot.Subsystems.Pnuematics;
+import frc.robot.Subsystems.Wrist;
+import frc.robot.Subsystems.WristPID;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -38,11 +34,11 @@ public class Robot extends TimedRobot {
   public static Drive drive;
 
   public static Lift lift;
+  public static WristPID wristPID;
   public static OI oi;
   public static Wrist wrist;
   public static Pnuematics pnuematics;
   public static Intake intake;
-
   Command autonomousCommand;
   public static boolean dir;
   public static boolean panelDir;
@@ -56,11 +52,12 @@ public class Robot extends TimedRobot {
     dir = true;
     panelDir = true;
     // CameraServer.getInstance().startAutomaticCapture();
-    UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-    camera.setResolution(320, 240);
+    // UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+    // camera.setResolution(320,240);
     RobotMap.init();
     drive = new Drive();
     lift = new Lift();
+    // liftPID = new LiftPID();
 
     wrist = new Wrist();
     pnuematics = new Pnuematics();
@@ -76,6 +73,7 @@ public class Robot extends TimedRobot {
      * = table.getEntry("rot2"); rotationFirst.getDouble(0.0);
      * forwardDrive.getDouble(0.0); rotationSecond.getDouble(0.0);
      */
+
   }
 
   /**

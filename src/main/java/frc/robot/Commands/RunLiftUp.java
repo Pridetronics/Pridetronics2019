@@ -41,18 +41,18 @@ public class RunLiftUp extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (Robot.lift.limitSwitchUpOpen()) {
+    //if (Robot.lift.limitSwitchUpOpen()) {
       Robot.lift.up();
-    }
+    //}
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if (Robot.lift.limitSwitchUpOpen()) {
+    //if (Robot.lift.limitSwitchUpOpen()) {
       return false;
-    }
-    return true;
+    //}
+    //return true;
   }
 
   // Called once after isFinished returns true

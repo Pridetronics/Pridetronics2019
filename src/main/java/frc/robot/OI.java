@@ -7,7 +7,7 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.GamepadBase;
 import edu.wpi.first.wpilibj.Joystick.AxisType;
@@ -63,10 +63,10 @@ public class OI {
 
     // Intake and Outtake
 
-    RightTrigger right = new RightTrigger();
+    Triggers right = new Triggers(gamepad, 2);
     right.whileActive(new IntakeBall());
     right.close();
-    LeftTrigger left = new LeftTrigger();
+    Triggers left = new Triggers(gamepad, 3);
     left.whileActive(new EjectBall());
     left.close();
 
@@ -80,26 +80,17 @@ public class OI {
     // joystickButton3.whenPressed(new RocketCargo(CargoBall));
     // Top level on Rocket
 
-    joystickButton7 = new JoystickButton(joystick, 7);
-    // joystickButton7.whenPressed(new RocketCargo(RocketBallLv3));// change when
-    // rocketlv3
-    // is made
-
     // Middle level on Rocket
     joystickButton9 = new JoystickButton(joystick, 9);
-    // joystickButton9.whenPressed(new RocketCargo(RocketBallLv2));// change when
-    // rocketlv2
-    // is made
-
+    joystickButton9.whenPressed(new RunLiftPID(RocketBallLv2));// change when rocketlv2 is made
     // Bottom level on Rocket
     button11 = new JoystickButton(joystick, 11);
-    // button11.whenPressed(new RocketCargo(RocketBallLv1));// keep its gud
+    button11.whenPressed(new RunLiftPID(RocketBallLv1));// keep its gud
 
     // Wrist up whileheld
     button4 = new JoystickButton(gamepad, 2);
     button4.whileHeld(new WristUp());
 
-    // Wrist down whileheld
     button6 = new JoystickButton(gamepad, 1);
     button6.whileHeld(new WristDown());
 

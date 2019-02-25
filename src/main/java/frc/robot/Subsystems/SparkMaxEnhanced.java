@@ -7,13 +7,10 @@
 
 package frc.robot.Subsystems;
 
-import javax.swing.RowFilter.ComparisonType;
-
 import com.revrobotics.*;
 import com.revrobotics.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.*;
 
-import frc.robot.RobotMap;
 import frc.robot.Commands.RunLiftPID;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -66,6 +63,17 @@ public class SparkMaxEnhanced extends Subsystem {
    */
   public void set(double speed) {
     liftMotor.set(speed);
+  }
+
+  /**
+   * get the controller
+   */
+  public CANSparkMax getController() {
+    return liftMotor;
+  }
+
+  public CANPIDController getPIDController() {
+    return liftPID;
   }
 
   // Create a reset for the Ticks

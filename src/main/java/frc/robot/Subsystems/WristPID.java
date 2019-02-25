@@ -43,8 +43,7 @@ public class WristPID extends PIDSubsystem {
     // Return your input value for the PID loop
     // e.g. a sensor, like a potentiometer:
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    // return Robot.liftEncoder.readEncoder();
-    return 0.0;
+    return Robot.lift.getPosition();
   }
 
   public void setPoint(double set) {

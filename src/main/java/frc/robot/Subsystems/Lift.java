@@ -8,15 +8,10 @@
 package frc.robot.Subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
-import frc.robot.Commands.*;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.DigitalInput;
 
-import com.revrobotics.CANSparkMax;
-
-import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Encoder;
 
 /**
@@ -51,6 +46,7 @@ public class Lift extends Subsystem {
   }
 
   public void up() {
+    SmartDashboard.putBoolean("lift", true);
     liftMotor.set(.55);
   }
 
@@ -63,23 +59,23 @@ public class Lift extends Subsystem {
   }
 
   public void down() {
-    liftMotor.set(-.55);
+    SmartDashboard.putBoolean("lift", false);
+    liftMotor.set(-.40);
   }
 
   public void stop() {
     liftMotor.set(0);
   }
 
-  public Encoder getArmEncoder() {
-    return RobotMap.ArmEncoder;
-  }
-
   public boolean limitSwitchUpOpen() {
-    return !limitSwitchLiftUp.get();
+    return limitSwitchLiftUp.get();
   }
 
   public boolean limitSwitchDownOpen() {
-    return !limitSwitchLiftDown.get();
+    return limitSwitchLiftDown.get();
   }
 
+  public double getPosition() {
+    return liftMotor.readEncoder();
+  }
 }
