@@ -49,6 +49,8 @@ public class OI {
   public static final double RocketHatch3 = 75;
   // InstanceVariable for CargoBall
   public static final double CargoBall = 48;
+  //InstanceVariables for Wrist
+  //public static final double Wrist = Math.PI/2;
 
   private double value;
   private Joystick Stick;

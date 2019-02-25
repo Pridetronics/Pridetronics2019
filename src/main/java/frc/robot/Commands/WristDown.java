@@ -14,6 +14,7 @@ public class WristDown extends Command {
   public WristDown() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.wrist);
   }
 
   // Called just before this Command runs the first time

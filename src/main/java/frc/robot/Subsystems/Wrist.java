@@ -7,8 +7,9 @@
 
 package frc.robot.Subsystems;
 
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.Victor;
@@ -18,6 +19,8 @@ import edu.wpi.first.wpilibj.Victor;
 public class Wrist extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
+  private static PIDController controller = RobotMap.wristController;
+  private Encoder arm = RobotMap.ArmEncoder;
   private final Victor wristMotor = RobotMap.wristMotor;
   // private final Encoder wristPosition = RobotMap.wristPosition;
 
@@ -34,11 +37,11 @@ public class Wrist extends Subsystem {
   }
 
   public void up() {
-    wristMotor.set(1);
+    wristMotor.set(.6);
   }
 
   public void down() {
-    wristMotor.set(-1);
+    wristMotor.set(-.6);
   }
 
   public void stop() {

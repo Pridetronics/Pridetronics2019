@@ -12,6 +12,8 @@ import frc.robot.Subsystems.*;
 import frc.robot.Commands.*;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.Encoder;
 
 /**
  * Add your docs here.
@@ -20,10 +22,14 @@ public class WristPID extends PIDSubsystem {
   /**
    * Add your docs here.
    */
+  Encoder arm = RobotMap.ArmEncoder;
+  private final Victor wristMotor = RobotMap.wristMotor;
+
   public WristPID() {
     // Intert a subsystem name and PID values here
     super("Wrist", .25, 0.0, 0.0);
     setAbsoluteTolerance(0.2);
+    getPIDController().setContinuous(false);
     
     // Use these to get going:
     // setSetpoint() - Sets where the PID controller should move the system
@@ -42,15 +48,16 @@ public class WristPID extends PIDSubsystem {
     // Return your input value for the PID loop
     // e.g. a sensor, like a potentiometer:
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    return 1;//Robot.WristEncoder.readEncoder();
+    return arm.getDistancePerPulse();
+    //return 1;//Robot.WristEncoder.readEncoder();
   }
 
-  public void setPoint(double set) {
+  /*public void setPoint(double set) {
     this.setSetpoint(set);
-  }
+  }*/
 
   @Override
   protected void usePIDOutput(double output) {
-    //RobotMap.WristMotor.set(output);
+    wristMotor.set(output);
   }
 }

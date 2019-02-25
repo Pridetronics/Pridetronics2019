@@ -16,11 +16,12 @@ import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMax.*;
 import com.revrobotics.CANSparkMaxLowLevel.*;
 
-
+import edu.wpi.first.wpilibj.CAN;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.revrobotics.CANPIDController;
@@ -48,6 +49,7 @@ public class RobotMap {
   public static DoubleSolenoid solenoidRampRelease; // Creates piston for Ramp Retract and Release
 
   public static Encoder ArmEncoder; // Creates new Encoder for Arm
+  public static PIDController wristController;
 
   public static Victor wristMotor; // Creates new Victor motor for Wrist
   public static Victor intakeMotorLead; // Creates new Victor for Intake
@@ -60,9 +62,15 @@ public class RobotMap {
   public static final int kTimeoutMs = 30;
 
   public static CANPIDController m_pidController;
+  
   public static double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
 
   public static void init() {
+
+    ArmEncoder = new Encoder(2, 3);
+    ArmEncoder.setReverseDirection(false);
+
+    wristController = new PIDController(.1, 0.0, 0.0, ArmEncoder, wristMotor);
 
     leftDriveMotorLead = new WPI_TalonSRX(0); // Assigns Leading Left Drive Motor to Talon #0
     leftDriveMotorLead.setInverted(true); // Inverts Leading Left Drive Motor
