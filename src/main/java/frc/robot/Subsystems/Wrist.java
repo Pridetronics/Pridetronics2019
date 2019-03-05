@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.Encoder;
 
 /**
  */
@@ -43,6 +44,10 @@ public class Wrist extends Subsystem {
 
   public void stop() {
     wristMotor.set(0);
+  }
+  
+  public Encoder getWristEncoder() {
+    return RobotMap.wristEncoder;
   }
 
   /*

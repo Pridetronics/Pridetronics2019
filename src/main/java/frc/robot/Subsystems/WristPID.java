@@ -31,7 +31,7 @@ public class WristPID extends PIDSubsystem {
 
   public WristPID() {
     // Intert a subsystem name and PID values here
-    super("Wrist", .5, 0.0, 0.0);
+    super("Wrist", .2, 0.0, 0.0);
     setAbsoluteTolerance(0.2);
 
     setInputRange(0, 1024);
@@ -54,7 +54,7 @@ public class WristPID extends PIDSubsystem {
     // Return your input value for the PID loop
     // e.g. a sensor, like a potentiometer:
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    return wristEncoder.get();
+    return -wristEncoder.get();
   }
 
   public void setPoint(double set) {

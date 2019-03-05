@@ -7,47 +7,27 @@
 
 package frc.robot.Commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.*;
-import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.command.InstantCommand;
+import frc.robot.Robot;
 
-public class WristUp extends Command {
-  private final DigitalInput wristLimitUp = RobotMap.wristLimitUp;
+/**
+ * Add your docs here.
+ */
+public class WristUp extends InstantCommand {
+  /**
+   * Add your docs here.
+   */
   public WristUp() {
+    super();
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
 
-  // Called just before this Command runs the first time
+  // Called once when the command executes
   @Override
   protected void initialize() {
+    Robot.wristPID.setSetpoint(10);
+    Robot.wristPID.enable();
   }
 
-  // Called repeatedly when this Command is scheduled to run
-  @Override
-  protected void execute() {
-    Robot.wrist.up();
-  }
-
-  // Make this return true when this Command no longer needs to run execute()
-  @Override
-  protected boolean isFinished() {
-    if(wristLimitUp.get()){
-      return true;
-    } 
-    return false;
-  }
-
-  // Called once after isFinished returns true
-  @Override
-  protected void end() {
-    Robot.wrist.stop();
-  }
-
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
-  @Override
-  protected void interrupted() {
-    end();
-  }
 }

@@ -64,10 +64,6 @@ public class Lift extends Subsystem {
     liftMotor.set(0);
   }
 
-  public Encoder getWristEncoder() {
-    return RobotMap.wristEncoder;
-  }
-
   public boolean limitSwitchUpOpen() {
     return limitSwitchLiftUp.get();
   }
