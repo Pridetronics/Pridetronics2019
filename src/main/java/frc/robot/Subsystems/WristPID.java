@@ -7,11 +7,14 @@
 
 package frc.robot.Subsystems;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import frc.robot.Subsystems.*;
 import frc.robot.Commands.*;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PWMSpeedController;
 
 /**
  * Add your docs here.
@@ -20,10 +23,19 @@ public class WristPID extends PIDSubsystem {
   /**
    * Add your docs here.
    */
+
+   private final Encoder wristEncoder = RobotMap.wristEncoder;
+   private final PWMSpeedController wristMotor = RobotMap.wristMotor;
+   private final DigitalInput wristLimitUp = RobotMap.wristLimitUp;
+   private final DigitalInput wristLimitDown = RobotMap.wristLimitDown;
+
   public WristPID() {
     // Intert a subsystem name and PID values here
-    super("Wrist", .25, 0.0, 0.0);
+    super("Wrist", .5, 0.0, 0.0);
     setAbsoluteTolerance(0.2);
+
+    setInputRange(0, 1024);
+    setOutputRange(-1, 1);
     
     // Use these to get going:
     // setSetpoint() - Sets where the PID controller should move the system
@@ -42,7 +54,7 @@ public class WristPID extends PIDSubsystem {
     // Return your input value for the PID loop
     // e.g. a sensor, like a potentiometer:
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    return 1;//Robot.WristEncoder.readEncoder();
+    return wristEncoder.get();
   }
 
   public void setPoint(double set) {
@@ -51,6 +63,15 @@ public class WristPID extends PIDSubsystem {
 
   @Override
   protected void usePIDOutput(double output) {
-    //RobotMap.WristMotor.set(output);
+
+    wristMotor.set(output);
+  }
+
+  public boolean limitWristUp(){
+    return wristLimitUp.get();
+  }
+
+  public boolean limitWristDown(){
+    return wristLimitDown.get();
   }
 }

@@ -9,8 +9,10 @@ package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.*;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 public class WristUp extends Command {
+  private final DigitalInput wristLimitUp = RobotMap.wristLimitUp;
   public WristUp() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -30,6 +32,9 @@ public class WristUp extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
+    if(wristLimitUp.get()){
+      return true;
+    } 
     return false;
   }
 

@@ -40,7 +40,10 @@ public class RobotMap {
   public static DoubleSolenoid solenoidHatchRelease2;
   public static DoubleSolenoid solenoidRampRelease; // Creates piston for Ramp Retract and Release
 
-  public static Encoder ArmEncoder; // Creates new Encoder for Arm
+  public static Encoder wristEncoder; // Creates new Encoder for Arm
+  public static DigitalInput wristLimitUp;
+  public static DigitalInput wristLimitDown;
+
 
   public static Victor wristMotor; // Creates new Victor motor for Wrist
   public static Victor intakeMotorLead; // Creates new Victor for Intake
@@ -53,7 +56,7 @@ public class RobotMap {
   public static final int kTimeoutMs = 30;
 
   public static CANPIDController m_pidController;
-  public static double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput;
+  public static double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput, kMaxInput, kMinInput;
 
   public static void init() {
 
@@ -99,13 +102,15 @@ public class RobotMap {
 
     m_pidController = liftMotor.getPIDController();
 
-    kP = 0.1; 
-    kI = 1e-4;
-    kD = 1; 
-    kIz = 0; 
-    kFF = 0; 
+    kP = 0.5; 
+    kI = 0.0;
+    kD = 0.0; 
+    kIz = 0.0; 
+    kFF = 0.0; 
     kMaxOutput = 1; 
     kMinOutput = -1;
+    kMaxInput = 1024;
+    kMinInput = 0.0;
 
     // set PID coefficients
     m_pidController.setP(kP);
@@ -114,12 +119,15 @@ public class RobotMap {
     m_pidController.setIZone(kIz);
     m_pidController.setFF(kFF);
     m_pidController.setOutputRange(kMinOutput, kMaxOutput);
+   // m_pidController.setInputRange(kMinInput, kMaxInput);
 
 
     // wrist motors
 
     // Wrist Motor to a new Victor Object
     wristMotor = new Victor(0);
+    wristLimitUp = new DigitalInput(6);
+    wristLimitDown = new DigitalInput(7);
     // wristMotor.setInverted(false);
 
     // limitSwitch

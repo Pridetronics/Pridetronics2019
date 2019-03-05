@@ -9,8 +9,11 @@ package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.*;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 public class WristDown extends Command {
+  private final DigitalInput wristLimitDown = RobotMap.wristLimitDown;
+
   public WristDown() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -30,6 +33,9 @@ public class WristDown extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
+    if(wristLimitDown.get()) {
+      return true;
+    }
     return false;
   }
 
@@ -37,6 +43,7 @@ public class WristDown extends Command {
   @Override
   protected void end() {
     Robot.wrist.stop();
+
   }
 
   // Called when another command which requires one or more of the same
