@@ -127,6 +127,8 @@ public class RobotMap {
     // Wrist Motor to a new Victor Object
     wristMotor = new Victor(0);
     wristEncoder = new Encoder(2, 3);
+    
+    wristEncoder.setDistancePerPulse(1/11.6148);
     wristLimitUp = new DigitalInput(6);
     wristLimitDown = new DigitalInput(7);
     // wristMotor.setInverted(false);

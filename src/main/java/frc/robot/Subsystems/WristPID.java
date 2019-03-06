@@ -63,8 +63,14 @@ public class WristPID extends PIDSubsystem {
 
   @Override
   protected void usePIDOutput(double output) {
-
-    wristMotor.set(output);
+    // if true, limit is pressed
+    if(!RobotMap.wristLimitUp.get() && (output > 0)){
+      wristMotor.set(output/4);
+    } else if(!RobotMap.wristLimitDown.get() && (output < 0)){
+      wristMotor.set(output/4);
+    } else {
+      wristMotor.set(0);
+    }
   }
 
   public boolean limitWristUp(){
