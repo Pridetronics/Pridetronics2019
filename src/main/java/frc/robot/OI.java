@@ -85,10 +85,10 @@ public class OI {
     //button11.whenPressed(new RocketCargo(RocketBallLv1));// keep its gud
     // Wrist up whileheld
     button4 = new JoystickButton(gamepad, 2);
-    button4.whenPressed(new WristUp());
+    button4.whileHeld(new WristUp());
     // Wrist down whileheld
     button6 = new JoystickButton(gamepad, 1);
-    button6.whenPressed(new WristDown());
+    button6.whileHeld(new WristDown());
     // Hatch Panel in/out
     button5 = new JoystickButton(joystick, 5);
     button5.whenPressed(new PushPanel());
