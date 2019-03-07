@@ -8,9 +8,7 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
-import frc.robot.*;
-import edu.wpi.first.wpilibj.DigitalInput;
-
+import frc.robot.Robot;
 
 /**
  * Add your docs here.
@@ -19,8 +17,6 @@ public class WristDown extends InstantCommand {
   /**
    * Add your docs here.
    */
- 
-
   public WristDown() {
     super();
     // Use requires() here to declare subsystem dependencies
@@ -32,16 +28,6 @@ public class WristDown extends InstantCommand {
   protected void initialize() {
     Robot.wristPID.setSetpoint(-10);
     Robot.wristPID.enable();
-  }
-
-  @Override
-  protected boolean isFinished() {
-    return false;
-  }
-
-  @Override
-  protected void end() {
-    Robot.wristPID.disable();
   }
 
 }
