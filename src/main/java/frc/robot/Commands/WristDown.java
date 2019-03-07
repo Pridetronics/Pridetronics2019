@@ -26,7 +26,7 @@ public class WristDown extends InstantCommand {
   // Called once when the command executes
   @Override
   protected void initialize() {
-    Robot.wristPID.setSetpoint(-10);
+    Robot.wristPID.setSetpoint(0);
     Robot.wristPID.enable();
   }
 

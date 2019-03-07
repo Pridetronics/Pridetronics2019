@@ -27,6 +27,8 @@ public class ZeroEncoder extends InstantCommand {
     
     SmartDashboard.putString("Autonomous", "Zeroing Encoder");
     Robot.smEnhanced.setOffset();
+    
+
   }
 
 }

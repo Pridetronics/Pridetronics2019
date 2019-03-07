@@ -62,6 +62,7 @@ public class Robot extends TimedRobot {
 
     wrist = new Wrist();
     wristPID = new WristPID();
+    wristPID.enable();
     pnuematics = new Pnuematics();
     intake = new Intake();
     oi = new OI();

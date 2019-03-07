@@ -31,11 +31,11 @@ public class WristPID extends PIDSubsystem {
 
   public WristPID() {
     // Intert a subsystem name and PID values here
-    super("Wrist", .2, 0.0, 0.0);
-    setAbsoluteTolerance(0.2);
+    super("Wrist", .06, 0, 0);
+    setAbsoluteTolerance(0.05);
 
-    setInputRange(0, 1024);
-    setOutputRange(-1, 1);
+    setInputRange(-1024, 1024);
+    setOutputRange(-.5, .5);
     
     // Use these to get going:
     // setSetpoint() - Sets where the PID controller should move the system
@@ -54,7 +54,7 @@ public class WristPID extends PIDSubsystem {
     // Return your input value for the PID loop
     // e.g. a sensor, like a potentiometer:
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    return -wristEncoder.get();
+    return -wristEncoder.getDistance();
   }
 
   public void setPoint(double set) {
@@ -65,19 +65,11 @@ public class WristPID extends PIDSubsystem {
   protected void usePIDOutput(double output) {
     // if true, limit is pressed
     if(!RobotMap.wristLimitUp.get() && (output > 0)){
-      wristMotor.set(output/4);
+      wristMotor.set(output);
     } else if(!RobotMap.wristLimitDown.get() && (output < 0)){
-      wristMotor.set(output/4);
+      wristMotor.set(output);
     } else {
       wristMotor.set(0);
     }
-  }
-
-  public boolean limitWristUp(){
-    return wristLimitUp.get();
-  }
-
-  public boolean limitWristDown(){
-    return wristLimitDown.get();
   }
 }
