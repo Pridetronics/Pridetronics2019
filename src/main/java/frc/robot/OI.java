@@ -38,6 +38,8 @@ public class OI {
   public JoystickButton gamepadButton8;
   public JoystickButton button13; // Lift up
   public JoystickButton button14; // Lift down
+  public JoystickButton TestButton; // Lift down
+
 
   // InstanceVariables for Ball
   public static final double RocketBallLv1 = 27.5;
@@ -99,6 +101,9 @@ public class OI {
 
     button5 = new JoystickButton(gamepad, 5);
     button5.whenPressed(new RampRelease());
+
+    TestButton = new JoystickButton(gamepad, 9);
+    TestButton.whenPressed(new TestZeroWristEncoder());
   }
 
   public Joystick getJoystick() {

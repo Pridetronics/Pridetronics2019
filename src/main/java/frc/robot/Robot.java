@@ -62,6 +62,7 @@ public class Robot extends TimedRobot {
 
     wrist = new Wrist();
     wristPID = new WristPID();
+    wristPID.enable();
     pnuematics = new Pnuematics();
     intake = new Intake();
     oi = new OI();
@@ -91,6 +92,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    SmartDashboard.putBoolean("WristLimitDown", RobotMap.wristLimitDown.get());
+    
     // boolean out = RobotMap.limitSwitchLiftDown.get();
     // SmartDashboard.putBoolean("LimitSwitch", out);
   }
