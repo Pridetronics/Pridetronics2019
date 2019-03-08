@@ -24,6 +24,7 @@ public class RunLiftDown extends Command {
     SmartDashboard.putString("Autonomous", "Run lift down");
   }
 
+  
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {

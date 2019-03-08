@@ -9,18 +9,26 @@ package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.CANSparkMax.*;
+import com.revrobotics.CANSparkMaxLowLevel.*;
+import com.revrobotics.CANPIDController;
+import com.revrobotics.ControlType;
 
+
+import edu.wpi.first.wpilibj.CAN;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import com.revrobotics.CANPIDController;
+
+
 /**
  * Main class that ties robot to the code
  */
@@ -95,9 +103,9 @@ public class RobotMap {
     // lift motors
 
     // Lift Motor to a new CANSparkMAX object
-    liftMotor = new CANSparkMax(4, MotorType.kBrushless);
-    liftMotor.setIdleMode(IdleMode.kBrake);
+    liftMotor = new CANSparkMax(4, MotorType.kBrushless);    liftMotor.setIdleMode(IdleMode.kBrake);
     liftEncoder = liftMotor.getEncoder();
+    
     // liftMotor.setInverted(false);
 
     m_pidController = liftMotor.getPIDController();
@@ -120,7 +128,6 @@ public class RobotMap {
     m_pidController.setFF(kFF);
     m_pidController.setOutputRange(kMinOutput, kMaxOutput);
    // m_pidController.setInputRange(kMinInput, kMaxInput);
-
 
     // wrist motors
 

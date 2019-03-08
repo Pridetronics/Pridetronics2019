@@ -9,26 +9,26 @@ package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.Robot;
-
+import frc.robot.RobotMap;
+import com.revrobotics.ControlType;
 /**
  * Add your docs here.
  */
-public class WristUp extends InstantCommand {
+public class RunWristPID extends InstantCommand {
   /**
    * Add your docs here.
    */
-  public WristUp() {
+  private double setpoint;
+  public RunWristPID(double s) {
     super();
+    s = setpoint;
     // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.wrist);
   }
 
   // Called once when the command executes
   @Override
   protected void initialize() {
-    Robot.wristPID.setSetpoint(90);
-    Robot.wristPID.enable();
   }
 
 }

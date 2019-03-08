@@ -57,9 +57,9 @@ public class WristPID extends PIDSubsystem {
     return -wristEncoder.getDistance();
   }
 
-  public void setPoint(double set) {
+  /*public void setPoint(double set) {
     this.setSetpoint(set);
-  }
+  }*/
 
   @Override
   protected void usePIDOutput(double output) {
