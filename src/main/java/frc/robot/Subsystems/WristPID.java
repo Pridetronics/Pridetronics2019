@@ -33,12 +33,12 @@ public class WristPID extends PIDSubsystem {
 
   public WristPID() {
     // Intert a subsystem name and PID values here
-    super("Wrist", .6, 0, 0);
+    super("Wrist", .06, 0, 0);
     setAbsoluteTolerance(0.05);
 
     setInputRange(-1024, 1024);
-    setOutputRange(-0.5, 0.5);
-
+    setOutputRange(-.5, .5);
+    
     // Use these to get going:
     // setSetpoint() - Sets where the PID controller should move the system
     // to
