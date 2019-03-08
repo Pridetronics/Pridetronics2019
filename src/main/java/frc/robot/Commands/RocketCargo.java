@@ -56,9 +56,6 @@ public class RocketCargo extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putNumber("distance", this.distance);
-
-    
-
     //Robot.liftPID.enable();
     //Robot.liftPID.setPoint(distance);
   }

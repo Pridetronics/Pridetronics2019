@@ -19,9 +19,8 @@ public class InitializeLift extends CommandGroup {
    */
   public InitializeLift() {
     addSequential(new RunLiftDown());
-    addSequential(new TimedCommand(0.5));
     addSequential(new ZeroEncoder());
-    addSequential(new RocketCargo(OI.RocketHatch1));
+    addSequential(new RunLiftPID(OI.RocketHatch1));
     addSequential(new DriveTeleop());
   }
 }

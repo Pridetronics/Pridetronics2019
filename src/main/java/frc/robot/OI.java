@@ -36,8 +36,8 @@ public class OI {
   public JoystickButton button11; // Rocket Ball 1
   public JoystickButton button12; // Rocket Hatch 1
   public JoystickButton gamepadButton8;
-  public JoystickButton button13; // Lift up
-  public JoystickButton button14; // Lift down
+  //public JoystickButton button13; // Lift up
+  //public JoystickButton button14; // Lift down
 
   // InstanceVariables for Ball
   public static final double RocketBallLv1 = 27.5;
@@ -67,28 +67,49 @@ public class OI {
     left.whileActive(new EjectBall());
     left.close();
 
+    /*
     button13 = new JoystickButton(joystick, 1);
     button13.whileHeld(new RunLiftUp());
     button14 = new JoystickButton(joystick, 2);
     button14.whileHeld(new RunLiftDown());
+    */
+
     // Cargo ball whenPressed
     button3 = new JoystickButton(joystick, 1);
-    //button3.whenPressed(new RocketCargo(CargoBall));
-    // Top level on Rocket
+    button3.whenPressed(new RunLiftPID(CargoBall));
+
+    // Top level on Rocket Cargo
     button7 = new JoystickButton(joystick, 7);
-    //button7.whenPressed(new RocketCargo(RocketBallLv3));// change when rocketlv3 is made
-    // Middle level on Rocket
+    button7.whenPressed(new RunLiftPID(RocketBallLv3));// change when rocketlv3 is made
+    
+    // Middle level on Rocket Cargo
     button9 = new JoystickButton(joystick, 9);
-    //button9.whenPressed(new RocketCargo(RocketBallLv2));// change when rocketlv2 is made
-    // Bottom level on Rocket
+    button9.whenPressed(new RunLiftPID(RocketBallLv2));// change when rocketlv2 is made
+    
+    // Bottom level on Rocket Cargo
     button11 = new JoystickButton(joystick, 11);
-    //button11.whenPressed(new RocketCargo(RocketBallLv1));// keep its gud
+    button11.whenPressed(new RunLiftPID(RocketBallLv1));// keep its gud
+    
+    // Top Level on Rocket Hatch
+    button8 = new JoystickButton(joystick, 7);
+    button8.whenPressed(new RunLiftPID(RocketHatch3));
+
+    // Middle Level on Rocket Hatch
+    button10 = new JoystickButton(joystick, 7);
+    button10.whenPressed(new RunLiftPID(RocketHatch2));
+
+    // Bottom Level on Rocket Hatch
+    button12 = new JoystickButton(joystick, 7);
+    button12.whenPressed(new RunLiftPID(RocketHatch1));
+
     // Wrist up whileheld
     button4 = new JoystickButton(gamepad, 2);
     button4.whenPressed(new WristUp());
+    
     // Wrist down whileheld
     button6 = new JoystickButton(gamepad, 1);
     button6.whenPressed(new WristDown());
+    
     // Hatch Panel in/out
     button5 = new JoystickButton(joystick, 5);
     button5.whenPressed(new PushPanel());
