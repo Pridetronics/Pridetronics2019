@@ -35,7 +35,7 @@ public class RunLiftPID extends InstantCommand {
   // Called once when the command executes
   @Override
   protected void initialize() {
-    m_pidController.setReference(rotations, ControlType.kPosition);
+    m_pidController.setReference(rotations + RobotMap.liftOffset, ControlType.kPosition);
   }
 
 }
