@@ -36,8 +36,10 @@ public class OI {
   public JoystickButton button11; // Rocket Ball 1
   public JoystickButton button12; // Rocket Hatch 1
   public JoystickButton gamepadButton8;
-  //public JoystickButton button13; // Lift up
-  //public JoystickButton button14; // Lift down
+  public JoystickButton button13; // Lift up
+  public JoystickButton button14; // Lift down
+  public JoystickButton TestButton; // Lift down
+
 
   // InstanceVariables for Ball
   public static final double RocketBallLv1 = 27.5;
@@ -97,11 +99,11 @@ public class OI {
     button8.whenPressed(new RunLiftPID(RocketHatch3));
 
     // Middle Level on Rocket Hatch
-    button10 = new JoystickButton(joystick, 7);
+    button10 = new JoystickButton(joystick, 8);
     button10.whenPressed(new RunLiftPID(RocketHatch2));
 
     // Bottom Level on Rocket Hatch
-    button12 = new JoystickButton(joystick, 7);
+    button12 = new JoystickButton(joystick, 9);
     button12.whenPressed(new RunLiftPID(RocketHatch1));
 
     // Wrist up whileheld
@@ -122,6 +124,9 @@ public class OI {
 
     button5 = new JoystickButton(gamepad, 5);
     button5.whenPressed(new RampRelease());
+
+    TestButton = new JoystickButton(gamepad, 9);
+    TestButton.whenPressed(new TestZeroWristEncoder());
   }
 
   public Joystick getJoystick() {

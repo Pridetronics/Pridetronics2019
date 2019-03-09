@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import frc.robot.Subsystems.*;
 import frc.robot.Commands.*;
 import frc.robot.Robot;
+
+import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PWMSpeedController;
@@ -24,10 +26,10 @@ public class WristPID extends PIDSubsystem {
    * Add your docs here.
    */
 
-   private final Encoder wristEncoder = RobotMap.wristEncoder;
-   private final PWMSpeedController wristMotor = RobotMap.wristMotor;
-   private final DigitalInput wristLimitUp = RobotMap.wristLimitUp;
-   private final DigitalInput wristLimitDown = RobotMap.wristLimitDown;
+  private final Encoder wristEncoder = RobotMap.wristEncoder;
+  private final PWMSpeedController wristMotor = RobotMap.wristMotor;
+  private final DigitalInput wristLimitUp = RobotMap.wristLimitUp;
+  private final DigitalInput wristLimitDown = RobotMap.wristLimitDown;
 
   public WristPID() {
     // Intert a subsystem name and PID values here
@@ -64,12 +66,59 @@ public class WristPID extends PIDSubsystem {
   @Override
   protected void usePIDOutput(double output) {
     // if true, limit is pressed
-    if(!RobotMap.wristLimitUp.get() && (output > 0)){
+    SmartDashboard.putNumber("Wrist Output", output);
+    if (!RobotMap.wristLimitUp.get() && (output > 0)) {
       wristMotor.set(output);
-    } else if(!RobotMap.wristLimitDown.get() && (output < 0)){
+    } else if (!RobotMap.wristLimitDown.get() && (output < 0)) {
       wristMotor.set(output);
     } else {
       wristMotor.set(0);
     }
+  }
+
+  public void up(double Speed) {
+    this.disable();
+    if (Speed > 1) {
+      Speed = 1;
+    }
+    if (Speed < 0) {
+      Speed = 0;
+    }
+
+    if (!RobotMap.wristLimitUp.get()) {
+      wristMotor.set(Speed);
+
+    } else {
+      wristMotor.set(0);
+    }
+  }
+
+  public void down(double Speed) {
+    this.disable();
+    if (Speed > 0) {
+      Speed = 0;
+    }
+    if (Speed < -1) {
+      Speed = -1;
+    }
+
+    if (!RobotMap.wristLimitDown.get()) {
+      wristMotor.set(Speed);
+
+    } else {
+      wristMotor.set(0);
+    }
+  }
+
+  public void zeroWristEncoder(){
+    wristEncoder.reset();
+  }
+
+  public boolean limitWristUp() {
+    return wristLimitUp.get();
+  }
+
+  public boolean limitWristDown() {
+    return wristLimitDown.get();
   }
 }

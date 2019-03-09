@@ -66,6 +66,10 @@ public class RobotMap {
   public static CANPIDController m_pidController;
   public static double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput, kMaxInput, kMinInput;
 
+  public static final double HatchPosition = 10;
+  public static final double ShootPosition = 55;
+  public static final double IntakePosition = 90;
+
   public static void init() {
 
     leftDriveMotorLead = new WPI_TalonSRX(0); // Assigns Leading Left Drive Motor to Talon #0
@@ -134,7 +138,6 @@ public class RobotMap {
     // Wrist Motor to a new Victor Object
     wristMotor = new Victor(0);
     wristEncoder = new Encoder(2, 3);
-    
     wristEncoder.setDistancePerPulse(1/11.6148);
     wristLimitUp = new DigitalInput(6);
     wristLimitDown = new DigitalInput(7);

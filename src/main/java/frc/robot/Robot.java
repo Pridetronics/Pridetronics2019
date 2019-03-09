@@ -92,6 +92,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    SmartDashboard.putBoolean("WristLimitDown", RobotMap.wristLimitDown.get());
+    
     // boolean out = RobotMap.limitSwitchLiftDown.get();
     // SmartDashboard.putBoolean("LimitSwitch", out);
   }

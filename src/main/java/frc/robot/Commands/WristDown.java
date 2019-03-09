@@ -9,6 +9,7 @@ package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 /**
  * Add your docs here.
@@ -27,7 +28,8 @@ public class WristDown extends InstantCommand {
   // Called once when the command executes
   @Override
   protected void initialize() {
-    Robot.wristPID.setSetpoint(0);
+    //Robot.wrist.down();
+    Robot.wristPID.setSetpoint(RobotMap.IntakePosition);
     Robot.wristPID.enable();
   }
 
