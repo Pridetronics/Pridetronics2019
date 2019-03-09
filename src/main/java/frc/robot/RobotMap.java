@@ -9,18 +9,26 @@ package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.CANSparkMax.*;
+import com.revrobotics.CANSparkMaxLowLevel.*;
+import com.revrobotics.CANPIDController;
+import com.revrobotics.ControlType;
 
+
+import edu.wpi.first.wpilibj.CAN;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import com.revrobotics.CANPIDController;
+
+
 /**
  * Main class that ties robot to the code
  */
@@ -58,10 +66,7 @@ public class RobotMap {
   public static CANPIDController m_pidController;
   public static double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput, kMaxInput, kMinInput;
 
-  public static final double HatchPosition = 10;
-  public static final double ShootPosition = 55;
-  public static final double IntakePosition = 90;
-
+  public static double liftOffset = 0;
   public static void init() {
 
     leftDriveMotorLead = new WPI_TalonSRX(0); // Assigns Leading Left Drive Motor to Talon #0
@@ -99,14 +104,14 @@ public class RobotMap {
     // lift motors
 
     // Lift Motor to a new CANSparkMAX object
-    liftMotor = new CANSparkMax(4, MotorType.kBrushless);
-    liftMotor.setIdleMode(IdleMode.kBrake);
+    liftMotor = new CANSparkMax(4, MotorType.kBrushless);    liftMotor.setIdleMode(IdleMode.kBrake);
     liftEncoder = liftMotor.getEncoder();
+    
     // liftMotor.setInverted(false);
 
     m_pidController = liftMotor.getPIDController();
 
-    kP = 0.5; 
+    kP = 0.5;
     kI = 0.0;
     kD = 0.0; 
     kIz = 0.0; 
@@ -124,7 +129,6 @@ public class RobotMap {
     m_pidController.setFF(kFF);
     m_pidController.setOutputRange(kMinOutput, kMaxOutput);
    // m_pidController.setInputRange(kMinInput, kMaxInput);
-
 
     // wrist motors
 

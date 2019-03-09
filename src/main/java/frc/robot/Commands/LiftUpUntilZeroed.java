@@ -8,15 +8,27 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
-import frc.robot.OI;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
+import frc.robot.Robot;
+import frc.robot.Subsystems.Lift;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.DigitalInput;
 
-public class ZeroWristEncoder2 extends Command {
-  public ZeroWristEncoder2() {
+/**
+ * This class creates a command to run lift up.
+ */
+public class LiftUpUntilZeroed extends Command {
+
+  public final DigitalInput limitSwitchLiftUp = RobotMap.limitSwitchLiftUp;
+
+  public LiftUpUntilZeroed() {
+
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.wristPID);
+
+    requires(Robot.lift);
   }
 
   // Called just before this Command runs the first time
@@ -28,26 +40,30 @@ public class ZeroWristEncoder2 extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.wristPID.up(0.5);  
+    //if (Robot.lift.limitSwitchUpOpen()) {
+    Robot.lift.up();
+    //}
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.wristPID.limitWristUp();
+    if (Robot.lift.limitSwitchDownOpen()) {
+      return false;
+    }
+    return true;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.wristPID.zeroWristEncoder();
-    Robot.wristPID.setSetpoint(OI.HatchPosition);
-    Robot.wristPID.enable();
+    Robot.lift.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

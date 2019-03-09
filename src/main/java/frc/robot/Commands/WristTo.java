@@ -14,21 +14,24 @@ import frc.robot.RobotMap;
 /**
  * Add your docs here.
  */
-public class WristDown extends InstantCommand {
+public class WristTo extends InstantCommand {
+  public double position;
   /**
    * Add your docs here.
    */
-  public WristDown() {
+  public WristTo(double p) {
     super();
+    this.position = p;
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.wrist);
   }
 
   // Called once when the command executes
   @Override
   protected void initialize() {
-    //Robot.wrist.down();
-    Robot.wristPID.setSetpoint(RobotMap.IntakePosition);
+    //Robot.wrist.up();
+    Robot.wristPID.setSetpoint(this.position);
     Robot.wristPID.enable();
   }
 

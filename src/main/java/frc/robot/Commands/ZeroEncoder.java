@@ -9,6 +9,7 @@ package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 
 /**
@@ -26,9 +27,7 @@ public class ZeroEncoder extends InstantCommand {
   protected void initialize() {
     
     SmartDashboard.putString("Autonomous", "Zeroing Encoder");
-    Robot.smEnhanced.setOffset();
-    
-
+    RobotMap.liftOffset = RobotMap.liftEncoder.getPosition();
   }
 
 }

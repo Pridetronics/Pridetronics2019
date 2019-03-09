@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.*;
 /**
  * Add your docs here.
  */
-public class Pnuematics extends Subsystem {
+public class Pneumatics extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 

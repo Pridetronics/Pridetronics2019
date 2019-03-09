@@ -10,6 +10,12 @@ package frc.robot.Commands;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.RobotMap;
 import com.revrobotics.ControlType;
+
+import com.revrobotics.CANPIDController;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
+import com.revrobotics.CANSparkMax.*;
+import com.revrobotics.CANSparkMaxLowLevel.*;
 /**
  * Add your docs here.
  */
@@ -18,6 +24,7 @@ public class RunLiftPID extends InstantCommand {
    * Add your docs here.
    */
   double rotations;
+  private final static CANPIDController m_pidController = RobotMap.m_pidController;
   public RunLiftPID(double r) {
     super();
     rotations = r;
@@ -28,7 +35,7 @@ public class RunLiftPID extends InstantCommand {
   // Called once when the command executes
   @Override
   protected void initialize() {
-    RobotMap.m_pidController.setReference(rotations, ControlType.kPosition);
+    m_pidController.setReference(rotations + RobotMap.liftOffset, ControlType.kPosition);
   }
 
 }
