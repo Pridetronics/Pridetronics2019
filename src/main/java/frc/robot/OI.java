@@ -54,6 +54,10 @@ public class OI {
   //InstanceVariables for Wrist
   //public static final double Wrist = Math.PI/2;
 
+  public static final double HatchPosition = 0;
+  public static final double ShootPosition = -55;
+  public static final double IntakePosition = -90;
+
   private double value;
   private Joystick Stick;
 
@@ -108,11 +112,13 @@ public class OI {
 
     // Wrist up whileheld
     button4 = new JoystickButton(gamepad, 2);
-    button4.whenPressed(new WristUp());
+    button4.whenPressed(new WristTo(HatchPosition));
     
-    // Wrist down whileheld
     button6 = new JoystickButton(gamepad, 1);
-    button6.whenPressed(new WristDown());
+    button6.whenPressed(new WristTo(IntakePosition));
+    
+    button6 = new JoystickButton(gamepad, 4);
+    button6.whenPressed(new WristTo(ShootPosition));
     
     // Hatch Panel in/out
     button5 = new JoystickButton(joystick, 5);

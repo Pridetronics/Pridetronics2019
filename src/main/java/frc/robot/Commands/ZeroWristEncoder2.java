@@ -9,6 +9,7 @@ package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.OI;
 import frc.robot.RobotMap;
 
 public class ZeroWristEncoder2 extends Command {
@@ -40,7 +41,7 @@ public class ZeroWristEncoder2 extends Command {
   @Override
   protected void end() {
     Robot.wristPID.zeroWristEncoder();
-    Robot.wristPID.setSetpoint(RobotMap.HatchPosition);
+    Robot.wristPID.setSetpoint(OI.HatchPosition);
     Robot.wristPID.enable();
   }
 

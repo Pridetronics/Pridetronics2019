@@ -66,9 +66,6 @@ public class RobotMap {
   public static CANPIDController m_pidController;
   public static double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput, kMaxInput, kMinInput;
 
-  public static final double HatchPosition = -10;
-  public static final double ShootPosition = -55;
-  public static final double IntakePosition = -90;
   public static double liftOffset = 0;
   public static void init() {
 

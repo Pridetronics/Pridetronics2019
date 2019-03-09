@@ -29,9 +29,9 @@ public class PushPanel extends InstantCommand {
     Robot.panelDir = !Robot.panelDir;
     
     if (Robot.panelDir) {
-      Robot.pnuematics.releaseHatch();
+      Robot.pneumatics.releaseHatch();
     } else {
-      Robot.pnuematics.retractHatch();
+      Robot.pneumatics.retractHatch();
     }
   }
 

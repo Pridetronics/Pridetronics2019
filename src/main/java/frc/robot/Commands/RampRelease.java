@@ -32,9 +32,9 @@ public class RampRelease extends InstantCommand {
     Robot.dir = !Robot.dir;
     SmartDashboard.putBoolean("direction", Robot.dir);
     if (Robot.dir) {
-      Robot.pnuematics.releaseRamp();
+      Robot.pneumatics.releaseRamp();
     } else {
-      Robot.pnuematics.retractRamp();
+      Robot.pneumatics.retractRamp();
     }
   }
 

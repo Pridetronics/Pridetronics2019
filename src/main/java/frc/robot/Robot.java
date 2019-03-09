@@ -18,7 +18,7 @@ import frc.robot.Commands.InitializeLift;
 import frc.robot.Subsystems.Drive;
 import frc.robot.Subsystems.Intake;
 import frc.robot.Subsystems.Lift;
-import frc.robot.Subsystems.Pnuematics;
+import frc.robot.Subsystems.Pneumatics;
 import frc.robot.Subsystems.SparkMaxEnhanced;
 import frc.robot.Subsystems.Wrist;
 import frc.robot.Subsystems.WristPID;
@@ -36,7 +36,7 @@ public class Robot extends TimedRobot {
   public static WristPID wristPID;
   public static OI oi;
   public static Wrist wrist;
-  public static Pnuematics pnuematics;
+  public static Pneumatics pneumatics;
   public static Intake intake;
   public static SparkMaxEnhanced smEnhanced;
   Command autonomousCommand;
@@ -63,7 +63,7 @@ public class Robot extends TimedRobot {
     wrist = new Wrist();
     wristPID = new WristPID();
     wristPID.enable();
-    pnuematics = new Pnuematics();
+    pneumatics = new Pneumatics();
     intake = new Intake();
     oi = new OI();
     smEnhanced = new SparkMaxEnhanced();
