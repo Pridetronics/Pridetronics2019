@@ -70,8 +70,11 @@ public class OI {
     */
 
     // Cargo ball whenPressed
-    button3 = new JoystickButton(joystick, 1);
-    button3.whenPressed(new RunLiftPID(CargoBall));
+    button1 = new JoystickButton(joystick, 1);
+    button1.whileHeld(new RunLiftUp());
+
+    button2 = new JoystickButton(joystick, 2);
+    button2.whileHeld(new RunLiftDown());
 
 
     button10 = new JoystickButton(joystick, 7);

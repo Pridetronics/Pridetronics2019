@@ -57,7 +57,7 @@ public class Lift extends Subsystem {
 
   public void down() {
     SmartDashboard.putBoolean("lift", false);
-    liftMotor.set(-.40);
+    liftMotor.set(-1);
   }
 
   public void stop() {
