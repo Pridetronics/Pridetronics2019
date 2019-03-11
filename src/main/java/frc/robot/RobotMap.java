@@ -116,8 +116,8 @@ public class RobotMap {
     kD = 0.0; 
     kIz = 0.0; 
     kFF = 0.0; 
-    kMaxOutput = .6; 
-    kMinOutput = -.6;
+    kMaxOutput = 1; 
+    kMinOutput = -1;
     kMaxInput = 1024;
     kMinInput = 0.0;
 

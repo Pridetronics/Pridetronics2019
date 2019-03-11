@@ -34,12 +34,12 @@ public class Intake extends Subsystem {
 
   public void intake() {
     SmartDashboard.putBoolean("Intake", true);
-    intakeMotorLeft.set(.55);
+    intakeMotorLeft.set(1);
     // intakeMotorRight.set(1);
   }
 
   public void outtake() {
-    intakeMotorLeft.set(-.55);
+    intakeMotorLeft.set(-1);
     // intakeMotorRight.set(-1);
   }
 

@@ -160,8 +160,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Left Encoder", RobotMap.leftDriveMotorLead.getSelectedSensorPosition());
     SmartDashboard.putNumber("Wrist Encoder", RobotMap.wristEncoder.getDistance());
 
-    // SmartDashboard.putNumber("Lift Encoder Position",
-    // RobotMap.liftEncoder.getPosition());
+     SmartDashboard.putBoolean("Lift Auto", Robot.lift.limitSwitchDownOpen());
     // SmartDashboard.putNumber("Lift Encoder Velocity",
     // RobotMap.liftEncoder.getVelocity());
 

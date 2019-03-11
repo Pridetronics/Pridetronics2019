@@ -33,9 +33,9 @@ public class OI {
   public static final double RocketBallLv2 = 55.5;
   public static final double RocketBallLv3 = 83.5;
   // InstanceVariables for Hatch
-  public static final double RocketHatch1 = 19;
-  public static final double RocketHatch2 = 47;
-  public static final double RocketHatch3 = 75;
+  public static final double RocketHatch1 = 0;
+  public static final double RocketHatch2 = 37.5;
+  public static final double RocketHatch3 = 65.5;
   // InstanceVariable for CargoBall
   public static final double CargoBall = 48;
   //InstanceVariables for Wrist
@@ -70,11 +70,8 @@ public class OI {
     */
 
     // Cargo ball whenPressed
-    button1 = new JoystickButton(joystick, 1);
-    button1.whileActive(new RunLiftUp());
-
-    button2 = new JoystickButton(joystick, 2);
-    button2.whileActive(new RunLiftDown());
+    button3 = new JoystickButton(joystick, 1);
+    button3.whenPressed(new RunLiftPID(CargoBall));
 
 
     button10 = new JoystickButton(joystick, 7);

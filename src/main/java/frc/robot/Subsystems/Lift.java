@@ -16,7 +16,6 @@ import edu.wpi.first.wpilibj.DigitalInput;
 
 import com.revrobotics.CANSparkMax;
 
-import com.revrobotics.ControlType;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Encoder;
@@ -27,7 +26,6 @@ import edu.wpi.first.wpilibj.Encoder;
 public class Lift extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  public final double speed = .05;
   private final CANSparkMax liftMotor = RobotMap.liftMotor;
   private final DigitalInput limitSwitchLiftDown = RobotMap.limitSwitchLiftDown;
   private final DigitalInput limitSwitchLiftUp = RobotMap.limitSwitchLiftUp;
@@ -46,7 +44,7 @@ public class Lift extends Subsystem {
 
   public void up() {
     SmartDashboard.putBoolean("lift", true);
-    RobotMap.m_pidController.setReference(RobotMap.liftEncoder.getPosition()-speed, ControlType.kPosition);
+    liftMotor.set(.55);
   }
 
   public void upSpeed(double speed) {
@@ -59,7 +57,7 @@ public class Lift extends Subsystem {
 
   public void down() {
     SmartDashboard.putBoolean("lift", false);
-    RobotMap.m_pidController.setReference(RobotMap.liftEncoder.getPosition()-speed, ControlType.kPosition);
+    liftMotor.set(-.40);
   }
 
   public void stop() {
