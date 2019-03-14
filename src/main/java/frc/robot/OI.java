@@ -24,7 +24,7 @@ public class OI {
 
   public Joystick joystick;
   public Joystick gamepad;
-  public JoystickButton button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12, button13, button14, button15, button16, button17;
+  public JoystickButton button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12, button13, button14, button15, button16;
   public JoystickButton gamepadButton8;
   public JoystickButton TestButton; // Lift down
 
