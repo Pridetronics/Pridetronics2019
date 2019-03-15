@@ -24,10 +24,10 @@ public class OI {
 
   public Joystick joystick;
   public Joystick gamepad;
-  public JoystickButton button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12, button13, button14, button15, button16;
+  public JoystickButton button1, button2, button3, button4, button5, button6, button7, button8, button9, button10,
+      button11, button12, button13, button14, button15, button16;
   public JoystickButton gamepadButton8;
   public JoystickButton TestButton; // Lift down
-
 
   // InstanceVariables for Ball
   public static final double RocketBallLv1 = 27.5;
@@ -38,14 +38,14 @@ public class OI {
   public static final double RocketHatch2 = 37.5;
   public static final double RocketHatch3 = 65.5;
   // InstanceVariable for CargoBall
-  //public static final double CargoHatch = 27.55;
+  // public static final double CargoHatch = 27.55;
   public static final double CargoBallCargo = 48.25;
-    //InstanceVariables for Wrist
-  //public static final double Wrist = Math.PI/2;
+  // InstanceVariables for Wrist
+  // public static final double Wrist = Math.PI/2;
 
   public static final double HatchPosition = 0;
   public static final double ShootPosition = -55;
-  public static final double IntakePosition = -90;
+  public static final double IntakePosition = -100;
 
   private double value;
   private Joystick Stick;
@@ -68,9 +68,9 @@ public class OI {
     button4 = new JoystickButton(joystick, 4);
     button4.whileHeld(new WristDown());
 
-    //Vision Button
+    // Ramp Button
     button5 = new JoystickButton(joystick, 5);
-
+    button5.whenPressed(new RampRelease());
 
     button6 = new JoystickButton(joystick, 6);
     button6.whileHeld(new WristUp());
@@ -90,36 +90,34 @@ public class OI {
     button11 = new JoystickButton(joystick, 11);
     button11.whenPressed(new RunLiftPID(RocketBallLv1));
 
+    // Rovket Hatch position 1 and Cargo Ship Position 1 are on the same button
     button12 = new JoystickButton(joystick, 12);
     button12.whenPressed(new RunLiftPID(RocketHatch1));
 
-    
     // Gamepad
-  
-    
+
     button13 = new JoystickButton(gamepad, 1);
     button13.whenPressed(new WristTo(IntakePosition));
 
     button14 = new JoystickButton(gamepad, 2);
-    button14.whenPressed(new WristTo(HatchPosition));  
-    
+    button14.whenPressed(new WristTo(HatchPosition));
+
     button14 = new JoystickButton(gamepad, 4);
     button14.whenPressed(new WristTo(ShootPosition));
-    
+
+    // Unused Button-- To be fixed
     button15 = new JoystickButton(gamepad, 5);
-    button15.whenPressed(new RampRelease());
 
     // Hatch Panel in/out
     button16 = new JoystickButton(gamepad, 6);
     button16.whenPressed(new PushPanel());
-    
+
     // Top Hatch on Rocket
-    //gamepadButton8 = new JoystickButton(gamepad, 8);
-    //gamepadButton8.whenPressed(new SwitchDriveMode());
+    // gamepadButton8 = new JoystickButton(gamepad, 8);
+    // gamepadButton8.whenPressed(new SwitchDriveMode());
 
     TestButton = new JoystickButton(gamepad, 9);
     TestButton.whenPressed(new TestZeroWristEncoder());
-
 
     Triggers right = new Triggers(gamepad, 2);
     right.whileActive(new EjectBall());
@@ -127,7 +125,6 @@ public class OI {
     Triggers left = new Triggers(gamepad, 3);
     left.whileActive(new IntakeBall());
     left.close();
-
 
   }
 

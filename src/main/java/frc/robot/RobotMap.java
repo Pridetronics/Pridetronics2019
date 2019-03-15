@@ -18,7 +18,8 @@ import com.revrobotics.CANSparkMaxLowLevel.*;
 import com.revrobotics.CANPIDController;
 import com.revrobotics.ControlType;
 
-
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.CAN;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -35,6 +36,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 public class RobotMap {
 
   public static DifferentialDrive myRobot; // Creates new differential drive
+  public static UsbCamera cam1;
 
   public static WPI_TalonSRX leftDriveMotorLead; // Creates new talon motor for leading left drive
   public static WPI_TalonSRX leftDriveMotorFollow; // Creates new talon motor for following left drive
@@ -69,6 +71,8 @@ public class RobotMap {
   public static double liftOffset = 0;
   public static void init() {
 
+    cam1 = CameraServer.getInstance().startAutomaticCapture();
+    cam1.setResolution(640, 480);
     leftDriveMotorLead = new WPI_TalonSRX(0); // Assigns Leading Left Drive Motor to Talon #0
     leftDriveMotorLead.setInverted(true); // Inverts Leading Left Drive Motor
     leftDriveMotorLead.set(0); // Sets speed to 0 (anywhere between -1 and 1)
@@ -104,10 +108,10 @@ public class RobotMap {
     // lift motors
 
     // Lift Motor to a new CANSparkMAX object
-    liftMotor = new CANSparkMax(4, MotorType.kBrushless);    liftMotor.setIdleMode(IdleMode.kBrake);
+    liftMotor = new CANSparkMax(4, MotorType.kBrushless);   
+    liftMotor.setIdleMode(IdleMode.kBrake);
     liftEncoder = liftMotor.getEncoder();
-    
-    // liftMotor.setInverted(false);
+    liftMotor.setInverted(true);
 
     m_pidController = liftMotor.getPIDController();
 
