@@ -30,7 +30,8 @@ public class VisionAuto extends CommandGroup {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    // addSequential(new TurnEncoder(false, rotationFirst));
+    //addSequential(new TurnEncoder(false, rotationFirst));
+    //addSequential(new DriveForward(Speed, Distance));
 
   }
 

@@ -22,6 +22,7 @@ public class ZeroWristEncoder2 extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.wristPID.enable();
 
   }
 
@@ -42,7 +43,7 @@ public class ZeroWristEncoder2 extends Command {
   protected void end() {
     Robot.wristPID.zeroWristEncoder();
     Robot.wristPID.setSetpoint(OI.HatchPosition);
-    Robot.wristPID.enable();
+   
   }
 
   // Called when another command which requires one or more of the same

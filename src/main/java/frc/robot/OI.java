@@ -45,7 +45,7 @@ public class OI {
 
   public static final double HatchPosition = 0;
   public static final double ShootPosition = -55;
-  public static final double IntakePosition = -90;
+  public static final double IntakePosition = -100;
 
   private double value;
   private Joystick Stick;
@@ -68,8 +68,9 @@ public class OI {
     button4 = new JoystickButton(joystick, 4);
     button4.whileHeld(new WristDown());
 
-    //Vision Button
+    //Ramp Release
     button5 = new JoystickButton(joystick, 5);
+    button5.whenPressed(new RampRelease());
 
 
     button6 = new JoystickButton(joystick, 6);
@@ -90,6 +91,7 @@ public class OI {
     button11 = new JoystickButton(joystick, 11);
     button11.whenPressed(new RunLiftPID(RocketBallLv1));
 
+    //Rovket Hatch position 1 and Cargo Ship Position 1 are on the same button 
     button12 = new JoystickButton(joystick, 12);
     button12.whenPressed(new RunLiftPID(RocketHatch1));
 
@@ -106,8 +108,9 @@ public class OI {
     button14 = new JoystickButton(gamepad, 4);
     button14.whenPressed(new WristTo(ShootPosition));
     
+    //Unused Button 
     button15 = new JoystickButton(gamepad, 5);
-    button15.whenPressed(new RampRelease());
+    
 
     // Hatch Panel in/out
     button16 = new JoystickButton(gamepad, 6);
@@ -127,7 +130,6 @@ public class OI {
     Triggers left = new Triggers(gamepad, 3);
     left.whileActive(new IntakeBall());
     left.close();
-
 
   }
 

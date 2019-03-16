@@ -62,7 +62,7 @@ public class Robot extends TimedRobot {
 
     wrist = new Wrist();
     wristPID = new WristPID();
-    wristPID.enable();
+    //wristPID.enable();
     pneumatics = new Pneumatics();
     intake = new Intake();
     oi = new OI();
@@ -92,7 +92,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    SmartDashboard.putNumber("Lift Encoder", RobotMap.liftEncoder.getPosition() - RobotMap.liftOffset);
+    SmartDashboard.putNumber("Lift Encoder", RobotMap.liftEncoder.getPosition());
+    SmartDashboard.putNumber("Lift OffSet", RobotMap.liftOffset);
     
     // boolean out = RobotMap.limitSwitchLiftDown.get();
     // SmartDashboard.putBoolean("LimitSwitch", out);
@@ -159,8 +160,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Right Encoder", RobotMap.rightDriveMotorLead.getSelectedSensorPosition());
     SmartDashboard.putNumber("Left Encoder", RobotMap.leftDriveMotorLead.getSelectedSensorPosition());
     SmartDashboard.putNumber("Wrist Encoder", RobotMap.wristEncoder.getDistance());
-
-     SmartDashboard.putBoolean("Lift Limit Switch", Robot.lift.limitSwitchDownOpen());
+    SmartDashboard.putBoolean("Lift Limit Switch", Robot.lift.limitSwitchDownOpen());
+    SmartDashboard.putBoolean("Wrist Upper Limit", Robot.wristPID.limitWristUp());
     // SmartDashboard.putNumber("Lift Encoder Velocity",
     // RobotMap.liftEncoder.getVelocity());
 
