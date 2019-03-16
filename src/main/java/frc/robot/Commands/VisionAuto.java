@@ -20,6 +20,10 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
 public class VisionAuto extends CommandGroup {
+  private NetworkTableEntry rotationFirst;
+  private NetworkTableEntry forwardDrive;
+  private NetworkTableEntry rotationSecond;
+
   public VisionAuto() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -30,9 +34,9 @@ public class VisionAuto extends CommandGroup {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    //addSequential(new TurnEncoder(false, rotationFirst));
-    //addSequential(new DriveForward(Speed, Distance));
-
+    addSequential(new TurnEncoder(false, rotationFirst));
+    addSequential(new DriveForward(0.6, forwardDrive));
+    addSequential(new TurnEncoder(false, rotationSecond));
   }
 
   // Called repeatedly when this Command is scheduled to run

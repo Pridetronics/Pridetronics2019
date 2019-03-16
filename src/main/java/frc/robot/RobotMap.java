@@ -28,7 +28,9 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.networktables.NetworkTableEntry;
 
 /**
  * Main class that ties robot to the code
@@ -54,13 +56,12 @@ public class RobotMap {
   public static DigitalInput wristLimitUp;
   public static DigitalInput wristLimitDown;
 
-
   public static Victor wristMotor; // Creates new Victor motor for Wrist
   public static Victor intakeMotorLead; // Creates new Victor for Intake
   // public static Victor intakeMotorFollow;
 
   public static CANSparkMax liftMotor; // Creates new CanSparkMAX motor for Lift
-  
+
   public static CANEncoder liftEncoder; // Creates new CANEncoder for Lift
 
   public static final int kTimeoutMs = 30;
@@ -69,17 +70,19 @@ public class RobotMap {
   public static double kP, kI, kD, kIz, kFF, kMaxOutput, kMinOutput, kMaxInput, kMinInput;
 
   public static double liftOffset = 0;
+
   public static void init() {
 
     cam1 = CameraServer.getInstance().startAutomaticCapture();
     cam1.setResolution(640, 480);
+
     leftDriveMotorLead = new WPI_TalonSRX(0); // Assigns Leading Left Drive Motor to Talon #0
     leftDriveMotorLead.setInverted(true); // Inverts Leading Left Drive Motor
     leftDriveMotorLead.set(0); // Sets speed to 0 (anywhere between -1 and 1)
 
     leftDriveMotorFollow = new WPI_TalonSRX(1); // Assigns Following Left Drive Motor to Talon #1
     leftDriveMotorFollow.setInverted(true); // Inverts Following Left Drive Motor
-    
+
     // Makes the Following Left Drive Motor to follow the Leading left Drive Motor
     leftDriveMotorFollow.follow(leftDriveMotorLead);
     // Converts Leading left Drive Motor to an Encoder
@@ -108,7 +111,7 @@ public class RobotMap {
     // lift motors
 
     // Lift Motor to a new CANSparkMAX object
-    liftMotor = new CANSparkMax(4, MotorType.kBrushless);   
+    liftMotor = new CANSparkMax(4, MotorType.kBrushless);
     liftMotor.setIdleMode(IdleMode.kBrake);
     liftEncoder = liftMotor.getEncoder();
     liftMotor.setInverted(true);
@@ -117,10 +120,10 @@ public class RobotMap {
 
     kP = 0.5;
     kI = 0.0;
-    kD = 0.0; 
-    kIz = 0.0; 
-    kFF = 0.0; 
-    kMaxOutput = 1; 
+    kD = 0.0;
+    kIz = 0.0;
+    kFF = 0.0;
+    kMaxOutput = 1;
     kMinOutput = -1;
     kMaxInput = 1024;
     kMinInput = 0.0;
@@ -132,14 +135,14 @@ public class RobotMap {
     m_pidController.setIZone(kIz);
     m_pidController.setFF(kFF);
     m_pidController.setOutputRange(kMinOutput, kMaxOutput);
-   // m_pidController.setInputRange(kMinInput, kMaxInput);
+    // m_pidController.setInputRange(kMinInput, kMaxInput);
 
     // wrist motors
 
     // Wrist Motor to a new Victor Object
     wristMotor = new Victor(0);
     wristEncoder = new Encoder(2, 3);
-    wristEncoder.setDistancePerPulse(1/11.6148);
+    wristEncoder.setDistancePerPulse(1 / 11.6148);
     wristLimitUp = new DigitalInput(6);
     wristLimitDown = new DigitalInput(7);
     // wristMotor.setInverted(false);

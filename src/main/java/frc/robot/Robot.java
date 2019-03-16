@@ -13,6 +13,9 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.networktables.NetworkTableEntry;
 
 import frc.robot.Commands.InitializeLift;
 import frc.robot.Subsystems.Drive;
@@ -42,7 +45,11 @@ public class Robot extends TimedRobot {
   Command autonomousCommand;
   public static boolean dir;
   public static boolean panelDir;
-  
+  public static NetworkTableInstance inst;
+  public static NetworkTable table;
+  public static NetworkTableEntry rotationFirst;
+  public static NetworkTableEntry forwardDrive;
+  public static NetworkTableEntry rotationSecond;
 
   /*
    * This function is run when the robot is first started up and should be used
@@ -52,33 +59,32 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     dir = true;
     panelDir = true;
-    //CameraServer.getInstance().startAutomaticCapture();
-    //UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-    //camera.setResolution(320,240);
+    // CameraServer.getInstance().startAutomaticCapture();
+    // UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+    // camera.setResolution(320,240);
     RobotMap.init();
     drive = new Drive();
     lift = new Lift();
-    //liftPID = new LiftPID();
+    // liftPID = new LiftPID();
 
     wrist = new Wrist();
     wristPID = new WristPID();
-    //wristPID.enable();
+    // wristPID.enable();
     pneumatics = new Pneumatics();
     intake = new Intake();
     oi = new OI();
     smEnhanced = new SparkMaxEnhanced();
 
-    //CameraServer.getInstance().startAutomaticCapture();
-    NetworkTableInstance inst = NetworkTableInstance.getDefault();
+    // CameraServer.getInstance().startAutomaticCapture();
+    inst = NetworkTableInstance.getDefault();
+    table = inst.getTable("Shuffleboard");
+    rotationFirst = table.getEntry("rot1");
+    forwardDrive = table.getEntry("fwd");
+    rotationSecond = table.getEntry("rot2");
+    rotationFirst.getDouble(0.0);
+    forwardDrive.getDouble(0.0);
+    rotationSecond.getDouble(0.0);
 
-    /*
-     * table = inst.getTable("Shuffleboard"); rotationFirst =
-     * table.getEntry("rot1"); forwardDrive = table.getEntry("fwd"); rotationSecond
-     * = table.getEntry("rot2"); rotationFirst.getDouble(0.0);
-     * forwardDrive.getDouble(0.0); rotationSecond.getDouble(0.0);
-     */
-
-    
   }
 
   /**
@@ -93,7 +99,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
     SmartDashboard.putNumber("Lift Encoder", RobotMap.liftEncoder.getPosition() - RobotMap.liftOffset);
-    
+
     // boolean out = RobotMap.limitSwitchLiftDown.get();
     // SmartDashboard.putBoolean("LimitSwitch", out);
   }
