@@ -113,8 +113,8 @@ public class OI {
     button16.whenPressed(new PushPanel());
 
     // Top Hatch on Rocket
-    // gamepadButton8 = new JoystickButton(gamepad, 8);
-    // gamepadButton8.whenPressed(new SwitchDriveMode());
+     gamepadButton8 = new JoystickButton(gamepad, 8);
+     gamepadButton8.whenPressed(new SwitchDriveMode());
 
     TestButton = new JoystickButton(gamepad, 9);
     TestButton.whenPressed(new TestZeroWristEncoder());
