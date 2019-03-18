@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.*;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+//import com.sun.org.apache.bcel.internal.generic.IfInstruction;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.Joystick;
@@ -31,7 +32,9 @@ public class Drive extends Subsystem {
   private final WPI_TalonSRX rightDriveMotorFollow;
 
   public final DifferentialDrive robotDrive;
-  private Joystick stick;
+  private static Joystick gamepad = Robot.oi.gamepad;
+  private static Joystick joystick = Robot.oi.joystick;
+  private static Joystick joystick2 = Robot.oi.joystick2;
 
   private int currentMode;
 
@@ -51,10 +54,13 @@ public class Drive extends Subsystem {
 
     if (currentMode == 0) {
       currentMode = 1;
-      SmartDashboard.putString("Drive Mode", "Arcade");
+      SmartDashboard.putString("Drive Mode", "Arcade With Joystick");
+    } else if (currentMode == 1) {
+      currentMode = 2;
+      SmartDashboard.putString("Drive Mode", "Tank");
     } else {
       currentMode = 0;
-      SmartDashboard.putString("Drive Mode", "Tank");
+      SmartDashboard.putString("Drive Mode", "Tank With Joysticks");
     }
   }
 
@@ -66,14 +72,20 @@ public class Drive extends Subsystem {
 
   }
 
-  public void doTeleop(Joystick stick) {
+  public void doTeleop() {
     if (currentMode == 0) {
       double rightValue, leftValue;
-      rightValue = stick.getRawAxis(5);
-      leftValue = stick.getRawAxis(1);
+      rightValue = gamepad.getRawAxis(5);
+      leftValue = gamepad.getRawAxis(1);
       robotDrive.tankDrive(leftValue, rightValue);
-    } else {
-      robotDrive.arcadeDrive(Robot.oi.joystick.getX(), Robot.oi.joystick.getY());
+    } else if (currentMode == 1) {
+      robotDrive.arcadeDrive(joystick.getX(), joystick.getY());
+    } else if (currentMode == 2) {
+      double rightValue, leftValue;
+      rightValue = joystick.getRawAxis(1);
+      leftValue = joystick2.getRawAxis(1);
+      robotDrive.tankDrive(leftValue, rightValue);
+
     }
   }
 

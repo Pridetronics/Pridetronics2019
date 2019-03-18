@@ -23,6 +23,7 @@ import frc.robot.Subsystems.Wrist;
 public class OI {
 
   public Joystick joystick;
+  public Joystick joystick2;
   public Joystick gamepad;
   public JoystickButton button1, button2, button3, button4, button5, button6, button7, button8, button9, button10,
       button11, button12, button13, button14, button15, button16;
@@ -52,7 +53,8 @@ public class OI {
 
   public OI() {
 
-    joystick = new Joystick(0);
+    joystick = new Joystick(0); // left joystick
+    joystick2 = new Joystick(2); // right joystick
     gamepad = new Joystick(1);
 
     // Joystick
@@ -113,8 +115,8 @@ public class OI {
     button16.whenPressed(new PushPanel());
 
     // Top Hatch on Rocket
-     gamepadButton8 = new JoystickButton(gamepad, 8);
-     gamepadButton8.whenPressed(new SwitchDriveMode());
+    gamepadButton8 = new JoystickButton(gamepad, 8);
+    gamepadButton8.whenPressed(new SwitchDriveMode());
 
     TestButton = new JoystickButton(gamepad, 9);
     TestButton.whenPressed(new TestZeroWristEncoder());
