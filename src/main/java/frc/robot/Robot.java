@@ -73,6 +73,7 @@ public class Robot extends TimedRobot {
     pneumatics = new Pneumatics();
     intake = new Intake();
     oi = new OI();
+    drive.setJoystick(Robot.oi.joystick, Robot.oi.joystick2, Robot.oi.gamepad);
     smEnhanced = new SparkMaxEnhanced();
 
     // CameraServer.getInstance().startAutomaticCapture();

@@ -61,8 +61,7 @@ public class DriveTeleop extends Command {
 
   protected void execute() {
 
-    stick = Robot.oi.getGamepad();
-    Robot.drive.doTeleop(stick);
+    Robot.drive.doTeleop();
   }
 
   // Make this return true when this Command no longer needs to run execute()

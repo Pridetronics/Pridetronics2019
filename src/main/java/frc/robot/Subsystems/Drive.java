@@ -31,7 +31,9 @@ public class Drive extends Subsystem {
   private final WPI_TalonSRX rightDriveMotorFollow;
 
   public final DifferentialDrive robotDrive;
-  private Joystick stick;
+  private Joystick gamepad;
+  private Joystick joystick;
+  private Joystick joystick2;
 
   private int currentMode;
 
@@ -47,33 +49,50 @@ public class Drive extends Subsystem {
     SmartDashboard.putString("Drive Mode", "Tank");
   }
 
+  public void setJoystick(Joystick newjoystick, Joystick newjoystick2, Joystick newgamepad) {
+    joystick = newjoystick;
+    joystick2 = newjoystick2;
+    gamepad = newgamepad;
+
+  }
+
   public void setDrive() {
 
     if (currentMode == 0) {
       currentMode = 1;
       SmartDashboard.putString("Drive Mode", "Arcade");
+
+    } else if (currentMode == 1) {
+      currentMode = 2;
+      SmartDashboard.putString("Drive Mode", "Tank");
     } else {
       currentMode = 0;
-      SmartDashboard.putString("Drive Mode", "Tank");
+      SmartDashboard.putString("Drive Mode", "Tank w/ 2 Joysticks");
+
     }
+
   }
 
   public void initDefaultCommand() {
     setDefaultCommand(new DriveTeleop());
+
   }
 
   public void periodic() {
 
   }
 
-  public void doTeleop(Joystick stick) {
+  public void doTeleop() {
     if (currentMode == 0) {
       double rightValue, leftValue;
-      rightValue = stick.getRawAxis(5);
-      leftValue = stick.getRawAxis(1);
+      rightValue = gamepad.getRawAxis(5);
+      leftValue = gamepad.getRawAxis(1);
       robotDrive.tankDrive(leftValue, rightValue);
+    } else if (currentMode == 1) {
+      robotDrive.arcadeDrive(joystick.getY(), joystick.getX());
+
     } else {
-      robotDrive.arcadeDrive(Robot.oi.joystick.getX(), Robot.oi.joystick.getY());
+      robotDrive.tankDrive(joystick2.getY(), joystick2.getX());
     }
   }
 
