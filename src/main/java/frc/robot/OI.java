@@ -26,7 +26,7 @@ public class OI {
   public Joystick gamepad;
   public JoystickButton button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12, button13, button14, button15, button16;
   public JoystickButton gamepadButton8;
-  public JoystickButton TestButton; // Lift down
+  public JoystickButton TestButton;
 
 
   // InstanceVariables for Ball
@@ -58,9 +58,11 @@ public class OI {
     // Joystick
     button1 = new JoystickButton(joystick, 1);
     button1.whileHeld(new RunLiftUp());
+    button1.whenReleased(new HoldLiftHere());
 
     button2 = new JoystickButton(joystick, 2);
     button2.whileHeld(new RunLiftDown());
+    button2.whenReleased(new HoldLiftHere());
 
     button3 = new JoystickButton(joystick, 3);
     button3.whenPressed(new RunLiftPID(CargoBallCargo));

@@ -81,6 +81,13 @@ public class Robot extends TimedRobot {
     
   }
 
+  public void testInit() {
+    super.testInit();
+
+   // RobotMap.liftEncoder.setPosition(0);
+
+  }
+
   /**
    * This function is called every robot packet, no matter the mode. Use this for
    * items like diagnostics that you want ran during disabled, autonomous,

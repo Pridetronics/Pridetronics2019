@@ -45,7 +45,8 @@ public class Lift extends Subsystem {
 
   public void up() {
     SmartDashboard.putBoolean("lift", true);
-    RobotMap.m_pidController.setReference(.55, ControlType.kDutyCycle);
+    //RobotMap.m_pidController.setReference(.55, ControlType.kDutyCycle);
+    RobotMap.liftMotor.set(.55);
   }
 
   public void upSpeed(double speed) {
@@ -59,13 +60,14 @@ public class Lift extends Subsystem {
   public void down() {
     SmartDashboard.putBoolean("lift", false);
     if(!limitSwitchDownOpen()){
-          RobotMap.m_pidController.setReference(-.55, ControlType.kDutyCycle);
+          //RobotMap.m_pidController.setReference(-.55, ControlType.kDutyCycle);
+          RobotMap.liftMotor.set(-.55);
     }
   }
 
   public void stop() {
-    RobotMap.m_pidController.setReference(0, ControlType.kDutyCycle);
-
+    //RobotMap.m_pidController.setReference(0, ControlType.kDutyCycle);
+    RobotMap.liftMotor.set(0);
   }
 
   public boolean limitSwitchUpOpen() {

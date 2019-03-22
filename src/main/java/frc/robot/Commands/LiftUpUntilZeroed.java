@@ -35,6 +35,8 @@ public class LiftUpUntilZeroed extends Command {
   @Override
   protected void initialize() {
 
+    SmartDashboard.putString("Autonomous", "Lift Up Until Zeroed Init");
+
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -48,17 +50,19 @@ public class LiftUpUntilZeroed extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    SmartDashboard.putString("Autonomous", "Run Lift Up Is Finished");
     if (Robot.lift.limitSwitchDownOpen()) {
       return false;
     }
+    SmartDashboard.putString("Autonomous", "Run Lift Up Is Finished");
     return true;
+    
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
     Robot.lift.stop();
+    //RobotMap.liftEncoder.setPosition(0);
   }
 
   // Called when another command which requires one or more of the same

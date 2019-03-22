@@ -8,26 +8,36 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
-import frc.robot.Robot;
 import frc.robot.RobotMap;
-import edu.wpi.first.wpilibj.smartdashboard.*;
+import com.revrobotics.CANPIDController;
+import com.revrobotics.ControlType;
 
 /**
  * Add your docs here.
  */
-public class ZeroEncoder extends InstantCommand {
+public class HoldLiftHere extends InstantCommand {
   /**
    * Add your docs here.
    */
-  public ZeroEncoder() {
+
+   double here;
+   private final static CANPIDController m_pidController = RobotMap.m_pidController;
+
+
+  public HoldLiftHere() {
     super();
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
   }
 
+  // Called once when the command executes
   @Override
   protected void initialize() {
-    
-    SmartDashboard.putString("Autonomous", "Zeroing Encoder");
-    RobotMap.liftEncoder.setPosition(0);
+
+    here = RobotMap.liftEncoder.getPosition();
+    m_pidController.setReference(here, ControlType.kPosition);
+
+
   }
 
 }
