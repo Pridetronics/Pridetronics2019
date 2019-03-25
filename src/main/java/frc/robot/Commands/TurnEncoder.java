@@ -22,7 +22,7 @@ public class TurnEncoder extends Command {
   /*
    * private NetworkTableEntry leftdist; private NetworkTableEntry rightdist;
    */
-  public TurnEncoder(boolean left, NetworkTableEntry dist) {
+  public TurnEncoder(boolean left, double dist) {
 
     this.left = left;
 

@@ -24,7 +24,7 @@ public class OI {
 
   public Joystick joystick;
   public Joystick gamepad;
-  public JoystickButton button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12, button13, button14, button15, button16;
+  public JoystickButton button1, button2, button3, button4, button5, button6, button7, button8, button9, button10, button11, button12, button13, button14, button15, button16, button17;
   public JoystickButton gamepadButton8;
   public JoystickButton TestButton;
 
@@ -107,16 +107,20 @@ public class OI {
     button14 = new JoystickButton(gamepad, 2);
     button14.whenPressed(new WristTo(HatchPosition));  
     
+    button17 = new JoystickButton(gamepad, 3);
+    button17.whenPressed(new VisionAuto());
+    
     button14 = new JoystickButton(gamepad, 4);
     button14.whenPressed(new WristTo(ShootPosition));
     
     //Unused Button 
     button15 = new JoystickButton(gamepad, 5);
+    button15.whenPressed(new EjectBall());
     
 
     // Hatch Panel in/out
     button16 = new JoystickButton(gamepad, 6);
-    button16.whenPressed(new PushPanel());
+    button16.whenPressed(new IntakeBall());
     
     // Top Hatch on Rocket
     //gamepadButton8 = new JoystickButton(gamepad, 8);
@@ -127,10 +131,10 @@ public class OI {
 
 
     Triggers right = new Triggers(gamepad, 2);
-    right.whileActive(new EjectBall());
-    right.close();
+    //right.whileActive(new EjectBall());
+    //right.close();
     Triggers left = new Triggers(gamepad, 3);
-    left.whileActive(new IntakeBall());
+    left.whileActive(new PushPanel());
     left.close();
 
   }

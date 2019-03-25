@@ -71,7 +71,7 @@ public class RobotMap {
   public static double liftOffset = 0;
   public static void init() {
 
-    cam1 = CameraServer.getInstance().startAutomaticCapture();
+    cam1 = CameraServer.getInstance().startAutomaticCapture(0);
     cam1.setResolution(640, 480);
     leftDriveMotorLead = new WPI_TalonSRX(0); // Assigns Leading Left Drive Motor to Talon #0
     leftDriveMotorLead.setInverted(true); // Inverts Leading Left Drive Motor

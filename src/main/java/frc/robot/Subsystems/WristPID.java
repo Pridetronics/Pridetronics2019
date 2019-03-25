@@ -87,7 +87,6 @@ public class WristPID extends PIDSubsystem {
 
     if (!RobotMap.wristLimitUp.get()) {
       wristMotor.set(Speed);
-
     } else {
       wristMotor.set(0);
     }
@@ -104,7 +103,6 @@ public class WristPID extends PIDSubsystem {
 
     if (!RobotMap.wristLimitDown.get()) {
       wristMotor.set(Speed);
-
     } else {
       wristMotor.set(0);
     }

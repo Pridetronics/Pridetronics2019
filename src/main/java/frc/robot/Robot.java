@@ -7,7 +7,7 @@
 
 package frc.robot;
 
-import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.networktables.*;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -42,6 +42,11 @@ public class Robot extends TimedRobot {
   Command autonomousCommand;
   public static boolean dir;
   public static boolean panelDir;
+  public static NetworkTableInstance inst;
+  public static NetworkTable table;
+  public static NetworkTableEntry rotationFirst;
+  public static NetworkTableEntry forwardDrive;
+  public static NetworkTableEntry rotationSecond;
   
 
   /*
@@ -69,7 +74,12 @@ public class Robot extends TimedRobot {
     smEnhanced = new SparkMaxEnhanced();
 
     //CameraServer.getInstance().startAutomaticCapture();
-    NetworkTableInstance inst = NetworkTableInstance.getDefault();
+    inst = NetworkTableInstance.getDefault();
+    table = inst.getTable("Shuffleboard");
+    rotationFirst = table.getEntry("rot1");
+    forwardDrive = table.getEntry("fwd");
+    rotationSecond = table.getEntry("rot2");
+
 
     /*
      * table = inst.getTable("Shuffleboard"); rotationFirst =
