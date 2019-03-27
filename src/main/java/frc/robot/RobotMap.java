@@ -16,7 +16,6 @@ import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMax.*;
 import com.revrobotics.CANSparkMaxLowLevel.*;
 
-
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
@@ -25,8 +24,9 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.revrobotics.CANPIDController;
 
-import com.revrobotics.ControlType;
+import edu.wpi.first.wpilibj.I2C; //Import for the I2C (Sensor)
 
+import com.revrobotics.ControlType;
 
 /**
  * Main class that ties robot to the code
@@ -54,7 +54,7 @@ public class RobotMap {
   // public static Victor intakeMotorFollow;
 
   public static CANSparkMax liftMotor; // Creates new CanSparkMAX motor for Lift
-  
+
   public static CANEncoder liftEncoder; // Creates new CANEncoder for Lift
 
   public static final int kTimeoutMs = 30;
@@ -70,7 +70,7 @@ public class RobotMap {
 
     leftDriveMotorFollow = new WPI_TalonSRX(1); // Assigns Following Left Drive Motor to Talon #1
     leftDriveMotorFollow.setInverted(true); // Inverts Following Left Drive Motor
-    
+
     // Makes the Following Left Drive Motor to follow the Leading left Drive Motor
     leftDriveMotorFollow.follow(leftDriveMotorLead);
     // Converts Leading left Drive Motor to an Encoder
@@ -107,12 +107,12 @@ public class RobotMap {
 
     m_pidController = liftMotor.getPIDController();
     m_pidController.setReference(0, ControlType.kDutyCycle);
-    kP = 0.2; 
+    kP = 0.2;
     kI = 1e-4;
-    kD = .8; 
-    kIz = 0; 
-    kFF = 0; 
-    kMaxOutput = .6; 
+    kD = .8;
+    kIz = 0;
+    kFF = 0;
+    kMaxOutput = .6;
     kMinOutput = -.45;
 
     // set PID coefficients
