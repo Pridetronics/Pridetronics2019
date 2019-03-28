@@ -28,5 +28,5 @@ public class SwitchDriveMode extends InstantCommand {
   protected void initialize() {
     Robot.drive.setDrive();
   }
-
+  // References the code in Drive.java to switch modes. This is for the whenPressed thing in OI.
 }

@@ -22,8 +22,8 @@ import frc.robot.Subsystems.Wrist;
  */
 public class OI {
 
-  public Joystick joystick;
-  public Joystick joystick2;
+  public Joystick leftJoystick;
+  public Joystick rightJoystick;
   public Joystick gamepad;
   public JoystickButton button1, button2, button3, button4, button5, button6, button7, button8, button9, button10,
       button11, button12, button13, button14, button15, button16;
@@ -53,47 +53,47 @@ public class OI {
 
   public OI() {
 
-    joystick = new Joystick(0); // Left Joystick
-    joystick2 = new Joystick(2); // Right Joystick
+    leftJoystick = new Joystick(0); // Left Joystick
+    rightJoystick = new Joystick(2); // Right Joystick
     gamepad = new Joystick(1); // Gamepad
 
     // Joystick
-    button1 = new JoystickButton(joystick, 1);
+    button1 = new JoystickButton(leftJoystick, 1);
     button1.whileHeld(new RunLiftUp());
 
-    button2 = new JoystickButton(joystick, 2);
+    button2 = new JoystickButton(leftJoystick, 2);
     button2.whileHeld(new RunLiftDown());
 
-    button3 = new JoystickButton(joystick, 3);
+    button3 = new JoystickButton(leftJoystick, 3);
     button3.whenPressed(new RunLiftPID(CargoBallCargo));
 
-    button4 = new JoystickButton(joystick, 4);
+    button4 = new JoystickButton(leftJoystick, 4);
     button4.whileHeld(new WristDown());
 
     // Ramp Button
-    button5 = new JoystickButton(joystick, 5);
+    button5 = new JoystickButton(leftJoystick, 5);
     button5.whenPressed(new RampRelease());
 
-    button6 = new JoystickButton(joystick, 6);
+    button6 = new JoystickButton(leftJoystick, 6);
     button6.whileHeld(new WristUp());
 
-    button7 = new JoystickButton(joystick, 7);
+    button7 = new JoystickButton(leftJoystick, 7);
     button7.whenPressed(new RunLiftPID(RocketBallLv3));
 
-    button8 = new JoystickButton(joystick, 8);
+    button8 = new JoystickButton(leftJoystick, 8);
     button8.whenPressed(new RunLiftPID(RocketHatch3));
 
-    button9 = new JoystickButton(joystick, 9);
+    button9 = new JoystickButton(leftJoystick, 9);
     button9.whenPressed(new RunLiftPID(RocketBallLv2));
 
-    button10 = new JoystickButton(joystick, 10);
+    button10 = new JoystickButton(leftJoystick, 10);
     button10.whenPressed(new RunLiftPID(RocketHatch2));
 
-    button11 = new JoystickButton(joystick, 11);
+    button11 = new JoystickButton(leftJoystick, 11);
     button11.whenPressed(new RunLiftPID(RocketBallLv1));
 
     // Rocket Hatch position 1 and Cargo Ship Position 1 are on the same button
-    button12 = new JoystickButton(joystick, 12);
+    button12 = new JoystickButton(leftJoystick, 12);
     button12.whenPressed(new RunLiftPID(RocketHatch1));
 
     // Gamepad
@@ -130,8 +130,11 @@ public class OI {
 
   }
 
-  public Joystick getJoystick() {
-    return joystick;
+  public Joystick getLeftJoystick() {
+    return leftJoystick;
+  }
+  public Joystick getRightJoystick(){
+    return rightJoystick;
   }
 
   public Joystick getGamepad() {

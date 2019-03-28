@@ -44,6 +44,8 @@ public class Drive extends Subsystem {
     leftDriveMotorLead = RobotMap.leftDriveMotorLead;
     leftDriveMotorFollow = RobotMap.leftDriveMotorFollow;
 
+    // Sets the "follow" motors to the "lead" motors.
+
     robotDrive = RobotMap.myRobot;
     currentMode = 0;
     SmartDashboard.putString("Drive Mode", "Tank");
@@ -54,10 +56,12 @@ public class Drive extends Subsystem {
     rightJoystick = newRightJoystick;
     gamepad = newGamepad;
 
+    // Is created to be used in the methods and set it equal to the Joysticks we
+    // created
   }
 
   public void setDrive() {
-
+    // This code is referenced in the SwitcheDriveMode.java to switch modes.
     if (currentMode == 0) {
       currentMode = 1;
       SmartDashboard.putString("Drive Mode", "Arcade");
@@ -80,6 +84,8 @@ public class Drive extends Subsystem {
 
   public void periodic() {
 
+    // "void" does stuff only once
+
   }
 
   public void doTeleop() {
@@ -94,6 +100,7 @@ public class Drive extends Subsystem {
     } else {
       robotDrive.tankDrive(rightJoystick.getY(), leftJoystick.getX());
     }
+    // Sets the axis the Joysticks should collect data from (in each mode)
   }
 
 }
