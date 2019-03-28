@@ -30,9 +30,9 @@ public class VisionAuto extends CommandGroup {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    addSequential(new TurnEncoder(false, Robot.rotationFirst.getDouble(0.0)));
-    addSequential(new DriveForward(0.6, Robot.forwardDrive.getDouble(0.0)));
-    addSequential(new TurnEncoder(false, Robot.rotationSecond.getDouble(0.0)));
+    //addSequential(new TurnEncoder(false, Robot.rotationFirst.getDouble(0.0)));
+    //addSequential(new DriveForward(0.6, Robot.forwardDrive.getDouble(0.0)));
+    //addSequential(new TurnEncoder(false, Robot.rotationSecond.getDouble(0.0)));
 
   }
 

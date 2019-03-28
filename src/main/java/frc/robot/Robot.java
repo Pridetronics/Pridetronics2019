@@ -76,19 +76,10 @@ public class Robot extends TimedRobot {
     //CameraServer.getInstance().startAutomaticCapture();
     inst = NetworkTableInstance.getDefault();
     table = inst.getTable("Shuffleboard");
+    
     rotationFirst = table.getEntry("rot1");
     forwardDrive = table.getEntry("fwd");
     rotationSecond = table.getEntry("rot2");
-
-
-    /*
-     * table = inst.getTable("Shuffleboard"); rotationFirst =
-     * table.getEntry("rot1"); forwardDrive = table.getEntry("fwd"); rotationSecond
-     * = table.getEntry("rot2"); rotationFirst.getDouble(0.0);
-     * forwardDrive.getDouble(0.0); rotationSecond.getDouble(0.0);
-     */
-
-    
   }
 
   public void testInit() {
@@ -111,6 +102,10 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
     SmartDashboard.putNumber("Lift Encoder", RobotMap.liftEncoder.getPosition());
     SmartDashboard.putNumber("Lift OffSet", RobotMap.liftOffset);
+    
+    
+    SmartDashboard.putNumber("Rot1", rotationFirst.getDouble(0.0));
+    SmartDashboard.putNumber("Fwd1", forwardDrive.getDouble(0.0));
     
     // boolean out = RobotMap.limitSwitchLiftDown.get();
     // SmartDashboard.putBoolean("LimitSwitch", out);

@@ -115,12 +115,12 @@ public class OI {
     
     //Unused Button 
     button15 = new JoystickButton(gamepad, 5);
-    button15.whenPressed(new EjectBall());
+    button15.whileHeld(new EjectBall());
     
 
     // Hatch Panel in/out
     button16 = new JoystickButton(gamepad, 6);
-    button16.whenPressed(new IntakeBall());
+    button16.whileHeld(new IntakeBall());
     
     // Top Hatch on Rocket
     //gamepadButton8 = new JoystickButton(gamepad, 8);
@@ -130,11 +130,11 @@ public class OI {
     TestButton.whenPressed(new TestZeroWristEncoder());
 
 
-    Triggers right = new Triggers(gamepad, 2);
+    Triggers right = new Triggers(gamepad, 3);
     //right.whileActive(new EjectBall());
     //right.close();
-    Triggers left = new Triggers(gamepad, 3);
-    left.whileActive(new PushPanel());
+    Triggers left = new Triggers(gamepad, 2);
+    left.whenActive(new PushPanel());
     left.close();
 
   }
