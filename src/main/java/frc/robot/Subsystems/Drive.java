@@ -31,30 +31,45 @@ public class Drive extends Subsystem {
   private final WPI_TalonSRX rightDriveMotorFollow;
 
   public final DifferentialDrive robotDrive;
-  private Joystick stick;
+  private Joystick leftJoystick; // Left Joystick is zero!
+  private Joystick gamepad; // Gamepad is one!
+  private Joystick rightJoystick; // Right Joystick is two!
 
   private int currentMode;
 
   public Drive() {
-    rightDriveMotorLead = RobotMap.rightDriveMotorLead;
+    rightDriveMotorLead = RobotMap.rightDriveMotorLead; //
     rightDriveMotorFollow = RobotMap.rightDriveMotorFollow;
 
     leftDriveMotorLead = RobotMap.leftDriveMotorLead;
     leftDriveMotorFollow = RobotMap.leftDriveMotorFollow;
 
     robotDrive = RobotMap.myRobot;
-    currentMode = 0;
+    currentMode = 0; // Beginning of match it sets drive mode to zero-- tank
     SmartDashboard.putString("Drive Mode", "Tank");
   }
 
-  public void setDrive() {
+  public void setJoystick(Joystick newLeftJoystick, Joystick newRightJoystick, Joystick newGamepad) {
+    leftJoystick = newLeftJoystick;
+    rightJoystick = newRightJoystick;
+    gamepad = newGamepad;
+  }
 
+  public void setDrive() {
+    // This command is referenced in the command "SwitchDriveMode.java"-- Title is
+    // self explanatory
     if (currentMode == 0) {
       currentMode = 1;
-      SmartDashboard.putString("Drive Mode", "Arcade");
+      SmartDashboard.putString("Drive Mode", "Arcade"); // This checks if it is in tank. And if it is, it will change to
+                                                        // arcade
+    } else if (currentMode == 1) {
+      currentMode = 2;
+      SmartDashboard.putString("Drive Mode", "Tank"); // If the drive mode is Arcade, it will be made to Tank (done with
+                                                      // two joysticks)
     } else {
       currentMode = 0;
-      SmartDashboard.putString("Drive Mode", "Tank");
+      SmartDashboard.putString("Drive Mode", "Tank w/ 2 Joysticks"); // If the drive mode is Tank w/ 2 Joysticks change
+                                                                     // back to tank
     }
   }
 
@@ -69,11 +84,14 @@ public class Drive extends Subsystem {
   public void doTeleop(Joystick stick) {
     if (currentMode == 0) {
       double rightValue, leftValue;
-      rightValue = stick.getRawAxis(5);
-      leftValue = stick.getRawAxis(1);
+      rightValue = gamepad.getRawAxis(5);
+      leftValue = gamepad.getRawAxis(1);
       robotDrive.tankDrive(leftValue, rightValue);
+    } else if (currentMode == 1) {
+      robotDrive.arcadeDrive(Robot.oi.leftJoystick.getY(), Robot.oi.leftJoystick.getX());
     } else {
-      robotDrive.arcadeDrive(Robot.oi.joystick.getX(), Robot.oi.joystick.getY());
+      robotDrive.tankDrive(rightJoystick.getY(), rightJoystick.getX()); // I want to test different values for the
+                                                                        // joysticks to make this work
     }
   }
 

@@ -21,7 +21,8 @@ import frc.robot.Commands.*;
  */
 public class OI {
 
-  public Joystick joystick;
+  public Joystick leftJoystick;
+  public Joystick rightJoystick;
   public Joystick gamepad;
   public JoystickButton button1;// EjectBall
   public JoystickButton button2;// IntakeBall
@@ -55,11 +56,12 @@ public class OI {
 
   public OI() {
 
-    joystick = new Joystick(0);
+    leftJoystick = new Joystick(0);
+    rightJoystick = new Joystick(2);
     gamepad = new Joystick(1);
 
     // Intake and Outtake
-    
+
     Triggers right = new Triggers(gamepad, 2);
     right.whileActive(new IntakeBall());
     right.close();
@@ -67,21 +69,21 @@ public class OI {
     left.whileActive(new EjectBall());
     left.close();
 
-    button13 = new JoystickButton(joystick, 1);
+    button13 = new JoystickButton(leftJoystick, 1);
     button13.whileHeld(new RunLiftUp());
-    button14 = new JoystickButton(joystick, 2);
+    button14 = new JoystickButton(leftJoystick, 2);
     button14.whileHeld(new RunLiftDown());
     // Cargo ball whenPressed
-    button3 = new JoystickButton(joystick, 1);
-    //button3.whenPressed(new RocketCargo(CargoBall));
+    button3 = new JoystickButton(leftJoystick, 1);
+    // button3.whenPressed(new RocketCargo(CargoBall));
     // Top level on Rocket
-    button7 = new JoystickButton(joystick, 7);
+    button7 = new JoystickButton(leftJoystick, 7);
     button7.whenPressed(new RunLiftPID(RocketBallLv3));// change when rocketlv3 is made
     // Middle level on Rocket
-    button9 = new JoystickButton(joystick, 9);
+    button9 = new JoystickButton(leftJoystick, 9);
     button9.whenPressed(new RunLiftPID(RocketBallLv2));// change when rocketlv2 is made
     // Bottom level on Rocket
-    button11 = new JoystickButton(joystick, 11);
+    button11 = new JoystickButton(leftJoystick, 11);
     button11.whenPressed(new RunLiftPID(RocketBallLv1));// keep its gud
     // Wrist up whileheld
     button4 = new JoystickButton(gamepad, 2);
@@ -90,19 +92,23 @@ public class OI {
     button6 = new JoystickButton(gamepad, 1);
     button6.whileHeld(new WristDown());
     // Hatch Panel in/out
-    button5 = new JoystickButton(joystick, 5);
+    button5 = new JoystickButton(leftJoystick, 5);
     button5.whenPressed(new PushPanel());
-    
+
     // Top Hatch on Rocket
     gamepadButton8 = new JoystickButton(gamepad, 8);
-    //gamepadButton8.whenPressed(new SwitchDriveMode());
+    gamepadButton8.whenPressed(new SwitchDriveMode());
 
     button5 = new JoystickButton(gamepad, 5);
     button5.whenPressed(new RampRelease());
   }
 
-  public Joystick getJoystick() {
-    return joystick;
+  public Joystick getLeftJoystick() {
+    return leftJoystick;
+  }
+
+  public Joystick getRightJoystick() {
+    return rightJoystick;
   }
 
   public Joystick getGamepad() {
