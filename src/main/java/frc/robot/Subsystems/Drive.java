@@ -32,8 +32,8 @@ public class Drive extends Subsystem {
 
   public final DifferentialDrive robotDrive;
   private Joystick gamepad;
-  private Joystick joystick;
-  private Joystick joystick2;
+  private Joystick leftJoystick;
+  private Joystick rightJoystick;
 
   private int currentMode;
 
@@ -49,10 +49,10 @@ public class Drive extends Subsystem {
     SmartDashboard.putString("Drive Mode", "Tank");
   }
 
-  public void setJoystick(Joystick newjoystick, Joystick newjoystick2, Joystick newgamepad) {
-    joystick = newjoystick;
-    joystick2 = newjoystick2;
-    gamepad = newgamepad;
+  public void setJoystick(Joystick newLeftJoystick, Joystick newRightJoystick, Joystick newGamepad) {
+    leftJoystick = newLeftJoystick;
+    rightJoystick = newRightJoystick;
+    gamepad = newGamepad;
 
   }
 
@@ -89,10 +89,10 @@ public class Drive extends Subsystem {
       leftValue = gamepad.getRawAxis(1);
       robotDrive.tankDrive(leftValue, rightValue);
     } else if (currentMode == 1) {
-      robotDrive.arcadeDrive(joystick.getY(), joystick.getX());
+      robotDrive.arcadeDrive(leftJoystick.getY(), leftJoystick.getX());
 
     } else {
-      robotDrive.tankDrive(joystick2.getY(), joystick2.getX());
+      robotDrive.tankDrive(rightJoystick.getY(), leftJoystick.getX());
     }
   }
 
