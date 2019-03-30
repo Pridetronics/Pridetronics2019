@@ -18,7 +18,7 @@ import frc.robot.Commands.*;
 import frc.robot.Subsystems.Wrist;
 
 /**
- * Add your docs here.
+ * Add your docs 
  */
 public class OI {
 
@@ -115,12 +115,12 @@ public class OI {
     
     //Unused Button 
     button15 = new JoystickButton(gamepad, 5);
-    button15.whenPressed(new EjectBall());
+    button15.whileHeld(new EjectBall());
     
 
     // Hatch Panel in/out
     button16 = new JoystickButton(gamepad, 6);
-    button16.whenPressed(new IntakeBall());
+    button16.whileHeld(new IntakeBall());
     
     // Top Hatch on Rocket
     //gamepadButton8 = new JoystickButton(gamepad, 8);
