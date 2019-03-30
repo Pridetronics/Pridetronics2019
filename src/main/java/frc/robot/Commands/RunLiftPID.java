@@ -25,8 +25,9 @@ public class RunLiftPID extends InstantCommand {
    */
   double rotations;
   private final static CANPIDController m_pidController = RobotMap.m_pidController;
-  public RunLiftPID(double rotations) {
+  public RunLiftPID(double r) {
     super();
+    this.rotations = r;
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -35,6 +36,7 @@ public class RunLiftPID extends InstantCommand {
   @Override
   protected void initialize() {
     m_pidController.setReference(rotations, ControlType.kPosition);
+    
   }
 
 }

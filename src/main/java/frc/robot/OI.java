@@ -130,11 +130,11 @@ public class OI {
     TestButton.whenPressed(new TestZeroWristEncoder());
 
 
-    Triggers right = new Triggers(gamepad, 2);
+    Triggers right = new Triggers(gamepad, 3);
     //right.whileActive(new EjectBall());
     //right.close();
-    Triggers left = new Triggers(gamepad, 3);
-    left.whileActive(new PushPanel());
+    Triggers left = new Triggers(gamepad, 2);
+    left.whenActive(new PushPanel());
     left.close();
 
   }

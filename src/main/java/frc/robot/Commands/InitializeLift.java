@@ -22,7 +22,7 @@ public class InitializeLift extends CommandGroup {
     //addSequential(new DisableWristPID());
     addSequential(new LiftUpUntilZeroed());
     addSequential(new ZeroEncoder());
-    //addSequential(new ZeroWristEncoder2());
+    addSequential(new ZeroWristEncoder2());
     addSequential(new RunLiftPID(OI.RocketHatch1));
     addSequential(new DriveTeleop());
   }
