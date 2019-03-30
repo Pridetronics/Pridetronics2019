@@ -97,10 +97,17 @@ public class Drive extends Subsystem {
     } else if (currentMode == 1) {
       robotDrive.arcadeDrive(leftJoystick.getY(), leftJoystick.getX());
 
-    } else {
-      robotDrive.tankDrive(rightJoystick.getY(), leftJoystick.getX());
-    }
+    }  /*else  { 
+      robotDrive.tankDrive(leftJoystick.getRawAxis(1), rightJoystick.getRawAxis(1), true);
+      System.out.println("left and right data" + leftJoystick.getRawAxis(1) + "   " + rightJoystick.getRawAxis(1));
+     }
     // Sets the axis the Joysticks should collect data from (in each mode)
+    */
+  }
+     
   }
 
-}
+
+
+
+
