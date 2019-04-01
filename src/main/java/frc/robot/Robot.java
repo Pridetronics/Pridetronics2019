@@ -80,7 +80,9 @@ public class Robot extends TimedRobot {
     rotationFirst = table.getEntry("rot1");
     forwardDrive = table.getEntry("fwd");
     rotationSecond = table.getEntry("rot2");
-  }
+
+    SmartDashboard.putString("Robot ID", "190401");
+    }
 
   public void testInit() {
     super.testInit();
@@ -106,6 +108,9 @@ public class Robot extends TimedRobot {
     
     SmartDashboard.putNumber("Rot1", rotationFirst.getDouble(0.0));
     SmartDashboard.putNumber("Fwd1", forwardDrive.getDouble(0.0));
+
+    SmartDashboard.putBoolean("Wrist Upper Limit", Robot.wristPID.limitWristUp());
+    SmartDashboard.putBoolean("Wrist Lower Limit", Robot.wristPID.limitWristDown());
     
     // boolean out = RobotMap.limitSwitchLiftDown.get();
     // SmartDashboard.putBoolean("LimitSwitch", out);
@@ -173,7 +178,6 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Left Encoder", RobotMap.leftDriveMotorLead.getSelectedSensorPosition());
     SmartDashboard.putNumber("Wrist Encoder", RobotMap.wristEncoder.getDistance());
     SmartDashboard.putBoolean("Lift Limit Switch", Robot.lift.limitSwitchDownOpen());
-    SmartDashboard.putBoolean("Wrist Upper Limit", Robot.wristPID.limitWristUp());
     // SmartDashboard.putNumber("Lift Encoder Velocity",
     // RobotMap.liftEncoder.getVelocity());
 
