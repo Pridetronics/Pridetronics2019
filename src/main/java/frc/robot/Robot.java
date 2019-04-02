@@ -80,6 +80,7 @@ public class Robot extends TimedRobot {
     rotationFirst = table.getEntry("rot1");
     forwardDrive = table.getEntry("fwd");
     rotationSecond = table.getEntry("rot2");
+    SmartDashboard.putString("Robot ID", "19329b");
   }
 
   public void testInit() {
@@ -100,7 +101,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    SmartDashboard.putNumber("Lift Encoder", RobotMap.liftEncoder.getPosition());
+    SmartDashboard.putNumber("Lift Encoder/", RobotMap.liftEncoder.getPosition());
     SmartDashboard.putNumber("Lift OffSet", RobotMap.liftOffset);
     
     
