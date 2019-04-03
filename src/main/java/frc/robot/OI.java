@@ -122,6 +122,8 @@ public class OI {
     button16 = new JoystickButton(gamepad, 6);
     button16.whileHeld(new IntakeBall());
     
+    button17 = new JoystickButton(gamepad, 8);
+    button17.whenPressed(new RampRetract());
     // Top Hatch on Rocket
     //gamepadButton8 = new JoystickButton(gamepad, 8);
     //gamepadButton8.whenPressed(new SwitchDriveMode());

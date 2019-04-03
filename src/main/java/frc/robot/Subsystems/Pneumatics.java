@@ -22,7 +22,7 @@ public class Pneumatics extends Subsystem {
 
   private final DoubleSolenoid solenoidHatchRelease = RobotMap.solenoidHatchRelease;
   private final DoubleSolenoid solenoidRampRelease = RobotMap.solenoidRampRelease;
-
+  private final DoubleSolenoid solenoidRampRetract = RobotMap.solenoidRampRetract;
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
@@ -48,5 +48,11 @@ public class Pneumatics extends Subsystem {
 
   public void releaseRamp() {
     solenoidRampRelease.set(Value.kReverse);
+  }
+  public void SecondRampRelease(){
+    solenoidRampRetract.set(Value.kForward);
+  }
+  public void SecondRampRetract(){
+    solenoidRampRetract.set(Value.kReverse);
   }
 }

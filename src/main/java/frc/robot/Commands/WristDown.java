@@ -25,7 +25,7 @@ public class WristDown extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.wristPID.down(.6);
+    Robot.wristPID.downPID();
 
   }
 
@@ -45,5 +45,6 @@ public class WristDown extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

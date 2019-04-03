@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import frc.robot.Subsystems.Logger;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.networktables.*;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -42,13 +44,14 @@ public class Robot extends TimedRobot {
   Command autonomousCommand;
   public static boolean dir;
   public static boolean panelDir;
+  public static boolean rampdir;
   public static NetworkTableInstance inst;
   public static NetworkTable table;
   public static NetworkTableEntry rotationFirst;
   public static NetworkTableEntry forwardDrive;
   public static NetworkTableEntry rotationSecond;
-  
-
+  public static double DisabledTime;
+  int counter =0;
   /*
    * This function is run when the robot is first started up and should be used
    * for any initialization code.
@@ -64,7 +67,6 @@ public class Robot extends TimedRobot {
     drive = new Drive();
     lift = new Lift();
     //liftPID = new LiftPID();
-
     wrist = new Wrist();
     wristPID = new WristPID();
     //wristPID.enable();
@@ -80,8 +82,9 @@ public class Robot extends TimedRobot {
     rotationFirst = table.getEntry("rot1");
     forwardDrive = table.getEntry("fwd");
     rotationSecond = table.getEntry("rot2");
-    SmartDashboard.putString("Robot ID", "19329b");
-  }
+
+    SmartDashboard.putString("Robot ID", "190401");
+    }
 
   public void testInit() {
     super.testInit();
@@ -101,12 +104,25 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    /*
+    counter++;
+    if (counter % 5 == 0) 
+    {
+			Logger.sendVoltage();
+			Logger.sendCurrent();
+			Logger.sendTotalCurrent();
+			Logger.sendFPGATimestamp();
+    }
+    */
     SmartDashboard.putNumber("Lift Encoder/", RobotMap.liftEncoder.getPosition());
     SmartDashboard.putNumber("Lift OffSet", RobotMap.liftOffset);
     
     
     SmartDashboard.putNumber("Rot1", rotationFirst.getDouble(0.0));
     SmartDashboard.putNumber("Fwd1", forwardDrive.getDouble(0.0));
+
+    SmartDashboard.putBoolean("Wrist Upper Limit", Robot.wristPID.limitWristUp());
+    SmartDashboard.putBoolean("Wrist Lower Limit", Robot.wristPID.limitWristDown());
     
     // boolean out = RobotMap.limitSwitchLiftDown.get();
     // SmartDashboard.putBoolean("LimitSwitch", out);
@@ -118,8 +134,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void disabledPeriodic() {
+    DisabledTime = Timer.getFPGATimestamp();
     Scheduler.getInstance().run();
-
     /*
      * rotationFirst.setDouble(0); forwardDrive.setDouble(0);
      * rotationSecond.setDouble(0);
@@ -170,11 +186,12 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    
+    Scheduler.getInstance().run();
     SmartDashboard.putNumber("Right Encoder", RobotMap.rightDriveMotorLead.getSelectedSensorPosition());
     SmartDashboard.putNumber("Left Encoder", RobotMap.leftDriveMotorLead.getSelectedSensorPosition());
     SmartDashboard.putNumber("Wrist Encoder", RobotMap.wristEncoder.getDistance());
     SmartDashboard.putBoolean("Lift Limit Switch", Robot.lift.limitSwitchDownOpen());
-    SmartDashboard.putBoolean("Wrist Upper Limit", Robot.wristPID.limitWristUp());
     // SmartDashboard.putNumber("Lift Encoder Velocity",
     // RobotMap.liftEncoder.getVelocity());
 

@@ -47,9 +47,9 @@ public class RobotMap {
   public static DigitalInput limitSwitchLiftUp; // Creates new limit switch for lift going up
 
   public static DoubleSolenoid solenoidHatchRelease; // Creates piston for Hatch Retract and Release
-  public static DoubleSolenoid solenoidHatchRelease2;
+  public static DoubleSolenoid solenoidRampRetract;
   public static DoubleSolenoid solenoidRampRelease; // Creates piston for Ramp Retract and Release
-
+  
   public static Encoder wristEncoder; // Creates new Encoder for Arm
   public static DigitalInput wristLimitUp;
   public static DigitalInput wristLimitDown;
@@ -154,9 +154,8 @@ public class RobotMap {
 
     // Solenoids Hatch and Ramp to new Double Solenoid objects
     solenoidHatchRelease = new DoubleSolenoid(0, 1);
-    // solenoidHatchRelease2 = new DoubleSolenoid(2, 3);
+    solenoidRampRetract = new DoubleSolenoid(6, 7);
     solenoidRampRelease = new DoubleSolenoid(4, 5);
-
     // intake motors
 
     // Intake Motor to a new Victor Object

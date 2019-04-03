@@ -9,7 +9,7 @@ package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.Robot;
-
+import edu.wpi.first.wpilibj.smartdashboard.*;
 /**
  * Add your docs here.
  */
@@ -26,7 +26,13 @@ public class RampRetract extends InstantCommand {
   // Called once when the command executes
   @Override
   protected void initialize() {
-    Robot.pneumatics.retractRamp();
+    Robot.rampdir = !Robot.rampdir;
+    SmartDashboard.putBoolean("direction", Robot.dir);
+    if (Robot.rampdir) {
+      Robot.pneumatics.SecondRampRelease();
+    } else {
+      Robot.pneumatics.SecondRampRetract();
+    }
   }
 
 }

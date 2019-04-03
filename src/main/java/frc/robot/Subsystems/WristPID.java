@@ -91,7 +91,6 @@ public class WristPID extends PIDSubsystem {
       wristMotor.set(0);
     }
   }
-
   public void down(double Speed) {
     this.disable();
     if (Speed > 0) {
@@ -107,7 +106,14 @@ public class WristPID extends PIDSubsystem {
       wristMotor.set(0);
     }
   }
-
+  
+  public void upPID() {
+    Robot.wristPID.setSetpoint(-wristEncoder.getDistance() - 10);
+  }
+  
+  public void downPID() {
+    Robot.wristPID.setSetpoint(-wristEncoder.getDistance() + 10);
+  }
   public void zeroWristEncoder(){
     wristEncoder.reset();
   }
