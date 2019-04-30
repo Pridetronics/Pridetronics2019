@@ -10,15 +10,10 @@ package frc.robot.Commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.TimedCommand;
 import frc.robot.Commands.*;
-import frc.robot.OI;
-import frc.robot.RobotMap;
-import edu.wpi.first.wpilibj.smartdashboard.*;
-
-public class VisionAuto extends CommandGroup {
-  public VisionAuto() {
-    addSequential(new TurnEncoder(false, Robot.rotationFirst.getDouble(0.0)));
-    addSequential(new DriveForward(0.6, Robot.forwardDrive.getDouble(0.0)));
-    addSequential(new TurnEncoder(false, Robot.rotationSecond.getDouble(0.0)));
-    addSequential(new DriveTeleop());
+import frc.robot.*;
+public class StartVision extends CommandGroup {
+  public StartVision() {
+    Robot.autonomousCommand = new VisionAuto(); 
+    Robot.autonomousCommand.start();
   }
 }
